@@ -1,0 +1,24 @@
+{
+  "name": "yizhiyang31.github.io",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yizhiyang31/yizhiyang31.github.io.git"
+  },
+  "author": "yizhiyang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yizhiyang31/yizhiyang31.github.io/issues"
+  },
+  "homepage": "https://github.com/yizhiyang31/yizhiyang31.github.io#readme",
+  "devDependencies": {
+    "vuepress": "^1.9.10"
+  }
+}
