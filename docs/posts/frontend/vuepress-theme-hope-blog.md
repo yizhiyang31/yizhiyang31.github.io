@@ -3,7 +3,7 @@ title: 使用 VuePress Theme Hope 搭建技术博客
 author: yizhiyang
 date: 2026-11-18
 category:
-  - 前端
+  - 工程化
 tag:
   - VuePress
   - 工程化

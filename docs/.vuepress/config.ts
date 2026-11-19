@@ -20,6 +20,10 @@ const slugMap: Record<string, string> = {
   HTTP: "http",
   GitHub: "github",
   "学习笔记": "notes",
+  Go: "go",
+  "数据类型": "datatype",
+  "并发": "concurrency",
+  "泛型": "generics",
 };
 
 const slugify = (name: string): string =>
@@ -30,6 +34,57 @@ Object.entries(slugMap).forEach(([name, slug]) => {
   displayNames[name] = name;
   displayNames[slug] = name;
 });
+
+const golangArticles = [
+  { text: "Go 语言介绍与环境搭建", link: "/posts/backend/golang/01-go-intro-and-setup.html" },
+  { text: "变量、常量与命名规范", link: "/posts/backend/golang/02-variables-and-constants.html" },
+  { text: "基本数据类型", link: "/posts/backend/golang/03-basic-data-types.html" },
+  { text: "类型转换与运算符", link: "/posts/backend/golang/04-type-conversion-and-operators.html" },
+  { text: "流程控制", link: "/posts/backend/golang/05-control-flow.html" },
+  { text: "数组", link: "/posts/backend/golang/06-arrays.html" },
+  { text: "切片", link: "/posts/backend/golang/07-slices.html" },
+  { text: "排序与 sort 包", link: "/posts/backend/golang/08-sort.html" },
+  { text: "map 详解", link: "/posts/backend/golang/09-map.html" },
+  { text: "指针", link: "/posts/backend/golang/10-pointer.html" },
+  { text: "函数详解", link: "/posts/backend/golang/11-functions.html" },
+  { text: "time 包与日期函数", link: "/posts/backend/golang/12-time.html" },
+  { text: "结构体详解", link: "/posts/backend/golang/13-struct.html" },
+  { text: "结构体与 JSON 相互转换", link: "/posts/backend/golang/14-json.html" },
+  { text: "包管理与 go mod", link: "/posts/backend/golang/15-gomod-and-packages.html" },
+  { text: "接口详解", link: "/posts/backend/golang/16-interface.html" },
+  { text: "goroutine 与 channel 并发", link: "/posts/backend/golang/17-concurrency.html" },
+  { text: "反射", link: "/posts/backend/golang/18-reflect.html" },
+  { text: "文件与目录操作", link: "/posts/backend/golang/19-file-operations.html" },
+  { text: "泛型", link: "/posts/backend/golang/20-generics.html" },
+];
+
+const golangSidebar = [
+  {
+    text: "Golang基础",
+    prefix: "/posts/backend/golang/",
+    collapsible: true,
+    children: golangArticles,
+  },
+];
+
+const backendCategorySidebar = [
+  {
+    text: "Golang基础",
+    prefix: "/posts/backend/golang/",
+    children: golangArticles,
+  },
+];
+
+const engineeringSidebar = [
+  {
+    text: "使用 VuePress Theme Hope 搭建技术博客",
+    link: "/posts/frontend/vuepress-theme-hope-blog.html",
+  },
+  {
+    text: "用 GitHub Actions 自动部署静态站点",
+    link: "/posts/backend/github-pages-deploy.html",
+  },
+];
 
 export default defineUserConfig({
   base: "/",
@@ -60,18 +115,36 @@ export default defineUserConfig({
     docsBranch: "main",
     docsDir: "docs",
     editLink: true,
-    sidebar: false,
+    sidebar: {
+      "/category/backend/": backendCategorySidebar,
+      "/category/engineering/": engineeringSidebar,
+      "/category/": false,
+      "/tag/": false,
+      "/article/": false,
+      "/star/": false,
+      "/timeline/": false,
+      "/posts/backend/golang/": golangSidebar,
+      "/posts/backend/github-pages-deploy.html": engineeringSidebar,
+      "/posts/frontend/vuepress-theme-hope-blog.html": engineeringSidebar,
+      "/posts/": [
+        {
+          text: "工程化",
+          link: "/category/engineering/",
+          children: engineeringSidebar,
+        },
+        {
+          text: "后端",
+          link: "/category/backend/",
+          children: golangSidebar,
+        },
+      ],
+    },
     navbar: [
       { text: "首页", link: "/" },
       { text: "文章", link: "/article/" },
-      {
-        text: "分类",
-        children: [
-          { text: "前端", link: "/category/frontend/" },
-          { text: "后端", link: "/category/backend/" },
-          { text: "全部标签", link: "/tag/" },
-        ],
-      },
+      { text: "后端", link: "/category/backend/" },
+      { text: "工程化", link: "/category/engineering/" },
+      { text: "标签", link: "/tag/" },
       { text: "归档", link: "/timeline/" },
     ],
     blog: {
@@ -115,6 +188,7 @@ export default defineUserConfig({
           dark: "github-dark",
         },
         langs: [
+          "go",
           "ts",
           "js",
           "vue",
@@ -176,5 +250,5 @@ export default defineUserConfig({
         },
       },
     },
-  }),
+  }, { custom: true }),
 });

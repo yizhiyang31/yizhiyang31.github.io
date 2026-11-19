@@ -3,7 +3,7 @@ title: 用 GitHub Actions 自动部署静态站点
 author: yizhiyang
 date: 2026-11-08
 category:
-  - 后端
+  - 工程化
 tag:
   - 部署
   - 工程化

@@ -25,6 +25,11 @@ html {
   padding-block: 3.5rem;
 }
 
+// 分类页：左侧展示当前分类的文章导航，移除文章列表顶部的分类切换器
+.category-with-sidebar .vp-blog-main > .vp-category-list {
+  display: none;
+}
+
 .vp-blogger-avatar,
 .vp-blog-hero-image {
   border-radius: 50%;
@@ -51,6 +56,18 @@ html {
   border-left: 3px solid var(--vp-c-brand-1);
   background: var(--vp-c-brand-soft);
   border-radius: 0 8px 8px 0;
+}
+
+// 代码块统一使用深色配色，不随站点明暗主题切换
+:root {
+  --code-c-text: #abb2bf;
+  --code-c-bg: #282c34;
+  --code-c-highlight-bg: #2f3542;
+  --code-c-line-number: #abb2bfab;
+}
+
+.shiki span {
+  color: var(--shiki-dark, inherit) !important;
 }
 
 [vp-content] .vp-code,
