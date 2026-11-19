@@ -20,6 +20,43 @@ star: true
 
 VuePress 以 Markdown 为中心，适合把零散的学习笔记沉淀为结构化内容。配合 `vuepress-theme-hope` 后，不需要自己实现博客列表、标签、时间线和搜索页面。
 
+## 环境要求
+
+本项目基于 VuePress 2 与 `vuepress-theme-hope`，需要 Node.js 22.18.0 或更高版本：
+
+```bash
+node --version   # 应 >= v22.18.0
+npm --version
+```
+
+## 安装依赖
+
+在仓库根目录执行：
+
+```bash
+npm install
+```
+
+依赖会安装到项目根目录的 `node_modules/`，该目录已写入 `.gitignore`，无需提交到仓库。
+
+## 本地运行
+
+开发模式下启动本地预览服务：
+
+```bash
+npm run dev
+```
+
+默认访问 `http://localhost:8080`。修改 Markdown 或配置后页面会自动热更新，适合边写边看。
+
+## 构建站点
+
+```bash
+npm run build
+```
+
+构建产物输出到 `docs/.vuepress/dist/`，这个目录就是 GitHub Pages 需要发布的静态文件。
+
 ## 目录结构
 
 ```bash
@@ -80,4 +117,4 @@ tag:
 
 ## 部署到 GitHub Pages
 
-在仓库中添加 GitHub Actions 工作流，推送到 `master` 分支后自动构建并发布。站点默认访问地址为 `https://yizhiyang31.github.io/`。
+在仓库中添加 GitHub Actions 工作流，推送到 `main` 分支后自动构建并发布。站点默认访问地址为 `https://yizhiyang31.github.io/`。完整的 Workflow 配置与部署注意事项见《用 GitHub Actions 自动部署静态站点》。
