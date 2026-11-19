@@ -1,0 +1,70 @@
+:root {
+  --vp-c-brand-1: #2563eb;
+  --vp-c-brand-2: #3b82f6;
+  --vp-c-brand-3: #60a5fa;
+  --vp-c-brand-soft: rgba(37, 99, 235, 0.14);
+  --vp-c-bg-soft: #f8fafc;
+  --vp-home-hero-name-color: #2563eb;
+}
+
+[data-theme="dark"] {
+  --vp-c-brand-1: #60a5fa;
+  --vp-c-brand-2: #3b82f6;
+  --vp-c-brand-3: #2563eb;
+  --vp-c-brand-soft: rgba(96, 165, 250, 0.16);
+  --vp-c-bg-soft: #0f172a;
+  --vp-home-hero-name-color: #93c5fd;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.vp-blog-hero,
+.hero {
+  padding-block: 3.5rem;
+}
+
+.vp-blogger-avatar,
+.vp-blog-hero-image {
+  border-radius: 50%;
+}
+
+[vp-content] img {
+  border-radius: 10px;
+}
+
+[vp-content] table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+}
+
+[vp-content] table th,
+[vp-content] table td {
+  border: 1px solid var(--vp-c-divider);
+  padding: 0.6rem 0.9rem;
+}
+
+[vp-content] blockquote {
+  border-left: 3px solid var(--vp-c-brand-1);
+  background: var(--vp-c-brand-soft);
+  border-radius: 0 8px 8px 0;
+}
+
+[vp-content] .vp-code,
+[vp-content] div[class*="language-"] {
+  border-radius: 10px;
+}
+
+@media (max-width: 719px) {
+  .vp-blog-hero,
+  .hero {
+    padding-block: 2.25rem;
+  }
+
+  [vp-content] table {
+    font-size: 0.9rem;
+  }
+}

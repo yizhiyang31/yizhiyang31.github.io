@@ -1,0 +1,23 @@
+{
+  "name": "yizhiyang31-tech-blog",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "scripts": {
+    "dev": "vuepress dev docs",
+    "build": "vuepress build docs",
+    "preview": "vuepress preview docs"
+  },
+  "dependencies": {
+    "@vuepress/bundler-vite": "2.0.0-rc.31",
+    "@vuepress/plugin-slimsearch": "2.0.0-rc.137",
+    "sass": "^1.105.0",
+    "sass-embedded": "^1.105.0",
+    "sass-loader": "^17.0.1",
+    "vuepress": "2.0.0-rc.31",
+    "vuepress-theme-hope": "2.0.0-rc.110"
+  }
+}
