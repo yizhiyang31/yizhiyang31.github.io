@@ -62,7 +62,6 @@ npm run build
 ```bash
 docs/
 ├── README.md              # 首页
-├── about.md               # 关于页
 ├── 404.md                 # 404 页
 ├── posts/
 │   ├── frontend/          # 前端文章

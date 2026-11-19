@@ -73,7 +73,6 @@ export default defineUserConfig({
         ],
       },
       { text: "归档", link: "/timeline/" },
-      { text: "关于", link: "/about/" },
     ],
     blog: {
       avatar: "/avatar.jpg",
