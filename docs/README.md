@@ -19,7 +19,7 @@ article: false
 projects:
   - name: 工程化
     link: /category/engineering/
-    desc: VuePress、GitHub Actions 与站点搭建实践
+    desc: VuePress 博客搭建与 GitHub Pages 自动部署
   - name: 后端笔记
     link: /category/backend/
     desc: Go 语言、数据结构与并发编程笔记

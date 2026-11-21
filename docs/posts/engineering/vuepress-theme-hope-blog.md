@@ -5,10 +5,11 @@ author: yizhiyang
 date: 2026-11-18
 category:
   - 工程化
+  - VuePress
 tag:
   - VuePress
-  - 工程化
-  - 部署
+  - Theme Hope
+  - 博客
 sticky: 5
 star: true
 ---

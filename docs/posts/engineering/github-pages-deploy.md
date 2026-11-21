@@ -5,10 +5,11 @@ author: yizhiyang
 date: 2026-11-08
 category:
   - 工程化
-tag:
   - 部署
-  - 工程化
-  - GitHub
+tag:
+  - GitHub Actions
+  - GitHub Pages
+  - CI/CD
 ---
 
 记录将 VuePress 站点推送到仓库后自动构建并发布到 GitHub Pages 的完整配置，以及实际部署时踩过的坑。

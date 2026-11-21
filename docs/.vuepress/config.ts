@@ -13,8 +13,10 @@ const slugMap: Record<string, string> = {
   前端: "frontend",
   后端: "backend",
   VuePress: "vuepress",
+  "Theme Hope": "theme-hope",
   工程化: "engineering",
   部署: "deploy",
+  博客: "blog",
   JavaScript: "javascript",
   异步编程: "async",
   CSS: "css",
@@ -26,6 +28,9 @@ const slugMap: Record<string, string> = {
   性能优化: "performance",
   HTTP: "http",
   GitHub: "github",
+  "GitHub Actions": "github-actions",
+  "GitHub Pages": "github-pages",
+  "CI/CD": "ci-cd",
   "学习笔记": "notes",
   Go: "go",
   "数据类型": "datatype",
@@ -82,14 +87,41 @@ const backendCategorySidebar = [
   },
 ];
 
-const engineeringSidebar = [
+const vuepressArticles = [
   {
     text: "使用 VuePress Theme Hope 搭建技术博客",
     link: "/posts/engineering/vuepress-theme-hope-blog.html",
   },
+];
+
+const deployArticles = [
   {
     text: "用 GitHub Actions 自动部署静态站点",
     link: "/posts/engineering/github-pages-deploy.html",
+  },
+];
+
+const engineeringSidebar = [
+  {
+    text: "VuePress",
+    collapsible: true,
+    children: vuepressArticles,
+  },
+  {
+    text: "部署",
+    collapsible: true,
+    children: deployArticles,
+  },
+];
+
+const engineeringCategorySidebar = [
+  {
+    text: "VuePress",
+    children: vuepressArticles,
+  },
+  {
+    text: "部署",
+    children: deployArticles,
   },
 ];
 
@@ -101,6 +133,18 @@ export default defineUserConfig({
   head: [
     ["link", { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" }],
     ["meta", { name: "theme-color", content: "#2a69ed" }],
+    ["link", { rel: "preconnect", href: "https://fonts.googleapis.com" }],
+    [
+      "link",
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossorigin: "" },
+    ],
+    [
+      "link",
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;600;700&family=Noto+Serif+SC:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap",
+      },
+    ],
   ],
   bundler: viteBundler({
     viteOptions: {
@@ -124,7 +168,19 @@ export default defineUserConfig({
     editLink: false,
     sidebar: {
       "/category/backend/": backendCategorySidebar,
-      "/category/engineering/": engineeringSidebar,
+      "/category/engineering/": engineeringCategorySidebar,
+      "/category/vuepress/": [
+        {
+          text: "VuePress",
+          children: vuepressArticles,
+        },
+      ],
+      "/category/deploy/": [
+        {
+          text: "部署",
+          children: deployArticles,
+        },
+      ],
       "/category/": false,
       "/tag/": false,
       "/article/": false,
@@ -157,7 +213,7 @@ export default defineUserConfig({
       {
         text: "工程化",
         link: "/category/engineering/",
-        activeMatch: "^/(category/engineering/|posts/engineering/)",
+        activeMatch: "^/(category/(engineering|vuepress|deploy)/|posts/engineering/)",
       },
       { text: "标签", link: "/tag/" },
       { text: "归档", link: "/timeline/" },
