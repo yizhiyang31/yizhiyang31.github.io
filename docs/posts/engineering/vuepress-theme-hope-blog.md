@@ -1,5 +1,6 @@
 ---
 title: 使用 VuePress Theme Hope 搭建技术博客
+redirectFrom: /posts/frontend/vuepress-theme-hope-blog.html
 author: yizhiyang
 date: 2026-11-18
 category:

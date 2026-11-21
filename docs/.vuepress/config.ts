@@ -2,6 +2,13 @@ import { viteBundler } from "@vuepress/bundler-vite";
 import { defineUserConfig } from "vuepress";
 import { hopeTheme } from "vuepress-theme-hope";
 
+const catalogTitles: Record<string, string> = {
+  "/posts/": "文章",
+  "/posts/backend/": "后端",
+  "/posts/backend/golang/": "Golang基础",
+  "/posts/engineering/": "工程化",
+};
+
 const slugMap: Record<string, string> = {
   前端: "frontend",
   后端: "backend",
@@ -78,11 +85,11 @@ const backendCategorySidebar = [
 const engineeringSidebar = [
   {
     text: "使用 VuePress Theme Hope 搭建技术博客",
-    link: "/posts/frontend/vuepress-theme-hope-blog.html",
+    link: "/posts/engineering/vuepress-theme-hope-blog.html",
   },
   {
     text: "用 GitHub Actions 自动部署静态站点",
-    link: "/posts/backend/github-pages-deploy.html",
+    link: "/posts/engineering/github-pages-deploy.html",
   },
 ];
 
@@ -93,7 +100,7 @@ export default defineUserConfig({
   description: "记录前端、后端开发中的技术学习、实践总结与问题复盘。",
   head: [
     ["link", { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" }],
-    ["meta", { name: "theme-color", content: "#2563eb" }],
+    ["meta", { name: "theme-color", content: "#2a69ed" }],
   ],
   bundler: viteBundler({
     viteOptions: {
@@ -114,7 +121,7 @@ export default defineUserConfig({
     repo: "yizhiyang31/yizhiyang31.github.io",
     docsBranch: "main",
     docsDir: "docs",
-    editLink: true,
+    editLink: false,
     sidebar: {
       "/category/backend/": backendCategorySidebar,
       "/category/engineering/": engineeringSidebar,
@@ -124,8 +131,8 @@ export default defineUserConfig({
       "/star/": false,
       "/timeline/": false,
       "/posts/backend/golang/": golangSidebar,
-      "/posts/backend/github-pages-deploy.html": engineeringSidebar,
-      "/posts/frontend/vuepress-theme-hope-blog.html": engineeringSidebar,
+      "/posts/engineering/github-pages-deploy.html": engineeringSidebar,
+      "/posts/engineering/vuepress-theme-hope-blog.html": engineeringSidebar,
       "/posts/": [
         {
           text: "工程化",
@@ -142,8 +149,16 @@ export default defineUserConfig({
     navbar: [
       { text: "首页", link: "/" },
       { text: "文章", link: "/article/" },
-      { text: "后端", link: "/category/backend/" },
-      { text: "工程化", link: "/category/engineering/" },
+      {
+        text: "后端",
+        link: "/category/backend/",
+        activeMatch: "^/(category/backend/|posts/backend/golang/)",
+      },
+      {
+        text: "工程化",
+        link: "/category/engineering/",
+        activeMatch: "^/(category/engineering/|posts/engineering/)",
+      },
       { text: "标签", link: "/tag/" },
       { text: "归档", link: "/timeline/" },
     ],
@@ -205,6 +220,17 @@ export default defineUserConfig({
       codeTabs: true,
     },
     plugins: {
+      catalog: {
+        frontmatter: (path) => ({
+          article: false,
+          feed: false,
+          sitemap: false,
+          ...(catalogTitles[path]
+            ? { title: catalogTitles[path], shortTitle: catalogTitles[path] }
+            : {}),
+          ...(path === "/posts/" ? { breadcrumbExclude: true } : {}),
+        }),
+      },
       blog: {
         slugify,
         excerptLength: 220,

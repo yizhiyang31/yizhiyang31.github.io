@@ -1,5 +1,6 @@
 ---
 title: 用 GitHub Actions 自动部署静态站点
+redirectFrom: /posts/backend/github-pages-deploy.html
 author: yizhiyang
 date: 2026-11-08
 category:
