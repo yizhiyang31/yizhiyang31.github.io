@@ -6,6 +6,9 @@ const catalogTitles: Record<string, string> = {
   "/posts/": "文章",
   "/posts/backend/": "后端",
   "/posts/backend/golang/": "Golang基础",
+  "/posts/backend/gin/": "Gin 框架",
+  "/posts/backend/mysql/": "MySQL",
+  "/posts/backend/go-zero/": "go-zero",
   "/posts/engineering/": "工程化",
 };
 
@@ -33,6 +36,8 @@ const slugMap: Record<string, string> = {
   "CI/CD": "ci-cd",
   "学习笔记": "notes",
   Go: "go",
+  Gin: "gin",
+  "go-zero": "go-zero",
   "数据类型": "datatype",
   "并发": "concurrency",
   "泛型": "generics",
@@ -70,22 +75,39 @@ const golangArticles = [
   { text: "泛型", link: "/posts/backend/golang/20-generics.html" },
 ];
 
-const golangSidebar = [
-  {
-    text: "Golang基础",
-    prefix: "/posts/backend/golang/",
-    collapsible: true,
-    children: golangArticles,
-  },
+const ginArticles = [
+  { text: "介绍与环境搭建", link: "/posts/backend/gin/01-intro-and-setup.html" },
+  { text: "路由详解", link: "/posts/backend/gin/02-routing.html" },
+  { text: "HTML 模板渲染与静态文件", link: "/posts/backend/gin/03-template-and-static.html" },
+  { text: "控制器与中间件", link: "/posts/backend/gin/04-controller-and-middleware.html" },
+  { text: "文件上传与 Cookie/Session", link: "/posts/backend/gin/05-file-upload-and-cookie-session.html" },
+  { text: "GORM 操作 MySQL", link: "/posts/backend/gin/06-gorm.html" },
+  { text: "GORM 关联查询、事务与配置", link: "/posts/backend/gin/07-gorm-relations-and-config.html" },
 ];
 
-const backendCategorySidebar = [
-  {
-    text: "Golang基础",
-    prefix: "/posts/backend/golang/",
-    children: golangArticles,
-  },
+const mysqlArticles = [
+  { text: "数据库基础与操作", link: "/posts/backend/mysql/01-basics.html" },
+  { text: "查询、连接与事务", link: "/posts/backend/mysql/02-query-and-advanced.html" },
 ];
+
+const goZeroArticles = [
+  { text: "框架介绍与环境安装", link: "/posts/backend/go-zero/01-intro-and-setup.html" },
+  { text: "项目创建与 API 语法", link: "/posts/backend/go-zero/02-project-and-api-syntax.html" },
+  { text: "API 实战", link: "/posts/backend/go-zero/03-api-practice.html" },
+  { text: "gRPC 微服务快速上手", link: "/posts/backend/go-zero/04-microservice.html" },
+  { text: "集成 MySQL（sqlx）", link: "/posts/backend/go-zero/05-sqlx.html" },
+  { text: "集成 GORM", link: "/posts/backend/go-zero/06-gorm.html" },
+  { text: "关联查询、统一响应与 JWT", link: "/posts/backend/go-zero/07-relations-response-and-jwt.html" },
+];
+
+const backendSeriesSidebar = [
+  { text: "Golang基础", prefix: "/posts/backend/golang/", collapsible: true, children: golangArticles },
+  { text: "Gin 框架", prefix: "/posts/backend/gin/", collapsible: true, children: ginArticles },
+  { text: "MySQL", prefix: "/posts/backend/mysql/", collapsible: true, children: mysqlArticles },
+  { text: "go-zero", prefix: "/posts/backend/go-zero/", collapsible: true, children: goZeroArticles },
+];
+
+const backendCategorySidebar = backendSeriesSidebar;
 
 const vuepressArticles = [
   {
@@ -186,7 +208,7 @@ export default defineUserConfig({
       "/article/": false,
       "/star/": false,
       "/timeline/": false,
-      "/posts/backend/golang/": golangSidebar,
+      "/posts/backend/": backendSeriesSidebar,
       "/posts/engineering/github-pages-deploy.html": engineeringSidebar,
       "/posts/engineering/vuepress-theme-hope-blog.html": engineeringSidebar,
       "/posts/": [
@@ -198,7 +220,7 @@ export default defineUserConfig({
         {
           text: "后端",
           link: "/category/backend/",
-          children: golangSidebar,
+          children: backendSeriesSidebar,
         },
       ],
     },
@@ -208,7 +230,7 @@ export default defineUserConfig({
       {
         text: "后端",
         link: "/category/backend/",
-        activeMatch: "^/(category/backend/|posts/backend/golang/)",
+        activeMatch: "^/(category/backend/|posts/backend/(golang|gin|mysql|go-zero)/)",
       },
       {
         text: "工程化",
