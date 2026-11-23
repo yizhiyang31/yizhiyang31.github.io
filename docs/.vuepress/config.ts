@@ -14,6 +14,7 @@ const catalogTitles: Record<string, string> = {
   "/posts/backend/goframe/": "GoFrame",
   "/posts/python/": "Python 基础",
   "/posts/frontend/": "前端",
+  "/posts/frontend/vue3/": "Vue3 学习笔记",
   "/posts/engineering/": "工程化",
 };
 
@@ -160,13 +161,21 @@ const pythonArticles = [
 
 const pythonSidebar = [{ text: "Python 基础", prefix: "/posts/python/", children: pythonArticles }];
 
-const frontendArticles = [
-  { text: "TypeScript 极速梳理", link: "/posts/frontend/typescript-quick-review.html" },
-  { text: "一小时快速上手 Electron", link: "/posts/frontend/electron-quick-start.html" },
+const vue3Articles = [
+  { text: "1. Vue3 简介", link: "/posts/frontend/vue3/01-vue3-intro.html" },
+  { text: "2. 创建 Vue3 工程", link: "/posts/frontend/vue3/02-create-vue3-project.html" },
+  { text: "3. Vue3 核心语法", link: "/posts/frontend/vue3/03-core-syntax.html" },
+  { text: "4. 路由", link: "/posts/frontend/vue3/04-router.html" },
+  { text: "5. Pinia", link: "/posts/frontend/vue3/05-pinia.html" },
+  { text: "6. 组件通信", link: "/posts/frontend/vue3/06-component-communication.html" },
+  { text: "7. 其它 API", link: "/posts/frontend/vue3/07-other-apis.html" },
+  { text: "8. Vue3 新组件", link: "/posts/frontend/vue3/08-new-components.html" },
 ];
 
 const frontendSidebar = [
-  { text: "前端", prefix: "/posts/frontend/", children: frontendArticles },
+  { text: "Vue3 学习笔记", prefix: "/posts/frontend/vue3/", collapsible: true, children: vue3Articles },
+  { text: "一小时快速上手 Electron", link: "/posts/frontend/electron-quick-start.html" },
+  { text: "TypeScript 极速梳理", link: "/posts/frontend/typescript-quick-review.html" },
 ];
 
 const backendCategorySidebar = [
@@ -317,7 +326,7 @@ export default defineUserConfig({
       { text: "首页", link: "/" },
       {
         text: "前端",
-        link: "/category/frontend/",
+        link: "/posts/frontend/vue3/01-vue3-intro.html",
         activeMatch: "^/(category/frontend/|posts/frontend/)",
       },
       {
