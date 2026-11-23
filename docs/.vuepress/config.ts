@@ -10,6 +10,7 @@ const catalogTitles: Record<string, string> = {
   "/posts/backend/gin/": "Gin 框架",
   "/posts/backend/mysql/": "MySQL",
   "/posts/backend/go-zero/": "go-zero",
+  "/posts/backend/goframe/": "GoFrame",
   "/posts/engineering/": "工程化",
 };
 
@@ -39,6 +40,7 @@ const slugMap: Record<string, string> = {
   Go: "go",
   Gin: "gin",
   "go-zero": "go-zero",
+  GoFrame: "goframe",
   "数据类型": "datatype",
   "并发": "concurrency",
   "泛型": "generics",
@@ -117,9 +119,21 @@ const goZeroArticles = [
   { text: "关联查询、统一响应与 JWT", link: "/posts/backend/go-zero/07-relations-response-and-jwt.html" },
 ];
 
+const goFrameArticles = [
+  { text: "环境搭建与路由", link: "/posts/backend/goframe/01-setup-and-routing.html" },
+  { text: "请求输入与响应输出", link: "/posts/backend/goframe/02-request-and-response.html" },
+  { text: "数据库与 ORM", link: "/posts/backend/goframe/03-database.html" },
+  { text: "模板引擎与静态资源", link: "/posts/backend/goframe/04-template-engine.html" },
+  { text: "文件上传下载与数据校验", link: "/posts/backend/goframe/05-upload-and-validation.html" },
+  { text: "Cookie、Session、JWT 与中间件", link: "/posts/backend/goframe/06-cookie-session-jwt-and-middleware.html" },
+  { text: "常用组件、接口文档与构建打包", link: "/posts/backend/goframe/07-components-docs-and-build.html" },
+  { text: "实战：图书管理 API", link: "/posts/backend/goframe/08-book-api-practice.html" },
+];
+
 const backendSeriesSidebar = [
   { text: "Golang基础", prefix: "/posts/backend/golang/", collapsible: true, children: golangArticles },
   { text: "Gin 框架", prefix: "/posts/backend/gin/", collapsible: true, children: ginArticles },
+  { text: "GoFrame", prefix: "/posts/backend/goframe/", collapsible: true, children: goFrameArticles },
   { text: "MySQL", prefix: "/posts/backend/mysql/", collapsible: true, children: mysqlArticles },
   { text: "go-zero", prefix: "/posts/backend/go-zero/", collapsible: true, children: goZeroArticles },
 ];
@@ -248,7 +262,7 @@ export default defineUserConfig({
       {
         text: "后端",
         link: "/category/backend/",
-        activeMatch: "^/(category/backend/|posts/backend/(golang|gin|mysql|go-zero)/)",
+        activeMatch: "^/(category/backend/|posts/backend/(golang|gin|mysql|go-zero|goframe)/)",
       },
       {
         text: "工程化",
