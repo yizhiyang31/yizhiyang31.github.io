@@ -12,6 +12,7 @@ const catalogTitles: Record<string, string> = {
   "/posts/backend/go-zero/": "go-zero",
   "/posts/backend/goframe/": "GoFrame",
   "/posts/python/": "Python 基础",
+  "/posts/frontend/": "前端",
   "/posts/engineering/": "工程化",
 };
 
@@ -158,6 +159,15 @@ const pythonArticles = [
 
 const pythonSidebar = [{ text: "Python 基础", prefix: "/posts/python/", children: pythonArticles }];
 
+const frontendArticles = [
+  { text: "TypeScript 极速梳理", link: "/posts/frontend/typescript-quick-review.html" },
+  { text: "一小时快速上手 Electron", link: "/posts/frontend/electron-quick-start.html" },
+];
+
+const frontendSidebar = [
+  { text: "前端", prefix: "/posts/frontend/", children: frontendArticles },
+];
+
 const backendCategorySidebar = [
   { text: "Python 基础", prefix: "/posts/python/", children: pythonArticles },
   ...backendSeriesSidebar,
@@ -245,6 +255,7 @@ export default defineUserConfig({
     sidebar: {
       "/books/": false,
       "/category/backend/": backendCategorySidebar,
+      "/category/frontend/": frontendSidebar,
       "/category/engineering/": engineeringCategorySidebar,
       "/category/vuepress/": [
         {
@@ -265,9 +276,15 @@ export default defineUserConfig({
       "/timeline/": false,
       "/posts/backend/": backendSeriesSidebar,
       "/posts/python/": pythonSidebar,
+      "/posts/frontend/": frontendSidebar,
       "/posts/engineering/github-pages-deploy.html": engineeringSidebar,
       "/posts/engineering/vuepress-theme-hope-blog.html": engineeringSidebar,
       "/posts/": [
+        {
+          text: "前端",
+          link: "/category/frontend/",
+          children: frontendSidebar,
+        },
         {
           text: "工程化",
           link: "/category/engineering/",
@@ -288,6 +305,11 @@ export default defineUserConfig({
     navbar: [
       { text: "首页", link: "/" },
       { text: "文章", link: "/article/" },
+      {
+        text: "前端",
+        link: "/category/frontend/",
+        activeMatch: "^/(category/frontend/|posts/frontend/)",
+      },
       {
         text: "后端",
         link: "/category/backend/",
