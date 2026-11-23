@@ -7,8 +7,8 @@
     "node": ">=22.18.0"
   },
   "scripts": {
-    "dev": "vuepress dev docs",
-    "build": "vuepress build docs",
+    "dev": "node scripts/sync-books.mjs && vuepress dev docs",
+    "build": "node scripts/sync-books.mjs && vuepress build docs",
     "preview": "vuepress preview docs"
   },
   "dependencies": {

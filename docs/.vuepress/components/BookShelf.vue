@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref, watch } from "vue";
 import { withBase } from "vuepress/client";
+import bookFiles from "../books-data.json";
 
-type TabKey = "technical";
+type TabKey = "all" | "javascript" | "css" | "backend" | "database" | "other";
 
 interface Book {
   id: string;
@@ -20,11 +21,15 @@ interface Book {
   tab: TabKey;
 }
 
-const tabs: { key: TabKey; label: string }[] = [
-  { key: "technical", label: "技术书籍" },
+const baseTabs: { key: TabKey; label: string }[] = [
+  { key: "all", label: "全部" },
+  { key: "javascript", label: "JavaScript" },
+  { key: "css", label: "CSS" },
+  { key: "backend", label: "后端" },
+  { key: "database", label: "数据库" },
 ];
 
-const books: Book[] = [
+const catalog: Book[] = [
   {
     id: "javascript-advanced-guide-4",
     title: "JavaScript 高级程序设计（第 4 版）",
@@ -39,7 +44,7 @@ const books: Book[] = [
     coverTitle: "JAVASCRIPT",
     coverEdition: "4th Edition",
     coverTheme: "blue",
-    tab: "technical",
+    tab: "javascript",
   },
   {
     id: "you-dont-know-js-1",
@@ -55,7 +60,7 @@ const books: Book[] = [
     coverTitle: "YOU DON'T KNOW JS",
     coverEdition: "上卷",
     coverTheme: "amber",
-    tab: "technical",
+    tab: "javascript",
   },
   {
     id: "you-dont-know-js-2",
@@ -71,7 +76,7 @@ const books: Book[] = [
     coverTitle: "YOU DON'T KNOW JS",
     coverEdition: "中卷",
     coverTheme: "blue",
-    tab: "technical",
+    tab: "javascript",
   },
   {
     id: "you-dont-know-js-3",
@@ -87,7 +92,7 @@ const books: Book[] = [
     coverTitle: "YOU DON'T KNOW JS",
     coverEdition: "下卷",
     coverTheme: "violet",
-    tab: "technical",
+    tab: "javascript",
   },
   {
     id: "css-world",
@@ -103,7 +108,7 @@ const books: Book[] = [
     coverTitle: "CSS WORLD",
     coverEdition: "张鑫旭",
     coverTheme: "teal",
-    tab: "technical",
+    tab: "css",
   },
   {
     id: "css-secrets",
@@ -119,11 +124,75 @@ const books: Book[] = [
     coverTitle: "CSS SECRETS",
     coverEdition: "Lea Verou",
     coverTheme: "rose",
-    tab: "technical",
+    tab: "css",
+  },
+  {
+    id: "gin-framework-tutorial",
+    title: "Gin 框架教程（第 4 版）",
+    subtitle: "Gin Framework Tutorial",
+    category: "后端 · Gin",
+    level: "框架实战",
+    description:
+      "围绕 Gin 框架讲解路由、中间件、参数绑定、GORM 操作 MySQL 等核心能力，快速构建 Go Web 应用与 RESTful API。",
+    file: "/books/gin-framework-tutorial.pdf",
+    size: "1.3 MB",
+    coverLabel: "GIN",
+    coverTitle: "GIN FRAMEWORK",
+    coverEdition: "4th Edition",
+    coverTheme: "teal",
+    tab: "backend",
+  },
+  {
+    id: "go-zero-practice",
+    title: "go-zero 入门实战",
+    subtitle: "go-zero Microservice Practice",
+    category: "后端 · go-zero",
+    level: "微服务",
+    description:
+      "从项目创建与 API 语法入手，逐步掌握 go-zero 的 API 实战、gRPC 微服务、数据库集成与 JWT 鉴权等落地实践。",
+    file: "/books/go-zero-practice.pdf",
+    size: "6.8 MB",
+    coverLabel: "go-zero",
+    coverTitle: "GO-ZERO",
+    coverEdition: "B站实战",
+    coverTheme: "violet",
+    tab: "backend",
   },
 ];
 
-const activeTab = ref<TabKey>("technical");
+const fallbackBook = (file: string, size: string): Book => {
+  const name = file.replace(/\.pdf$/i, "");
+  return {
+    id: name,
+    title: name,
+    subtitle: file,
+    category: "未分类",
+    level: "PDF",
+    description: "来自 books 目录的 PDF 书籍。",
+    file: `/books/${file}`,
+    size,
+    coverLabel: name.slice(0, 8).toUpperCase(),
+    coverTitle: name.toUpperCase(),
+    coverEdition: "PDF",
+    coverTheme: "blue",
+    tab: "other",
+  };
+};
+
+const books = computed<Book[]>(() =>
+  bookFiles.map(({ file, size }) => {
+    const known = catalog.find((book) => book.file === `/books/${file}`);
+    return known ? { ...known, size } : fallbackBook(file, size);
+  }),
+);
+
+const tabs = computed(() =>
+  books.value.some((book) => book.tab === "other")
+    ? [...baseTabs, { key: "other" as TabKey, label: "其他" }]
+    : baseTabs,
+);
+
+const activeTab = ref<TabKey>("all");
 const previewBook = ref<Book | null>(null);
 const previewVisible = computed({
   get: () => previewBook.value !== null,
@@ -133,11 +202,13 @@ const previewVisible = computed({
 });
 
 const visibleBooks = computed(() =>
-  books.filter((book) => book.tab === activeTab.value),
+  activeTab.value === "all"
+    ? books.value
+    : books.value.filter((book) => book.tab === activeTab.value),
 );
 
 const currentTabLabel = computed(
-  () => tabs.find((tab) => tab.key === activeTab.value)?.label ?? "",
+  () => tabs.value.find((tab) => tab.key === activeTab.value)?.label ?? "",
 );
 
 const resolveUrl = (file: string) => withBase(file);
@@ -194,32 +265,19 @@ onBeforeUnmount(() => {
     </header>
 
     <div class="book-shelf__tabs" role="tablist" aria-label="书籍分类">
-      <button
-        v-for="tab in tabs"
-        :key="tab.key"
-        class="book-shelf__tab"
-        :class="{ 'is-active': activeTab === tab.key }"
-        type="button"
-        role="tab"
-        :aria-selected="activeTab === tab.key"
-        @click="activeTab = tab.key"
-      >
+      <button v-for="tab in tabs" :key="tab.key" class="book-shelf__tab" :class="{ 'is-active': activeTab === tab.key }"
+        type="button" role="tab" :aria-selected="activeTab === tab.key" @click="activeTab = tab.key">
         {{ tab.label }}
         <span class="book-shelf__tab-count">
-          {{ books.filter((book) => book.tab === tab.key).length }}
+          {{tab.key === "all" ? books.length : books.filter((book) => book.tab === tab.key).length}}
         </span>
       </button>
     </div>
 
     <div class="book-shelf__grid" role="tabpanel" :aria-label="currentTabLabel">
       <article v-for="book in visibleBooks" :key="book.id" class="book-card">
-        <button
-          class="book-card__cover"
-          :class="`book-card__cover--${book.coverTheme}`"
-          type="button"
-          :aria-label="`预览 ${book.title}`"
-          @click="openPreview(book)"
-        >
+        <button class="book-card__cover" :class="`book-card__cover--${book.coverTheme}`" type="button"
+          :aria-label="`预览 ${book.title}`" @click="openPreview(book)">
           <span class="book-card__spine"></span>
           <span class="book-card__cover-label">{{ book.coverLabel }}</span>
           <span class="book-card__cover-title">{{ book.coverTitle }}</span>
@@ -238,19 +296,11 @@ onBeforeUnmount(() => {
           <div class="book-card__footer">
             <span class="book-card__meta">PDF · {{ book.size }}</span>
             <div class="book-card__actions">
-              <a
-                class="book-card__action book-card__action--ghost"
-                :href="resolveUrl(book.file)"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a class="book-card__action book-card__action--ghost" :href="resolveUrl(book.file)" target="_blank"
+                rel="noopener noreferrer">
                 新标签打开
               </a>
-              <button
-                class="book-card__action book-card__action--primary"
-                type="button"
-                @click="openPreview(book)"
-              >
+              <button class="book-card__action book-card__action--primary" type="button" @click="openPreview(book)">
                 在线预览
               </button>
             </div>
@@ -261,55 +311,31 @@ onBeforeUnmount(() => {
 
     <Teleport to="body">
       <Transition name="book-preview">
-        <div
-          v-if="previewBook"
-          class="book-preview"
-          role="dialog"
-          aria-modal="true"
-          :aria-label="`${previewBook.title} 预览`"
-          @click.self="closePreview"
-        >
+        <div v-if="previewBook" class="book-preview" role="dialog" aria-modal="true"
+          :aria-label="`${previewBook.title} 预览`" @click.self="closePreview">
           <div class="book-preview__panel">
             <header class="book-preview__header">
               <div class="book-preview__heading">
                 <span class="book-preview__badge">PREVIEW</span>
                 <h2>{{ previewBook.title }}</h2>
               </div>
-              <button
-                class="book-preview__close"
-                type="button"
-                aria-label="关闭预览"
-                @click="closePreview"
-              >
+              <button class="book-preview__close" type="button" aria-label="关闭预览" @click="closePreview">
                 <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path
-                    d="M6 6l12 12M18 6L6 18"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                  />
+                  <path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" />
                 </svg>
               </button>
             </header>
 
             <div class="book-preview__viewer">
-              <iframe
-                :key="previewBook.id"
-                :src="resolveUrl(previewBook.file)"
-                :title="`${previewBook.title} PDF 预览`"
-                frameborder="0"
-              />
+              <iframe :key="previewBook.id" :src="resolveUrl(previewBook.file)" :title="`${previewBook.title} PDF 预览`"
+                frameborder="0" />
             </div>
 
             <footer class="book-preview__footer">
               <p>若浏览器未显示内嵌 PDF，可在新标签中打开或下载后阅读。</p>
               <div class="book-preview__actions">
-                <a
-                  :href="resolveUrl(previewBook.file)"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <a :href="resolveUrl(previewBook.file)" target="_blank" rel="noopener noreferrer">
                   新标签打开
                 </a>
                 <a :href="resolveUrl(previewBook.file)" download>
