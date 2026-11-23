@@ -16,7 +16,7 @@ interface Book {
   coverLabel: string;
   coverTitle: string;
   coverEdition: string;
-  coverTheme: "blue" | "amber" | "teal" | "violet";
+  coverTheme: "blue" | "amber" | "rose" | "teal" | "violet";
   tab: TabKey;
 }
 
@@ -103,6 +103,22 @@ const books: Book[] = [
     coverTitle: "CSS WORLD",
     coverEdition: "张鑫旭",
     coverTheme: "teal",
+    tab: "technical",
+  },
+  {
+    id: "css-secrets",
+    title: "CSS 揭秘",
+    subtitle: "CSS Secrets",
+    category: "前端 · CSS",
+    level: "进阶",
+    description:
+      "用 47 个实战技巧讲解背景与边框、形状、视觉效果、字体排印、布局、过渡与动画，展示 CSS 的高阶用法。",
+    file: "/books/css-secrets.pdf",
+    size: "39.3 MB",
+    coverLabel: "CSS",
+    coverTitle: "CSS SECRETS",
+    coverEdition: "Lea Verou",
+    coverTheme: "rose",
     tab: "technical",
   },
 ];
@@ -457,6 +473,10 @@ onBeforeUnmount(() => {
 
 .book-card__cover--teal {
   background: linear-gradient(150deg, #134e4a, #0d9488 55%, #5eead4);
+}
+
+.book-card__cover--rose {
+  background: linear-gradient(150deg, #831843, #db2777 55%, #f9a8d4);
 }
 
 .book-card__cover--violet {
