@@ -11,6 +11,7 @@ const catalogTitles: Record<string, string> = {
   "/posts/backend/mysql/": "MySQL",
   "/posts/backend/go-zero/": "go-zero",
   "/posts/backend/goframe/": "GoFrame",
+  "/posts/python/": "Python 基础",
   "/posts/engineering/": "工程化",
 };
 
@@ -138,7 +139,29 @@ const backendSeriesSidebar = [
   { text: "go-zero", prefix: "/posts/backend/go-zero/", collapsible: true, children: goZeroArticles },
 ];
 
-const backendCategorySidebar = backendSeriesSidebar;
+const pythonArticles = [
+  { text: "第 1 章 必备基础知识", link: "/posts/python/01-fundamentals.html" },
+  { text: "第 2 章 初识 Python", link: "/posts/python/02-first-python.html" },
+  { text: "第 3 章 Python 核心基础", link: "/posts/python/03-core-basics.html" },
+  { text: "第 4 章 流程控制语句", link: "/posts/python/04-control-flow.html" },
+  { text: "第 5 章 函数入门", link: "/posts/python/05-functions.html" },
+  { text: "第 6 章 数据容器", link: "/posts/python/06-data-containers.html" },
+  { text: "第 7 章 面向对象", link: "/posts/python/07-oop.html" },
+  { text: "第 8 章 函数进阶", link: "/posts/python/08-advanced-functions.html" },
+  { text: "第 9 章 错误与异常", link: "/posts/python/09-errors.html" },
+  { text: "第 10 章 模块与包", link: "/posts/python/10-modules.html" },
+  { text: "第 11 章 迭代器 vs 生成器", link: "/posts/python/11-iterators-generators.html" },
+  { text: "第 12 章 文件操作", link: "/posts/python/12-file-io.html" },
+  { text: "第 13 章 进程与线程", link: "/posts/python/13-process-thread.html" },
+  { text: "第 14 章 协程", link: "/posts/python/14-coroutine.html" },
+];
+
+const pythonSidebar = [{ text: "Python 基础", prefix: "/posts/python/", children: pythonArticles }];
+
+const backendCategorySidebar = [
+  { text: "Python 基础", prefix: "/posts/python/", children: pythonArticles },
+  ...backendSeriesSidebar,
+];
 
 const vuepressArticles = [
   {
@@ -241,6 +264,7 @@ export default defineUserConfig({
       "/star/": false,
       "/timeline/": false,
       "/posts/backend/": backendSeriesSidebar,
+      "/posts/python/": pythonSidebar,
       "/posts/engineering/github-pages-deploy.html": engineeringSidebar,
       "/posts/engineering/vuepress-theme-hope-blog.html": engineeringSidebar,
       "/posts/": [
@@ -254,6 +278,11 @@ export default defineUserConfig({
           link: "/category/backend/",
           children: backendSeriesSidebar,
         },
+        {
+          text: "Python 基础",
+          link: "/posts/python/01-fundamentals.html",
+          children: pythonArticles,
+        },
       ],
     },
     navbar: [
@@ -263,6 +292,11 @@ export default defineUserConfig({
         text: "后端",
         link: "/category/backend/",
         activeMatch: "^/(category/backend/|posts/backend/(golang|gin|mysql|go-zero|goframe)/)",
+      },
+      {
+        text: "Python",
+        link: "/posts/python/01-fundamentals.html",
+        activeMatch: "^/posts/python/",
       },
       {
         text: "工程化",
