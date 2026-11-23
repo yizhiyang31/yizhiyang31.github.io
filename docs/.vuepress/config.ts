@@ -16,6 +16,7 @@ const catalogTitles: Record<string, string> = {
   "/posts/frontend/": "前端",
   "/posts/frontend/vue3/": "Vue3 学习笔记",
   "/posts/engineering/": "工程化",
+  "/tools/": "工具",
 };
 
 const slugMap: Record<string, string> = {
@@ -274,6 +275,7 @@ export default defineUserConfig({
     editLink: false,
     sidebar: {
       "/books/": false,
+      "/tools/": false,
       "/category/backend/": backendCategorySidebar,
       "/category/frontend/": frontendSidebar,
       "/category/engineering/": engineeringCategorySidebar,
@@ -345,6 +347,7 @@ export default defineUserConfig({
         activeMatch: "^/(category/(engineering|vuepress|deploy)/|posts/engineering/)",
       },
       { text: "书籍", link: "/books/" },
+      { text: "工具", link: "/tools/" },
       { text: "归档", link: "/timeline/" },
     ],
     blog: {

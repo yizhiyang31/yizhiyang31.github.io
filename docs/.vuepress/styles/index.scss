@@ -1169,8 +1169,12 @@ html {
 // 侧栏：博主卡片 + 信息面板
 .vp-page .vp-blog-info-wrapper {
   display: flex;
+  flex: 0 0 340px;
   flex-direction: column;
-  max-height: calc(100vh - var(--navbar-height) - 1.5rem);
+  width: 340px;
+  max-height: calc(100vh - var(--navbar-height) - 2.5rem);
+  margin-top: 2rem;
+  top: calc(var(--navbar-height) + 2rem);
 
   .vp-blogger-info,
   .vp-blog-infos {
@@ -1200,7 +1204,10 @@ html {
     display: flex;
     flex: 1 1 auto;
     flex-direction: column;
+    box-sizing: border-box;
+    width: 100%;
     min-height: 0;
+    margin-inline: 0;
     margin-bottom: 0;
 
     > :not(.vp-blog-type-switcher) {
@@ -1226,6 +1233,11 @@ html {
       scrollbar-width: thin;
     }
   }
+}
+
+.vp-page.vp-blog-home .vp-blog-info-wrapper {
+  margin-top: 0.75rem;
+  top: calc(var(--navbar-height) + 0.75rem);
 }
 
 @media (min-width: 960px) and (max-height: 720px) {
@@ -1892,8 +1904,9 @@ html {
   background: transparent;
 }
 
-// 书籍页：标题与说明由 BookShelf 组件自行渲染，使用更宽的居中容器
-.books-page {
+// 书籍页与工具页：标题与说明由自定义组件自行渲染，使用更宽的居中容器
+.books-page,
+.tools-page {
   .vp-page-title,
   .vp-page-meta {
     display: none;
@@ -1907,7 +1920,7 @@ html {
     padding-inline: 1.5rem;
   }
 
-  // 主题在大屏下为 has-toc 页面预留右侧目录空间，导致书籍列表整体偏左；此处取消该偏移
+  // 主题在大屏下为 has-toc 页面预留右侧目录空间，导致内容整体偏左；此处取消该偏移
   &.no-sidebar.has-toc .vp-page {
     @media (min-width: 1440px) {
       padding-inline-end: 0;

@@ -1,0 +1,80 @@
+{
+  "tabs": [
+    {
+      "key": "frontend",
+      "label": "前端工具",
+      "hint": "收录 Vue、uni-app 与跨端场景的 UI 组件库和图表工具，便于快速查找与访问。",
+      "categories": [
+        {
+          "key": "ui-libraries",
+          "label": "UI 组件库与图表",
+          "summary": "快速搭建后台、移动端与 uni-app 页面的组件与图表方案。",
+          "tools": [
+            {
+              "name": "Element Plus",
+              "badge": "EP",
+              "description": "面向 Vue 3 的企业级 UI 组件库，适合中后台管理系统。",
+              "url": "https://element-plus.org/"
+            },
+            {
+              "name": "Element",
+              "badge": "EL",
+              "description": "基于 Vue 2 的经典桌面端组件库，生态成熟、文档丰富。",
+              "url": "https://element.eleme.io/"
+            },
+            {
+              "name": "uView",
+              "badge": "uV",
+              "description": "uni-app 生态的高质量 UI 组件库，支持多端统一开发。",
+              "url": "https://uviewui.com/"
+            },
+            {
+              "name": "Ant Design Vue",
+              "badge": "AD",
+              "description": "企业级 Vue UI 组件库，提供丰富的中后台组件与设计规范。",
+              "url": "https://antdv.com/"
+            },
+            {
+              "name": "Wot Design Uni",
+              "badge": "WD",
+              "description": "面向 uni-app 的轻量组件库，覆盖移动端常见业务场景。",
+              "url": "https://wot-design-uni.cn/"
+            },
+            {
+              "name": "uCharts",
+              "badge": "UC",
+              "description": "跨平台图表组件，支持小程序、H5 与 App 等多端渲染。",
+              "url": "https://www.ucharts.cn/"
+            },
+            {
+              "name": "Vant",
+              "badge": "VA",
+              "description": "轻量、可靠的移动端 Vue 组件库，适合电商与移动 H5 页面。",
+              "url": "https://vant-ui.github.io/vant/"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "go",
+      "label": "Go 工具",
+      "hint": "收录 GoFrame 框架，便于快速查找与访问。",
+      "categories": [
+        {
+          "key": "goframe",
+          "label": "GoFrame",
+          "summary": "GoFrame 框架资料与官方入口。",
+          "tools": [
+            {
+              "name": "GoFrame",
+              "badge": "GF",
+              "description": "模块化、高性能的 Go 应用开发框架，提供 Web 服务、ORM、中间件等能力。",
+              "url": "https://goframe.org/"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

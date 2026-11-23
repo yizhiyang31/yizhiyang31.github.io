@@ -14,6 +14,7 @@ import TagList from "@theme-hope/components/blog/TagList.js";
 import { useTagMap } from "@theme-hope/composables/blog/useTagMap.js";
 import DefaultBlogLayout from "@theme-hope/layouts/blog/Blog.js";
 import BookShelf from "./components/BookShelf.vue";
+import ToolShelf from "./components/ToolShelf.vue";
 
 const sidebarDefaultArticles: Record<string, string> = {
   "/category/backend/": "/posts/backend/golang/01-go-intro-and-setup.html",
@@ -102,6 +103,7 @@ const CategoryBlogLayout = defineComponent({
 export default defineClientConfig({
   enhance: ({ app }) => {
     app.component("BookShelf", BookShelf);
+    app.component("ToolShelf", ToolShelf);
   },
   layouts: {
     Blog: CategoryBlogLayout,
