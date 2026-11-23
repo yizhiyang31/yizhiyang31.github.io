@@ -15,6 +15,8 @@ interface Book {
   size: string;
   coverLabel: string;
   coverTitle: string;
+  coverEdition: string;
+  coverTheme: "blue" | "amber" | "violet";
   tab: TabKey;
 }
 
@@ -35,6 +37,56 @@ const books: Book[] = [
     size: "13.7 MB",
     coverLabel: "JS",
     coverTitle: "JAVASCRIPT",
+    coverEdition: "4th Edition",
+    coverTheme: "blue",
+    tab: "technical",
+  },
+  {
+    id: "you-dont-know-js-1",
+    title: "你不知道的 JavaScript（上卷）",
+    subtitle: "You Don't Know JS: Up & Going · Scope & Closures",
+    category: "前端 · JavaScript",
+    level: "基础进阶",
+    description:
+      "从语言基础与函数作用域讲起，系统梳理作用域链、闭包与模块化，是理解 JavaScript 运行机制的第一站。",
+    file: "/books/you-dont-know-js-vol-1.pdf",
+    size: "10.2 MB",
+    coverLabel: "JS",
+    coverTitle: "YOU DON'T KNOW JS",
+    coverEdition: "上卷",
+    coverTheme: "amber",
+    tab: "technical",
+  },
+  {
+    id: "you-dont-know-js-2",
+    title: "你不知道的 JavaScript（中卷）",
+    subtitle: "You Don't Know JS: this & Object Prototypes · Types & Grammar",
+    category: "前端 · JavaScript",
+    level: "核心进阶",
+    description:
+      "深入 this 绑定规则、对象与原型链，以及类型转换和语法细节，完整还原 JavaScript 的对象模型。",
+    file: "/books/you-dont-know-js-vol-2.pdf",
+    size: "35.0 MB",
+    coverLabel: "JS",
+    coverTitle: "YOU DON'T KNOW JS",
+    coverEdition: "中卷",
+    coverTheme: "blue",
+    tab: "technical",
+  },
+  {
+    id: "you-dont-know-js-3",
+    title: "你不知道的 JavaScript（下卷）",
+    subtitle: "You Don't Know JS: Async & Performance · ES6 & Beyond",
+    category: "前端 · JavaScript",
+    level: "深入异步",
+    description:
+      "讲解回调、Promise、生成器等异步编程模型，并覆盖 ES6 及之后的新特性与性能实践。",
+    file: "/books/you-dont-know-js-vol-3.pdf",
+    size: "8.3 MB",
+    coverLabel: "JS",
+    coverTitle: "YOU DON'T KNOW JS",
+    coverEdition: "下卷",
+    coverTheme: "violet",
     tab: "technical",
   },
 ];
@@ -131,6 +183,7 @@ onBeforeUnmount(() => {
       <article v-for="book in visibleBooks" :key="book.id" class="book-card">
         <button
           class="book-card__cover"
+          :class="`book-card__cover--${book.coverTheme}`"
           type="button"
           :aria-label="`预览 ${book.title}`"
           @click="openPreview(book)"
@@ -138,7 +191,7 @@ onBeforeUnmount(() => {
           <span class="book-card__spine"></span>
           <span class="book-card__cover-label">{{ book.coverLabel }}</span>
           <span class="book-card__cover-title">{{ book.coverTitle }}</span>
-          <span class="book-card__cover-edition">4th Edition</span>
+          <span class="book-card__cover-edition">{{ book.coverEdition }}</span>
           <span class="book-card__cover-glow"></span>
         </button>
 
@@ -376,6 +429,18 @@ onBeforeUnmount(() => {
   cursor: pointer;
   overflow: hidden;
   text-align: center;
+}
+
+.book-card__cover--blue {
+  background: linear-gradient(150deg, #1e3a8a, #2a69ed 55%, #60a5fa);
+}
+
+.book-card__cover--amber {
+  background: linear-gradient(150deg, #7c2d12, #ea580c 55%, #fbbf24);
+}
+
+.book-card__cover--violet {
+  background: linear-gradient(150deg, #4c1d95, #7c3aed 55%, #c4b5fd);
 }
 
 .book-card__spine {

@@ -2,6 +2,9 @@
 
 基于 VuePress 2 与 `vuepress-theme-hope` 搭建的中文技术博客，主要用于记录前端、后端学习与工程化实践。站点部署在 GitHub Pages。
 
+- 站点地址：<https://yizhiyang31.github.io/>
+- 仓库地址：<https://github.com/yizhiyang31/yizhiyang31.github.io>
+
 ## 环境要求
 
 - Node.js：`>= 22.18.0`
