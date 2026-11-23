@@ -3,6 +3,7 @@ import { defineUserConfig } from "vuepress";
 import { hopeTheme } from "vuepress-theme-hope";
 
 const catalogTitles: Record<string, string> = {
+  "/books/": "书籍",
   "/posts/": "文章",
   "/posts/backend/": "后端",
   "/posts/backend/golang/": "Golang基础",
@@ -86,8 +87,24 @@ const ginArticles = [
 ];
 
 const mysqlArticles = [
-  { text: "数据库基础与操作", link: "/posts/backend/mysql/01-basics.html" },
-  { text: "查询、连接与事务", link: "/posts/backend/mysql/02-query-and-advanced.html" },
+  { text: "数据库概述", link: "/posts/backend/mysql/01-database-overview.html" },
+  { text: "MySQL 环境搭建", link: "/posts/backend/mysql/02-mysql-setup.html" },
+  { text: "基本的 SELECT 语句", link: "/posts/backend/mysql/03-basic-select.html" },
+  { text: "运算符", link: "/posts/backend/mysql/04-operators.html" },
+  { text: "排序与分页", link: "/posts/backend/mysql/05-sorting-and-paging.html" },
+  { text: "多表查询", link: "/posts/backend/mysql/06-joins.html" },
+  { text: "单行函数", link: "/posts/backend/mysql/07-single-row-functions.html" },
+  { text: "聚合函数", link: "/posts/backend/mysql/08-aggregate-functions.html" },
+  { text: "子查询", link: "/posts/backend/mysql/09-subqueries.html" },
+  { text: "创建和管理表", link: "/posts/backend/mysql/10-create-and-manage-tables.html" },
+  { text: "数据处理之增删改", link: "/posts/backend/mysql/11-dml.html" },
+  { text: "MySQL 数据类型精讲", link: "/posts/backend/mysql/12-data-types.html" },
+  { text: "约束", link: "/posts/backend/mysql/13-constraints.html" },
+  { text: "视图", link: "/posts/backend/mysql/14-views.html" },
+  { text: "存储过程与函数", link: "/posts/backend/mysql/15-stored-procedures-and-functions.html" },
+  { text: "变量、流程控制与游标", link: "/posts/backend/mysql/16-variables-control-flow-cursors.html" },
+  { text: "触发器", link: "/posts/backend/mysql/17-triggers.html" },
+  { text: "MySQL 8 其它新特性", link: "/posts/backend/mysql/18-mysql8-new-features.html" },
 ];
 
 const goZeroArticles = [
@@ -189,6 +206,7 @@ export default defineUserConfig({
     docsDir: "docs",
     editLink: false,
     sidebar: {
+      "/books/": false,
       "/category/backend/": backendCategorySidebar,
       "/category/engineering/": engineeringCategorySidebar,
       "/category/vuepress/": [
@@ -237,6 +255,7 @@ export default defineUserConfig({
         link: "/category/engineering/",
         activeMatch: "^/(category/(engineering|vuepress|deploy)/|posts/engineering/)",
       },
+      { text: "书籍", link: "/books/" },
       { text: "标签", link: "/tag/" },
       { text: "归档", link: "/timeline/" },
     ],

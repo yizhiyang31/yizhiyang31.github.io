@@ -1630,3 +1630,15 @@ html {
   height: 0;
   background: transparent;
 }
+
+// 书籍页：标题与说明由 BookShelf 组件自行渲染
+.books-page {
+  .vp-page-title,
+  .vp-page-meta {
+    display: none;
+  }
+
+  [vp-content] {
+    padding-block-start: 0;
+  }
+}

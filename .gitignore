@@ -5,3 +5,6 @@ docs/.vuepress/dist/
 docs/.vuepress/dist-verify*/
 *.log
 .DS_Store
+
+# 原始 MySQL PDF 素材，仅本地使用
+msql/
