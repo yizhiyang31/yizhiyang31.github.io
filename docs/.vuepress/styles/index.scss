@@ -1631,14 +1631,25 @@ html {
   background: transparent;
 }
 
-// 书籍页：标题与说明由 BookShelf 组件自行渲染
+// 书籍页：标题与说明由 BookShelf 组件自行渲染，使用更宽的居中容器
 .books-page {
   .vp-page-title,
   .vp-page-meta {
     display: none;
   }
 
-  [vp-content] {
+  [vp-content]:not(.custom) {
+    --content-width: 1120px;
+
+    max-width: var(--content-width);
     padding-block-start: 0;
+    padding-inline: 1.5rem;
+  }
+
+  // 主题在大屏下为 has-toc 页面预留右侧目录空间，导致书籍列表整体偏左；此处取消该偏移
+  &.no-sidebar.has-toc .vp-page {
+    @media (min-width: 1440px) {
+      padding-inline-end: 0;
+    }
   }
 }

@@ -450,15 +450,15 @@ onBeforeUnmount(() => {
 .book-shelf__grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  gap: 1.25rem;
+  gap: 0.7rem;
 }
 
 .book-card {
   display: grid;
-  grid-template-columns: 190px minmax(0, 1fr);
+  grid-template-columns: 120px minmax(0, 1fr);
   overflow: hidden;
   border: var(--book-border);
-  border-radius: var(--book-radius);
+  border-radius: 10px;
   background: var(--card-bg, var(--vp-c-bg-elv));
   box-shadow: var(--book-shadow);
   transition:
@@ -479,8 +479,8 @@ onBeforeUnmount(() => {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 265px;
-  padding: 1.5rem;
+  min-height: 160px;
+  padding: 0.75rem 0.5rem;
   border: 0;
   background: linear-gradient(150deg, #1e3a8a, #2a69ed 55%, #60a5fa);
   color: #fff;
@@ -513,14 +513,14 @@ onBeforeUnmount(() => {
   position: absolute;
   inset-block: 0;
   inset-inline-start: 0;
-  width: 12px;
+  width: 8px;
   background: rgba(8, 20, 56, 0.45);
   box-shadow: inset -3px 0 6px rgba(0, 0, 0, 0.2);
 }
 
 .book-card__cover-label {
   font-family: var(--font-display);
-  font-size: 4rem;
+  font-size: 2.4rem;
   font-weight: 700;
   letter-spacing: -0.06em;
   line-height: 1;
@@ -528,25 +528,25 @@ onBeforeUnmount(() => {
 }
 
 .book-card__cover-title {
-  margin-top: 0.85rem;
-  font-size: 0.72rem;
+  margin-top: 0.5rem;
+  font-size: 0.56rem;
   font-weight: 600;
   letter-spacing: 0.22em;
 }
 
 .book-card__cover-edition {
-  margin-top: 0.35rem;
+  margin-top: 0.2rem;
   color: rgba(255, 255, 255, 0.78);
-  font-size: 0.68rem;
+  font-size: 0.52rem;
   letter-spacing: 0.12em;
 }
 
 .book-card__cover-glow {
   position: absolute;
-  right: -40px;
-  bottom: -60px;
-  width: 180px;
-  height: 180px;
+  right: -25px;
+  bottom: -35px;
+  width: 115px;
+  height: 115px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.12);
   filter: blur(6px);
@@ -555,21 +555,21 @@ onBeforeUnmount(() => {
 .book-card__body {
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
-  padding: 1.6rem 1.75rem;
+  gap: 0.35rem;
+  padding: 0.85rem 1rem;
 }
 
 .book-card__tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.3rem;
 }
 
 .book-card__tag,
 .book-card__level {
-  padding: 0.2rem 0.6rem;
+  padding: 0.1rem 0.45rem;
   border-radius: 999px;
-  font-size: 0.7rem;
+  font-size: 0.62rem;
   font-weight: 600;
   letter-spacing: 0.04em;
 }
@@ -585,9 +585,9 @@ onBeforeUnmount(() => {
 }
 
 .book-card__title {
-  margin: 0.15rem 0 0;
+  margin: 0.05rem 0 0;
   font-family: var(--font-heading);
-  font-size: 1.3rem;
+  font-size: 1rem;
   font-weight: 700;
   line-height: 1.35;
 }
@@ -595,16 +595,16 @@ onBeforeUnmount(() => {
 .book-card__subtitle {
   margin: 0;
   color: var(--vp-c-text-2, var(--vp-c-text));
-  font-size: 0.78rem;
+  font-size: 0.68rem;
   font-style: italic;
   line-height: 1.5;
 }
 
 .book-card__description {
-  margin: 0.35rem 0 0;
+  margin: 0.15rem 0 0;
   color: var(--vp-c-text-2, var(--vp-c-text));
-  font-size: 0.88rem;
-  line-height: 1.75;
+  font-size: 0.78rem;
+  line-height: 1.5;
 }
 
 .book-card__footer {
@@ -612,33 +612,33 @@ onBeforeUnmount(() => {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 0.75rem;
+  gap: 0.5rem;
   margin-top: auto;
-  padding-top: 0.85rem;
+  padding-top: 0.5rem;
 }
 
 .book-card__meta {
   color: var(--vp-c-text-2, var(--vp-c-text));
-  font-size: 0.75rem;
+  font-size: 0.66rem;
   font-variant-numeric: tabular-nums;
 }
 
 .book-card__actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.35rem;
 }
 
 .book-card__action {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 2.15rem;
-  padding: 0 0.95rem;
+  min-height: 1.7rem;
+  padding: 0 0.65rem;
   border: 1px solid var(--vp-c-brand-1);
-  border-radius: 9px;
+  border-radius: 7px;
   font-family: inherit;
-  font-size: 0.8rem;
+  font-size: 0.72rem;
   font-weight: 600;
   text-decoration: none;
   transition:
@@ -829,15 +829,15 @@ onBeforeUnmount(() => {
   }
 
   .book-card__cover {
-    min-height: 170px;
+    min-height: 115px;
   }
 
   .book-card__cover-label {
-    font-size: 3rem;
+    font-size: 2rem;
   }
 
   .book-card__body {
-    padding: 1.25rem;
+    padding: 0.85rem;
   }
 
   .book-preview {
