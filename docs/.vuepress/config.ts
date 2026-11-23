@@ -1,3 +1,4 @@
+import { fileURLToPath } from "node:url";
 import { viteBundler } from "@vuepress/bundler-vite";
 import { defineUserConfig } from "vuepress";
 import { hopeTheme } from "vuepress-theme-hope";
@@ -234,6 +235,16 @@ export default defineUserConfig({
   ],
   bundler: viteBundler({
     viteOptions: {
+      resolve: {
+        alias: [
+          {
+            find: /^@theme-hope\/components\/blog\/InfoList(?:\.js)?$/,
+            replacement: fileURLToPath(
+              new URL("./components/SideInfoList.ts", import.meta.url),
+            ),
+          },
+        ],
+      },
       ssr: {
         noExternal: ["@vuepress/search-helper"],
       },
@@ -304,7 +315,6 @@ export default defineUserConfig({
     },
     navbar: [
       { text: "首页", link: "/" },
-      { text: "文章", link: "/article/" },
       {
         text: "前端",
         link: "/category/frontend/",
@@ -326,7 +336,6 @@ export default defineUserConfig({
         activeMatch: "^/(category/(engineering|vuepress|deploy)/|posts/engineering/)",
       },
       { text: "书籍", link: "/books/" },
-      { text: "标签", link: "/tag/" },
       { text: "归档", link: "/timeline/" },
     ],
     blog: {
