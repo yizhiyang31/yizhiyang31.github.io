@@ -16,7 +16,7 @@ interface Book {
   coverLabel: string;
   coverTitle: string;
   coverEdition: string;
-  coverTheme: "blue" | "amber" | "violet";
+  coverTheme: "blue" | "amber" | "teal" | "violet";
   tab: TabKey;
 }
 
@@ -87,6 +87,22 @@ const books: Book[] = [
     coverTitle: "YOU DON'T KNOW JS",
     coverEdition: "下卷",
     coverTheme: "violet",
+    tab: "technical",
+  },
+  {
+    id: "css-world",
+    title: "CSS 世界",
+    subtitle: "CSS World",
+    category: "前端 · CSS",
+    level: "进阶",
+    description:
+      "从流、盒模型、选择器讲到定位、层叠与布局，结合大量实战案例讲透 CSS 的底层原理与实现细节。",
+    file: "/books/css-world.pdf",
+    size: "42.6 MB",
+    coverLabel: "CSS",
+    coverTitle: "CSS WORLD",
+    coverEdition: "张鑫旭",
+    coverTheme: "teal",
     tab: "technical",
   },
 ];
@@ -437,6 +453,10 @@ onBeforeUnmount(() => {
 
 .book-card__cover--amber {
   background: linear-gradient(150deg, #7c2d12, #ea580c 55%, #fbbf24);
+}
+
+.book-card__cover--teal {
+  background: linear-gradient(150deg, #134e4a, #0d9488 55%, #5eead4);
 }
 
 .book-card__cover--violet {
