@@ -19,9 +19,22 @@ tag:
 
 不论是使用哪种高级程序语言编写程序,变量都是其程序的基本组成单位，比如一个示意图：
 
-![图 3-2](./images/ch3-002.jpg)
+```go
+func getVal(num1 int, num2 int) (int, int) {
+	sum := num1 + num2
+	sub := num2 - num2
+	return sum, sub
+}
 
-比如上图的sum,sub 都是变量。
+func main() {
+	sum, sub := getVal(30, 30)
+	fmt.Println("sum=", sum, "sub=", sub)
+	sum2, _ := getVal(10, 30) //只取出第一个返回值
+	fmt.Println("sum=", sum2)
+}
+```
+
+比如上面的sum,sub 都是变量。
 
 ## 3.2 变量的介绍
 
@@ -39,7 +52,20 @@ tag:
 
 看一个案例：
 
-![图 3-3](./images/ch3-003.jpg)
+```go
+package main
+
+import "fmt"
+
+func main() {
+	//定义变量/声明变量
+	var i int
+	//给i 赋值
+	i = 10
+	//使用变量
+	fmt.Println("i=", i)
+}
+```
 
 输出：
 
@@ -58,15 +84,37 @@ tag:
 
 (1) 第一种：指定变量类型，声明后若不赋值，使用默认值
 
-![图 3-6](./images/ch3-006.jpg)
+```go
+package main
+
+import "fmt"
+
+func main() {
+	//golang的变量使用方式1
+	//第一种：指定变量类型，声明后若不赋值，使用默认值
+	// int 的默认值是0 , 其它数据类型的默认值后面马上介绍
+	var i int
+	fmt.Println("i=", i)
+}
+```
 
 (2) 第二种：根据值自行判定变量类型(类型推导)
 
-![图 3-7](./images/ch3-007.jpg)
+```go
+//第二种：根据值自行判定变量类型(类型推导)
+var num = 10.11
+fmt.Println("num=", num)
+```
 
 (3) 第三种：省略var, 注意:=左侧的变量不应该是已经声明过的，否则会导致编译错误
 
-![图 3-8](./images/ch3-008.jpg)
+```go
+//第三种：省略var，注意 :=左侧的变量不应该是已经声明过的，否则会导致编译错误
+//下面的方式等价 var name string   name = "tom"
+// := 的 :不能省略，否则错误
+name := "tom"
+fmt.Println("name=", name)
+```
 
 4. 多变量声明
 
@@ -74,19 +122,64 @@ tag:
 
 举例说明:
 
-![图 3-9](./images/ch3-009.jpg)
+```go
+package main
+import "fmt"
+
+func main() {
+	//该案例演示golang如何一次性声明多个变量
+	// var n1, n2, n3 int
+	// fmt.Println("n1=", n1, "n2=", n2, "n3=", n3)
+
+	//一次性声明多个变量的方式2
+	// var n1, name , n3 = 100, "tom", 888
+	// fmt.Println("n1=",n1, "name=", name, "n3=", n3)
+
+	//一次性声明多个变量的方式3，同样可以使用类型推导
+	n1, name , n3 := 100, "tom~", 888
+	fmt.Println("n1=",n1, "name=", name, "n3=", n3)
+}
+```
 
 如何一次性声明多个全局变量【在go 中函数外部定义变量就是全局变量】：
 
-![图 3-10](./images/ch3-010.jpg)
+```go
+//定义全局变量
+var n1 = 100
+var n2 = 200
+var name = "jack"
+//上面的声明方式，也可以改成一次性声明
+var (
+	n3 = 300
+	n4 = 900
+	name2 = "mary"
+)
+```
 
 5. 该区域的数据值可以在同一类型范围内不断变化(重点)
 
-![图 3-11](./images/ch3-011.jpg)
+```go
+package main
+import "fmt"
+
+//变量使用的注意事项
+func main() {
+	//该区域的数据值可以在同一类型范围内不断变化
+	var i int = 10
+	i = 30
+	i = 50
+	fmt.Println("i=", i)
+	// i = 1.2 //int ,原因是不能改变数据类型
+}
+```
 
 6. 变量在同一个作用域(在一个函数或者在代码块)内不能重名
 
-![图 3-12](./images/ch3-012.jpg)
+```go
+//变量在同一个作用域(在一个函数或者在代码块)内不能重名
+var i int = 59   // ❌ 错误
+i := 99          // ❌ 错误
+```
 
 7. 变量=变量名+值+数据类型，这一点请大家注意，变量的三要素
 8. Golang 的变量如果没有赋初值，编译器会使用默认值, 比如int 默认值0 string 默认值为空串，
@@ -95,14 +188,52 @@ tag:
 
 ## 3.5 变量的声明，初始化和赋值
 
-![图 3-13](./images/ch3-013.jpg)
+<span style="color:blue">**声明变量**</span>
+
+基本语法: <span style="color:red">var 变量名 数据类型</span>
+
+var a int 这就是声明了一个变量,变量名是 a
+
+var num1 float32 这也声明了一个变量，表示一个单精度类型的小数,变量名是num1
+
+<span style="color:blue">**初始化变量**</span>
+
+在声明变量的时候，就赋值。
+
+var a int = 45 这就是初始化变量a
+
+使用细节: 如果声明时就直接赋值，可省略数据类型
+
+var b = 400
+
+<span style="color:blue">**给变量赋值**</span>
+
+比如你先声明了变量:var num int //默认0
+
+然后，再给值 num = 780; 这就是给变量赋值。
 
 ## 3.6 程序中+号的使用
 
 1. 当左右两边都是数值型时，则做加法运算
 2. 当左右两边都是字符串，则做字符串拼接
 
-![图 3-14](./images/ch3-014.jpg)
+```go
+package main
+import "fmt"
+
+//演示golang中+的使用
+func main() {
+	var i = 1
+	var j = 2
+	var r = i + j //做加法运算
+	fmt.Println("r=", r)
+
+	var str1 = "hello "
+	var str2 = "world"
+	var res = str1 + str2 //做拼接操作
+	fmt.Println("res=", res)
+}
+```
 
 ## 3.7 数据类型的基本介绍
 
@@ -118,36 +249,91 @@ tag:
 
 ### 3.8.3 整数的各个类型
 
-![图 3-16](./images/ch3-016.jpg)
+| 类型 | 有无符号 | 占用存储空间 | 表数范围 | 备注 |
+| :--- | :--- | :--- | :--- | :--- |
+| int8 | 有 | 1字节 | -128 ~ 127 | |
+| int16 | 有 | 2字节 | -2^15 ~ 2^15-1 | |
+| int32 | 有 | 4字节 | -2^31 ~ 2^31-1 | |
+| int64 | 有 | 8字节 | -2^63 ~ 2^63-1 | |
 
-![图 3-17](./images/ch3-017.jpg)
+```go
+package main
+import "fmt"
+
+//演示golang中整数类型使用
+func main() {
+	var i int = 1
+	fmt.Println("i=", i)
+
+	//测试一下int8的范围 -128~127，
+	//其它的 int16, int32, int64,类推。。。
+	var j int8 = 127
+	fmt.Println("j=", j)
+}
+```
 
 int 的无符号的类型：
 
-![图 3-18](./images/ch3-018.jpg)
+| 类型 | 有无符号 | 占用存储空间 | 表数范围 | 备注 |
+| :--- | :--- | :--- | :--- | :--- |
+| uint8 | 无 | 1字节 | 0 ~ 255 | |
+| uint16 | 无 | 2字节 | 0 ~ 2^16-1 | |
+| uint32 | 无 | 4字节 | 0 ~ 2^32-1 | |
+| uint64 | 无 | 8字节 | 0 ~ 2^64-1 | |
 
-![图 3-19](./images/ch3-019.jpg)
+```go
+//测试一下 uint8 的范围(0-255),其它的 uint16, uint32, uint64类推即可
+var k uint16 = 255
+fmt.Println("k=", k)
+```
 
 int 的其它类型的说明:
 
-![图 3-20](./images/ch3-020.jpg)
+| 类型 | 有无符号 | 占用存储空间 | 表数范围 | 备注 |
+| :--- | :--- | :--- | :--- | :--- |
+| int | 有 | 32位系统4个字节<br>64位系统8个字节 | -2^31 ~ 2^31-1<br>-2^63 ~ 2^63-1 | |
+| uint | 无 | 32位系统4个字节<br>64位系统8个字节 | 0 ~ 2^32-1<br>0 ~ 2^64-1 | |
+| rune | 有 | 与int32一样 | -2^31 ~ 2^31-1 | 等价 int32，表示一个 Unicode 码 |
+| byte | 无 | 与uint8等价 | 0 ~ 255 | 当要存储字符时选用byte |
 
-![图 3-21](./images/ch3-021.jpg)
+```go
+//int , uint , rune , byte的使用
+var a int = 8900
+fmt.Println("a=", a)
+var b uint = 1
+var c byte = 255
+fmt.Println("b=", b, "c=", c)
+```
 
 ### 3.8.4 整型的使用细节
 
 1. Golang 各整数类型分：有符号和无符号，int uint 的大小和系统有关。
 2. Golang 的整型默认声明为int 型
 
-![图 3-22](./images/ch3-022.jpg)
+```go
+//整型的使用细节
+var n1 = 100 // ? n1 是什么类型
+//这里我们给介绍一下如何查看某个变量的数据类型
+//fmt.Printf() 可以用于做格式化输出。
+fmt.Printf("n1 的类型 %T \n", n1)
+```
 
 3. 如何在程序查看某个变量的字节大小和数据类型（使用较多）
 
-![图 3-23](./images/ch3-023.jpg)
+```go
+//如何在程序查看某个变量的占用字节大小和数据类型（使用较多）
+var n2 int64 = 10
+//unsafe.Sizeof(n1) 是unsafe包的一个函数，可以返回n1变量占用的字节数
+fmt.Printf("n2 的类型 %T  n2占用的字节数是 %d ", n2, unsafe.Sizeof(n2))
+```
 
 4. Golang 程序中整型变量在使用时，遵守保小不保大的原则，即：在保证程序正确运行下，尽量使用占用空间小的数据类型。【如：年龄】
 
-![图 3-24](./images/ch3-024.jpg)
+```go
+//Golang程序中整型变量在使用时，遵守保小不保大的原则，
+//即：在保证程序正确运行下，尽量使用占用空间小的数据类型
+var age byte = 90
+```
 
 5. bit: 计算机中的最小存储单位。byte:计算机中基本存储单元。[二进制再详细说] 1byte = 8 bit
 
@@ -159,23 +345,51 @@ int 的其它类型的说明:
 
 ### 3.9.2 案例演示
 
-![图 3-25](./images/ch3-025.jpg)
+```go
+package main
+import (
+	"fmt"
+)
+
+//演示golang中小数类型使用
+func main() {
+	var price float32 = 89.12
+	fmt.Println("price=", price)
+}
+```
 
 ### 3.9.3 小数类型分类
 
-![图 3-26](./images/ch3-026.jpg)
+| 类型 | 占用存储空间 | 表数范围 |
+| :--- | :--- | :--- |
+| 单精度float32 | 4字节 | -3.403E38 ~ 3.403E38 |
+| 双精度float64 | 8字节 | -1.798E308 ~ 1.798E308 |
 
-对上图的说明:
+对上述表格的说明:
 
 1. 关于浮点数在机器中存放形式的简单说明,浮点数=符号位+指数位+尾数位
 
 说明：浮点数都是有符号的.
 
-![图 3-27](./images/ch3-027.jpg)
+```go
+//演示golang中小数类型使用
+func main() {
+	var price float32 = 89.12
+	fmt.Println("price=", price)
+	var num1 float32 = -0.00089
+	var num2 float64 = -7809656.09
+	fmt.Println("num1=", num1, "num2=", num2)
+}
+```
 
 2. 尾数部分可能丢失，造成精度损失。-123.0000901
 
-![图 3-28](./images/ch3-028.jpg)
+```go
+//尾数部分可能丢失，造成精度损失。 -123.0000901
+var num3 float32 = -123.0000901
+var num4 float64 = -123.0000901
+fmt.Println("num3=", num3, "num4=", num4)
+```
 
 ![图 3-29](./images/ch3-029.jpg)
 
@@ -190,7 +404,11 @@ int 的其它类型的说明:
 1. Golang 浮点类型有固定的范围和字段长度，不受具体OS(操作系统)的影响。
 2. Golang 的浮点型默认声明为float64 类型。
 
-![图 3-30](./images/ch3-030.jpg)
+```go
+//Golang 的浮点型默认声明为float64 类型
+var num5 = 1.1
+fmt.Printf("num5的数据类型是 %T \n", num5)
+```
 
 3. 浮点型常量有两种表示形式
 
@@ -200,7 +418,17 @@ int 的其它类型的说明:
 
 科学计数法形式:如：5.1234e2 = 5.12 * 10 的2 次方 5.12E-2 = 5.12/10 的2 次方
 
-![图 3-31](./images/ch3-031.jpg)
+```go
+//十进制数形式：如：5.12   .512  (必须有小数点）
+num6 := 5.12
+num7 := .123 // => 0.123
+fmt.Println("num6=", num6, "num7=", num7)
+
+//科学计数法形式
+num8 := 5.1234e2   // 5.1234 * 10的2次方
+num9 := 5.1234E2   // 5.1234 * 10的2次方
+num10 := 5.1234E-2 // 5.1234 / 10的2次方  0.051234
+```
 
 4. 通常情况下，应该使用float64 ，因为它比float32 更精确。[开发中，推荐使用float64]
 
@@ -214,7 +442,24 @@ Golang 中没有专门的字符类型，如果要存储单个字符(字母)，�
 
 ### 3.10.2 案例演示
 
-![图 3-32](./images/ch3-032.jpg)
+```go
+//演示golang中字符类型使用
+func main() {
+	var c1 byte = 'a'
+	var c2 byte = '0' //字符的0
+
+	//当我们直接输出byte值，就是输出了的对应的字符的码值
+	// 'a' ==>
+	fmt.Println("c1=", c1)
+	fmt.Println("c2=", c2)
+	//如果我们希望输出对应字符，需要使用格式化输出
+	fmt.Printf("c1=%c c2=%c\n", c1, c2)
+
+	//var c3 byte = '北' //overflow溢出
+	var c3 int = '北'
+	fmt.Printf("c3=%c c3对应码值=%d", c3, c3)
+}
+```
 
 对上面代码说明
 
@@ -243,11 +488,19 @@ byte = '9'
 4. 在Go 中，字符的本质是一个整数，直接输出时，是该字符对应的UTF-8 编码的码值。
 5. 可以直接给某个变量赋一个数字，然后按格式化输出时%c，会输出该数字对应的unicode 字符
 
-![图 3-33](./images/ch3-033.jpg)
+```go
+//可以直接给某个变量赋一个数字，然后按格式化输出时%c，会输出该数字对应的unicode字符
+var c4 int = 22269 // 22269 -> "国"  120 -> 'x'
+fmt.Printf("c4=%c\n", c4)
+```
 
 6. 字符类型是可以进行运算的，相当于一个整数，因为它都对应有Unicode 码.
 
-![图 3-34](./images/ch3-034.jpg)
+```go
+//字符类型是可以进行运算的，相当于一个整数，运算时是按照码值运行
+var n1 = 10 + 'a' // 10 + 97 = 107
+fmt.Println("n1=", n1)
+```
 
 ### 3.10.4 字符类型本质探讨
 
@@ -273,7 +526,24 @@ byte = '9'
 
 ### 3.11.2 案例演示
 
-![图 3-35](./images/ch3-035.jpg)
+```go
+//演示golang中bool类型使用
+package main
+
+import (
+	"fmt"
+	"unsafe"
+)
+
+func main() {
+	var b = false
+	fmt.Println("b=", b)
+	//注意事项
+	//1. bool类型占用存储空间是1个字节
+	fmt.Println("b 的占用空间 =", unsafe.Sizeof(b))
+	//2. bool类型只能取true或者false
+}
+```
 
 ## 3.12 string 类型
 
@@ -283,14 +553,28 @@ byte = '9'
 
 ### 3.12.2 案例演示
 
-![图 3-36](./images/ch3-036.jpg)
+```go
+//演示golang中string类型使用
+package main
+import "fmt"
+
+func main() {
+	//string的基本使用
+	var address string = "北京长城 110 hello world!"
+	fmt.Println(address)
+}
+```
 
 ### 3.12.3 string 使用注意事项和细节
 
 1. Go 语言的字符串的字节使用UTF-8 编码标识Unicode 文本，这样Golang 统一使用UTF-8 编码,中文乱码问题不会再困扰程序员。
 2. 字符串一旦赋值了，字符串就不能修改了：在Go 中字符串是不可变的。
 
-![图 3-37](./images/ch3-037.jpg)
+```go
+//字符串一旦赋值了，字符串就不能修改了：在Go中字符串是不可变的
+var str = "hello"
+// str[0] = 'a'  // ❌ 报错，不能这样修改str的内容
+```
 
 3. 字符串的两种表示形式
 
@@ -298,15 +582,49 @@ byte = '9'
 
 (2) 反引号，以字符串的原生形式输出，包括换行和特殊字符，可以实现防止攻击、输出源代码等效果【案例演示】
 
-![图 3-38](./images/ch3-038.jpg)
+```go
+str2 := "abc\nabc"
+fmt.Println(str2)
+
+// 反引号 `` 原生字符串，里面内容原样输出，不会转义
+str3 := `
+package main
+import (
+	"fmt"
+	"unsafe"
+)
+
+//演示golang中bool类型使用
+func main() {
+	var b = false
+	fmt.Println("b=", b)
+	//注意事项
+	//1. bool类型占用存储空间是1个字节
+	fmt.Println("b 的占用空间 =", unsafe.Sizeof(b) )
+	//2. bool类型只能取true或者false
+}
+`
+fmt.Println(str3)
+```
 
 4. 字符串拼接方式
 
-![图 3-39](./images/ch3-039.jpg)
+```go
+//字符串拼接方式
+var str = "hello " + "world"
+str += " haha!"
+```
 
 5. 当一行字符串太长时，需要使用到多行字符串，可以如下处理
 
-![图 3-40](./images/ch3-040.jpg)
+```go
+fmt.Println(str)
+// 当一个拼接的操作很长时，可以分行写，但是注意：+ 要保留在上一行
+str4 := "hello " + "world" + "hello " + "world" + "hello " +
+	"world" + "hello " + "world" + "hello " + "world" +
+	"hello " + "world"
+fmt.Println(str4)
+```
 
 ## 3.13 基本数据类型的默认值
 
@@ -316,11 +634,25 @@ byte = '9'
 
 ### 3.13.2 基本数据类型的默认值如下
 
-![图 3-41](./images/ch3-041.jpg)
+| 数据类型 | 默认值 |
+| :--- | :--- |
+| 整型 | 0 |
+| 浮点型 | 0 |
+| 字符串 | "" |
+| 布尔类型 | false |
 
 案例:
 
-![图 3-42](./images/ch3-042.jpg)
+```go
+var a int         // 0
+var b float32     // 0
+var c float64     // 0
+var isMarried bool// false
+var name string   // ""
+
+// %v 按变量原始值输出
+fmt.Printf("a=%d,b=%v,c=%v,isMarried=%v name=%v",a,b,c,isMarried, name)
+```
 
 ## 3.14 基本数据类型的相互转换
 

@@ -92,8 +92,12 @@ func main() {
 
 - 基本语法
 
-![图 5-3](./images/ch5-003.jpg)
-
+```go
+if 条件表达式 {
+    执行代码块
+}
+```
+说明：当条件表达式为 ture 时，就会执行 {} 的代码。注意 {} 是必须有的，就算你只写一行代码。
 - 应用案例
 
 请大家看个案例[ifDemo.go]:
@@ -125,11 +129,6 @@ func main() {
 	}
 }
 ```
-
-输出的结果：
-
-![图 5-5](./images/ch5-005.jpg)
-
 - 单分支的流程图
 
 流程图可以用图形方式来更加清晰的描述程序执行的流程。
@@ -202,27 +201,78 @@ func main() {
 
 - 双分支的流程图的分析
 
-![图 5-10](./images/ch5-010.jpg)
+```mermaid
+flowchart TD
+  A{条件表达式}
+  A -->|True| B[执行代码块1]
+  A -->|False| C[执行代码块2]
+  B --> D(( ))
+  C --> D
+  D --> E[继续向下执行]
+
+  classDef cond fill:#e8f5c8,stroke:#9acd32,stroke-width:1px,color:#000;
+  classDef body fill:#ffc0cb,stroke:#ff7f7f,stroke-width:1px,color:#000;
+  class A cond;
+  class B,C body;
+```
 
 对双分支的总结
 
-1. 从上图看条件表达式就是 age >18
-
-2. 执行代码块1 ===> fmt.Println("你的年龄大于18") ..
-
-3. 执行代码块2 ===> fmt.Println("你的年龄不大....") .
-
-4. 强调一下双分支只会执行其中的一个分支。
+	1. 从上图看条件表达式就是 age >18
+	2. 执行代码块1 ===> fmt.Println("你的年龄大于18") ..
+	3. 执行代码块2 ===> fmt.Println("你的年龄不大....") .
+	4. 强调一下双分支只会执行其中的一个分支。
 
 ### 5.3.4 单分支和双分支的案例
+1. 对下列代码，若有输出，指出输出结果。
 
-![图 5-11](./images/ch5-011.jpg)
+```go
+var x int = 4
+var y int = 1
+if (x > 2) {
+    if (y > 2) {
+        fmt.Println(x + y)
+    }
+    fmt.Println("atguigu")
+} else {
+    fmt.Println("x is =", x)
+}
+// 输出结果是 atguigu
+```
+2. 对下列代码，若有输出，指出输出结果。
 
-![图 5-12](./images/ch5-012.jpg)
+```go
+var x int = 4
+if x > 2
+    fmt.Println("ok")
+else
+    fmt.Println("hello")
+// 编译错误，原因没有 {}
+```
+3. 对下列代码，若有输出，指出输出结果。
 
-![图 5-13](./images/ch5-013.jpg)
+```go
+var x int = 4
+if x > 2 {
+    fmt.Println("ok")
+}
+else {
+    fmt.Println("hello")
+}
+// 编程错误，原因是 else 不能换行
+```
+4. 对下列代码，若有输出，指出输出结果。
 
-![图 5-14](./images/ch5-014.jpg)
+```go
+var x int = 4
+if (x > 2) {
+    fmt.Println("ok~")
+} else {
+    fmt.Println("hello")
+}
+// 正确，输出 ok~
+// 虽然正确，但是我们要求大家 if (x > 2) 要求写成 if x > 2 { ...
+```
 
 5. 编写程序，声明2 个int32 型变量并赋值。判断两数之和，如果大于等于50，打印“hello world!
 
@@ -393,11 +443,44 @@ if n > 9 {
 
 - 多分支的课堂练习
 
-![图 5-23](./images/ch5-023.jpg)
+```go
+func main() {
+	var b bool = true
+	if b == false {
+		fmt.Println("a")
+	} else if b {
+		fmt.Println("b")
+	} else if !b {
+		fmt.Println("c")
+	} else {
+		fmt.Println("d")
+	}
+}
+// 输出结果是 b
+// 如果写成 b = false; 能编译通过吗？如果能，结果是？[编程错误，if 的条件表达式不能是赋值语句]
+```
 
 案例3:
 
-![图 5-24](./images/ch5-024.jpg)
+求一元二次方程 \(ax^2 + bx + c = 0\) 的根，其中 \(a, b, c\) 是函数的三个参数。
+
+先计算 \(b^2 - 4ac\) 的值，再判断方程有几个实数解：
+
+- \(b^2 - 4ac > 0\)：有两个不同的实数解
+- \(b^2 - 4ac = 0\)：只有一个实数解
+- \(b^2 - 4ac < 0\)：没有实数解
+
+当方程有解时，两个解分别是：
+
+$$
+x_1 = \frac{-b + \sqrt{b^2 - 4ac}}{2a}
+$$
+
+$$
+x_2 = \frac{-b - \sqrt{b^2 - 4ac}}{2a}
+$$
+
+测试数据：\(a = 3,\ b = 100,\ c = 6\)
 
 代码:
 
@@ -426,8 +509,13 @@ if m > 0 {
 	fmt.Println("无解...")
 }
 ```
+案例4：
 
-![图 5-26](./images/ch5-026.jpg)
+大家都知道，男大当婚，女大当嫁。那么女方家长要嫁女儿，当然要提出一定的条件：高：180cm 以上；富：财富 1 千万以上；帅：是。条件从控制台输入。
+1. 如果这三个条件同时满足，则：“我一定要嫁给他！！！”
+2. 如果三个条件有为真的情况，则：“嫁吧，比上不足，比下有余。”
+3. 如果三个条件都不满足，则：“不嫁！”
+var height int32 | var money float32 | var handsome bool
 
 代码：
 
@@ -465,7 +553,15 @@ if height > 180 && money > 1.0 && handsome {
 
 - 基本语法
 
-![图 5-28](./images/ch5-028.jpg)
+```go
+if 条件表达式 {
+    if 条件表达式 {
+    } else {
+    }
+}
+```
+
+说明：嵌套分支不宜过多，建议控制在 3 层内。
 
 - 应用案例1
 
@@ -521,9 +617,35 @@ if second <= 8 {
 
 代码：
 
-![图 5-30](./images/ch5-030.jpg)
+```go
+//分析思路
+//1.month age 的两个变量 byte
+//2.使用嵌套分支
+var month byte
+var age byte
+var price float64 = 60.0
+fmt.Println("请输入游玩月份")
+fmt.Scanln(&month)
+fmt.Println("请输入游客的年龄")
+fmt.Scanln(&age)
 
-![图 5-31](./images/ch5-031.jpg)
+if month >= 4 && month <= 10 {
+    if age > 60 {
+        fmt.Printf("%v月 票价 %v 年龄 %v ", month, price / 3 , age)
+    } else if age >= 18 {
+        fmt.Printf("%v月 票价 %v 年龄 %v ", month, price,  age)
+    } else {
+        fmt.Printf("%v月 票价 %v 年龄 %v ", month, price / 2,  age)
+    }
+} else {
+    //淡季
+    if age >= 18 && age < 60 {
+        fmt.Println("淡季成人 票价 40")
+    } else {
+        fmt.Println("淡季儿童和老人 票价 20")
+    }
+}
+```
 
 ## 5.4 switch 分支控制
 
@@ -636,11 +758,32 @@ func main() {
 }
 ```
 
-![图 5-36](./images/ch5-036.jpg)
+```go
+switch test(key)+1 { // 将语法现象
+case 'a':
+	fmt.Println("周一，猴子穿新衣")
+case 'b':
+	fmt.Println("周二，猴子当小二")
+case 'c':
+	fmt.Println("周三，猴子爬雪山")
+// ...
+default:
+	fmt.Println("输入有误...")
+}
+```
 
 2. case 后的各个表达式的值的数据类型，必须和switch 的表达式数据类型一致
 
-![图 5-37](./images/ch5-037.jpg)
+```go
+var n1 int32 = 20
+var n2 int64 = 20
+switch n1 {
+    case n2 : // 错误，原因是 n2的数据类型和n1不一致
+        fmt.Println("ok1")
+    default :
+        fmt.Println("没有匹配到")
+}
+```
 
 3. case 后面可以带多个表达式，使用逗号间隔。比如case 表达式1, 表达式2 ...
 
@@ -657,13 +800,49 @@ default :
 
 4. case 后面的表达式如果是常量值(字面量)，则要求不能重复
 
-![图 5-39](./images/ch5-039.jpg)
+```go
+var n1 int32 = 5
+var n2 int32 = 20
+switch n1 {
+    case n2, 10, 5 :  // case 后面可以有多个表达式
+        fmt.Println("ok1")
+    case 5 : // 错误，因为前面我们有常量5，因此重复，就会报错
+        fmt.Println("ok2~")
+    default :
+        fmt.Println("没有匹配到")
+}
+```
 
 5. case 后面不需要带break , 程序匹配到一个case 后就会执行对应的代码块，然后退出switch，如果一个都匹配不到，则执行default
 6. default 语句不是必须的.
 7. switch 后也可以不带表达式，类似if --else 分支来使用。【案例演示】
 
-![图 5-40](./images/ch5-040.jpg)
+```go
+//switch 后也可以不带表达式，类似 if --else分支来使用。【案例演示】
+var age int = 10
+
+switch {
+    case age == 10 :
+        fmt.Println("age == 10")
+    case age == 20 :
+        fmt.Println("age == 20")
+    default :
+        fmt.Println("没有匹配到")
+}
+
+//case 中也可以对 范围进行判断
+var score int = 90
+switch {
+    case score > 90 :
+        fmt.Println("成绩优秀..")
+    case score >=70 && score <= 90 :
+        fmt.Println("成绩优良...")
+    case score >= 60 && score < 70 :
+        fmt.Println("成绩及格...")
+    default :
+        fmt.Println("不及格")
+}
+```
 
 8. switch 后也可以直接声明/定义一个变量，分号结束，不推荐。【案例演示】
 
@@ -873,11 +1052,28 @@ for 循环变量初始化; 循环条件; 循环变量迭代{
 
 - for 循环的流程图
 
-![图 5-49](./images/ch5-049.jpg)
+```mermaid
+flowchart TD
+  A[循环变量初始化] --> B{循环条件}
+  B -->|T| C[循环操作（语句）]
+  C --> D[循环变量迭代]
+  D --> B
+  B -->|F| E([for循环结束])
+  E --> F[继续]
+
+  classDef init fill:#e8f5c8,stroke:#9acd32,stroke-width:1px,color:#000;
+  classDef cond fill:#9fc5e8,stroke:#4a86e8,stroke-width:1px,color:#000;
+  classDef body fill:#e8f5c8,stroke:#9acd32,stroke-width:1px,color:#000;
+  classDef endNode fill:#6fa8dc,stroke:#3d66ad,stroke-width:1px,color:#fff;
+  class A,D init;
+  class B cond;
+  class C body;
+  class E endNode;
+```
 
 - 对照代码分析for 循环的执行过程
 
-![图 5-50](./images/ch5-050.jpg)
+![图 5-50](./images/ch5-050.png)
 
 ### 5.5.5 for 循环的使用注意事项和细节讨论
 
@@ -955,23 +1151,67 @@ for index, val := range str {
 
 如何解决需要要将 str 转成[]rune 切片.=> 体验一把
 
-![图 5-55](./images/ch5-055.jpg)
+```go
+//字符串遍历方式1-传统方式
+var str string = "hello,world!北京"
+str2 := []rune(str) // 就是把 str 转成 []rune
+for i := 0; i < len(str2); i++ {
+	fmt.Printf("%c \n", str2[i]) //使用到下标...
+}
+```
 
 对应for-range 遍历方式而言，是按照字符方式遍历。因此如果有字符串有中文，也是ok
 
-![图 5-56](./images/ch5-056.jpg)
+```go
+fmt.Println()
+//字符串遍历方式2-for-range
+str = "abc~ok上海"
+for index, val := range str {
+	fmt.Printf("index=%d, val=%c \n", index, val)
+}
+```
 
 ### 5.5.6 for 循环的课堂练习
 
 1. 打印1~100 之间所有是9 的倍数的整数的个数及总和
 
-![图 5-57](./images/ch5-057.jpg)
+```go
+package main
+
+import "fmt"
+
+func main() {
+	//打印1~100之间所有是9的倍数的整数的个数及总和
+	//分析思路
+	//1. 使用for循环对 max 进行遍历
+	//2. 当一个数%9 ==0 就是9的倍数
+	//3. 我们需要声明两个变量 count 和 sum 来保存个数和总和
+	var max uint64 = 100
+	var count uint64 = 0
+	var sum uint64 = 0
+	var i uint64 = 1
+	for ; i <= max; i++ {
+		if i%9 == 0 {
+			count++
+			sum += i
+		}
+	}
+	fmt.Printf("count=%v sum=%v\n", count, sum)
+}
+```
 
 2. 完成下面的表达式输出，6 是可变的。
 
 ![图 5-58](./images/ch5-058.jpg)
 
-![图 5-59](./images/ch5-059.jpg)
+```go
+fmt.Println("----------------------------------------")
+//完成下面的表达式输出 ，6是可变的
+var n int = 60
+for i := 0; i <= n; i++ {
+	fmt.Printf("%v + %v = %v \n", i, n - i, n)
+}
+```
 
 ## 5.6 while 和do..while 的实现
 
@@ -979,7 +1219,19 @@ Go 语言没有while 和do...while 语法，这一点需要同学们注意一下
 
 ### 5.6.1 while 循环的实现
 
-![图 5-60](./images/ch5-060.jpg)
+```go
+// 循环变量初始化
+i := 0
+for {
+	if i > 5 { // 循环条件表达式
+		break // 跳出for循环
+	}
+	// 循环操作
+	fmt.Println(i)
+	// 循环变量迭代
+	i++
+}
+```
 
 - 说明上图
 
@@ -1007,7 +1259,20 @@ func main(){
 
 ### 5.6.2 do..while 的实现
 
-![图 5-62](./images/ch5-062.jpg)
+```go
+// 循环变量初始化
+i := 0
+for {
+	// 循环操作
+	fmt.Println(i)
+	// 循环变量迭代
+	i++
+	// 循环条件，满足就break退出
+	if i > 5 {
+		break
+	}
+}
+```
 
 - 对上图的说明
 
@@ -1018,7 +1283,17 @@ func main(){
 
 使用上面的do...while 实现完成输出10 句”hello,ok”
 
-![图 5-63](./images/ch5-063.jpg)
+```go
+// 使用的do...while实现完成输出10句"hello,ok"
+var j int = 1
+for {
+	fmt.Println("hello,ok", j)
+	j++ // 循环变量的迭代
+	if j > 10 {
+		break // break 就是跳出for循环
+	}
+}
+```
 
 ## 5.7 多重循环控制(重点，难点)
 
@@ -1040,17 +1315,80 @@ func main(){
 
 代码:
 
-![图 5-64](./images/ch5-064.jpg)
+```go
+package main
+import "fmt"
+func main(){
 
-![图 5-65](./images/ch5-065.jpg)
+//1统计3个班成绩情况，每个班有5名同学，
+//求出各个班的平均分和所有班级的平均分[学生的成绩从键盘输入]
+
+//分析实现思路
+//1. 统计1个班成绩情况，每个班有5名同学，求出该班的平均分【学生的成绩从键盘输入】=> 先易后
+//2. 学生数就是5个 [先死后活]
+//3. 声明一个sum 统计班级的总分
+
+//分析实现思路2
+//1. 统计3个班成绩情况，每个班有5名同学，求出每个班的平均分【学生的成绩从键盘输入】
+//2. j 表示第几个班级
+//3. 定义一个变量存放总成绩
+
+//分析实现思路3
+//1. 我们可以把代码做活
+//2. 定义两个变量，表示班级的个数和班级的人数
+
+//走代码实现
+var classNum int = 2
+var stuNum int = 5
+var totalSum float64 = 0.0
+
+for j := 1; j <= classNum; j ++ {
+	sum := 0.0
+	for i := 1; i <= stuNum; i++ {
+		var score float64
+		fmt.Printf("请输入第%d班 第%d个学生的成绩 \n", j, i)
+		fmt.Scanln(&score)
+		//累计总分
+		sum += score
+	}
+
+	fmt.Printf("第%d个班级的平均分是%v\n", j, sum / float64(stuNum))
+	//将各个班的总成绩累计到totalSum
+	totalSum += sum
+}
+
+fmt.Printf("各个班级的总成绩%v 所有班级平均分是%v\n", totalSum, totalSum / float64(stuNum))
+}
+```
 
 2. 统计三个班及格人数，每个班有5 名同学
 
 对上面的代码进行了一点修改.
 
-![图 5-66](./images/ch5-066.jpg)
-
-![图 5-67](./images/ch5-067.jpg)
+```go
+//统计三个班及格人数，每个班有5名同学
+//分析思路
+//1. 声明以变量 passCount 用于保存及格人数
+//走代码实现
+var classNum int = 2
+var stuNum int = 5
+var totalSum float64 = 0.0
+var passCount int = 0
+for j := 1; j <= classNum; j ++ {
+	sum := 0.0
+	for i := 1; i <= stuNum; i++ {
+		var score float64
+		fmt.Printf("请输入第%d班 第%d个学生的成绩 \n", j, i)
+		fmt.Scanln(&score)
+		//累计总分
+		sum += score
+		//判断分数是否及格
+		if score >= 60 {
+			passCount++
+		}
+	}
+}
+```
 
 3. 打印金字塔经典案例
 
@@ -1059,11 +1397,68 @@ func main(){
 - 分析编程思路
 - 走代码
 
-![图 5-68](./images/ch5-068.jpg)
+```go
+package main
+import "fmt"
+func main() {
 
-![图 5-69](./images/ch5-069.jpg)
+//使用 for 循环完成下面的案例请编写一个程序，可以接收一个整数，表示层数，打印出金字塔
+//编程思路
+//1. 打印一个矩形
+/*
+   ***
+   ***
+   ***
+*/
 
-![图 5-70](./images/ch5-070.jpg)
+//2. 打印半个金字塔
+/*
+   *   1 个 *
+   **  2 个 *
+   *** 3 个 *
+*/
+
+//3 打印整个金字塔
+/*
+    *    1层 1个*  规律: 2 * 层数 - 1   空格 2 规律 总层数-当前层数
+   ***   2层 3个*  规律: 2 * 层数 - 1   空格 1 规律 总层数-当前层数
+  *****  3层 5 个* 规律: 2 * 层数 - 1   空格 0 规律 总层数-当前层数
+*/
+
+//4 将层数做成一个变量，先死后活
+//var totalLevel int
+
+//5 打印空心金字塔
+/*
+    *
+   * *
+  *****
+ 分析: 在我们给每行打印*号时，需要考虑是打印 * 还是打印 空格
+ 我们的分析的结果是，每层的第一个和最后一个是打印*，其它就应该是空的，即输出空格
+ 我们还分析到一个例外情况，最后层（底层）是全部打*
+*/
+
+var totalLevel int = 20
+
+//i 表示层数
+for i := 1; i <= totalLevel; i++ {
+	//在打印*前先打印空格
+	for k := 1; k <= totalLevel - i; k++ {
+		fmt.Print(" ")
+	}
+
+	//j 表示每层打印多少*
+	for j :=1; j <= 2 * i - 1; j++ {
+		if j == 1 || j == 2 * i - 1 || i == totalLevel {
+			fmt.Print("*")
+		} else {
+			fmt.Print(" ")
+		}
+	}
+	fmt.Println()
+}
+}
+```
 
 4. 打印出九九乘法表
 
@@ -1071,7 +1466,17 @@ func main(){
 
 代码：
 
-![图 5-72](./images/ch5-072.jpg)
+```go
+//打印出九九乘法表
+//i 表示层数
+var num int = 9
+for i := 1; i <= num; i++ {
+	for j := 1; j <= i; j++ {
+		fmt.Printf("%v * %v = %v \t", j, i, j * i)
+	}
+	fmt.Println()
+}
+```
 
 ## 5.8 跳转控制语句-break
 
@@ -1083,13 +1488,40 @@ func main(){
 
 这里我们给大家说一下，如下随机生成1-100 整数.
 
-![图 5-73](./images/ch5-073.jpg)
+```go
+//在go中，需要生成一个随机的种子，否则返回的值总是固定的。
+// time.Now().Unix() : 返回一个从 1970 1-1 0:0:0 到现在的一个秒数
+rand.Seed(time.Now().Unix())
+fmt.Println("n", rand.Intn(100)+1)
+```
 
 ### 5.8.2 break 的快速入门案例
 
-![图 5-74](./images/ch5-074.jpg)
+```go
+func main() {
+	//我们为了生成一个随机数，还需要个rand设置一个种子。
+	//time.Now().Unix() : 返回一个从1970:01:01 的0时0分0秒到现在的秒数
+	//rand.Seed(time.Now().Unix())
+	//如何随机的生成1-100整数
+	//n := rand.Intn(100) + 1 // [0 100)
+	//fmt.Println(n)
 
-![图 5-75](./images/ch5-075.jpg)
+	//随机生成1-100的一个数，直到生成了99这个数，看看你一共用了几次
+	//分析思路：
+	//编写一个无限循环的控制，然后不停的随机生成数，当生成了99时，就退出这个无限循环==》break
+	var count int = 0
+	for {
+		rand.Seed(time.Now().UnixNano())
+		n := rand.Intn(100) + 1
+		fmt.Println("n=", n)
+		count++
+		if (n == 99) {
+			break //表示跳出for循环
+		}
+	}
+	fmt.Println("生成99一共使用了", count)
+}
+```
 
 ### 5.8.3 基本介绍：
 
@@ -1107,14 +1539,44 @@ break 语句用于终止某个语句块的执行，用于中断当前for 循环�
 
 ### 5.8.5 以for 循环使用break 为例,画出示意图
 
-![图 5-76](./images/ch5-076.jpg)
+```mermaid
+flowchart TD
+  A[循环变量初始化] --> B{循环条件}
+  B -->|True| C["循环操作1<br/>if 条件 { break }<br/>循环操作2"]
+  C -->|执行到 break| E([for循环结束])
+  C -->|未执行 break| D[循环变量迭代]
+  D --> B
+  B -->|False| E
+  E --> F[继续向下执行]
+
+  classDef cond fill:#9fc5e8,stroke:#4a86e8,stroke-width:1px,color:#000;
+  classDef body fill:#f4cccc,stroke:#d66,stroke-width:1px,color:#000;
+  classDef endNode fill:#6fa8dc,stroke:#3d66ad,stroke-width:1px,color:#fff;
+  class B cond;
+  class A,C,D body;
+  class E endNode;
+```
 
 ### 5.8.6 break 的注意事项和使用细节
 
 1. break 语句出现在多层嵌套的语句块中时，可以通过标签指明要终止的是哪一层语句块
 2. 看一个案例
 
-![图 5-77](./images/ch5-077.jpg)
+```go
+//这里演示一下指定标签的形式来使用 break
+lable2:
+for i := 0; i < 4; i++ {
+	//lable1: // 设置一个标签
+	for j := 0; j < 10; j++ {
+		if j == 2 {
+			//break // break 默认会跳出最近的for循环
+			//break lable1
+			break lable2 // j=0 j=1
+		}
+	}
+	fmt.Println("j=", j)
+}
+```
 
 3. 对上面案例的说明
 
@@ -1126,11 +1588,49 @@ break 语句用于终止某个语句块的执行，用于中断当前for 循环�
 
 1. 100 以内的数求和，求出当和第一次大于20 的当前数
 
-![图 5-78](./images/ch5-078.jpg)
+```go
+//100以内的数求和，求出 当和 第一次大于20的当前数
+sum := 0
+for i := 1; i <= 100; i++ {
+	sum += i //求和
+	if sum > 20 {
+		fmt.Println("当sum>20时，当前数是", i)
+		break
+	}
+}
+```
 
 2. 实现登录验证，有三次机会，如果用户名为”张无忌” ,密码”888”提示登录成功，否则提示还有几次机会.
 
-![图 5-79](./images/ch5-079.jpg)
+```go
+package main
+import "fmt"
+
+func main() {
+	var name string
+	var pwd string
+	var loginChance = 3 // 登录总机会
+
+	for i := 1; i <= 3; i++ {
+		fmt.Println("请输入用户名")
+		fmt.Scanln(&name)
+		fmt.Println("请输入密码")
+		fmt.Scanln(&pwd)
+
+		if name == "张无忌" && pwd == "888" {
+			fmt.Println("恭喜你登录成功!")
+			break
+		} else {
+			loginChance--
+			fmt.Printf("你还有%v次登录机会，请珍惜\n", loginChance)
+		}
+	}
+
+	if loginChance == 0 {
+		fmt.Println("机会用完，没有登录成功!")
+	}
+}
+```
 
 ## 5.9 跳转控制语句-continue
 
@@ -1152,7 +1652,23 @@ continue 语句出现在多层嵌套的循环语句体中时，可以通过标�
 
 ### 5.9.3 continue 流程图
 
-![图 5-80](./images/ch5-080.jpg)
+```mermaid
+flowchart TD
+  A[循环变量初始化] --> B{循环条件}
+  B -->|True| C["循环操作1<br/>if 条件 { continue }<br/>循环操作2"]
+  C -->|执行到 continue| D[循环变量迭代]
+  C -->|未执行 continue| D
+  D --> B
+  B -->|False| E([for循环结束])
+  E --> F[继续向下执行]
+
+  classDef cond fill:#9fc5e8,stroke:#4a86e8,stroke-width:1px,color:#000;
+  classDef body fill:#f4cccc,stroke:#d66,stroke-width:1px,color:#000;
+  classDef endNode fill:#6fa8dc,stroke:#3d66ad,stroke-width:1px,color:#fff;
+  class B cond;
+  class A,C,D body;
+  class E endNode;
+```
 
 ### 5.9.4 案例分析continue 的使用
 
@@ -1168,11 +1684,49 @@ continue 语句出现在多层嵌套的循环语句体中时，可以通过标�
 
 代码：
 
-![图 5-83](./images/ch5-083.jpg)
+```go
+package main
+import "fmt"
+
+func main() {
+	//continue实现 打印1—100之内的奇数[要求使用for循环+continue]
+	for i := 1; i <= 100; i++ {
+		if i%2 == 0 {
+			continue // 如果是偶数，跳过本次循环，直接下一轮
+		}
+		fmt.Println("奇数是", i)
+	}
+}
+```
 
 - 从键盘读入个数不确定的整数，并判断读入的正数和负数的个数，输入为0 时结束程序
 
-![图 5-84](./images/ch5-084.jpg)
+```go
+package main
+import "fmt"
+
+func main() {
+	//从键盘读入个数不确定的整数，并判断读入的正数和负数的个数，输入为0时结束程序
+	var positiveCount int // 正数的个数
+	var negativeCount int // 负数个数
+	var num int
+
+	for {
+		fmt.Println("请输入一个整数")
+		fmt.Scanln(&num)
+		if num == 0 {
+			break //终止for循环
+		}
+
+		if num > 0 {
+			positiveCount++
+			continue //结束本次循环，进入下次循环
+		}
+		negativeCount++
+	}
+	fmt.Printf("正数个数是%v 负数的个数是%v\n", positiveCount, negativeCount)
+}
+```
 
 - 课后练习题(同学们课后自己完成)：
 
@@ -1202,11 +1756,43 @@ label: statement
 
 ### 5.10.3 goto 的流程图
 
-![图 5-85](./images/ch5-085.jpg)
+```mermaid
+flowchart TD
+  A([开始]) --> B["label 1: statement 1"]
+  B --> C["label 2: statement 2"]
+  C --> D["label 3: statement 3"]
+  D --> Z([结束])
+  B -.->|go to label 3| E{"go to<br/>label 3"}
+  E --> D
+
+  classDef label fill:#3c3c3c,stroke:#000,stroke-width:1px,color:#fff;
+  classDef jump fill:#d32f2f,stroke:#9b1414,stroke-width:1px,color:#fff;
+  class B,C,D label;
+  class E jump;
+```
 
 ### 5.10.4 快速入门案例
 
-![图 5-86](./images/ch5-086.jpg)
+```go
+package main
+import "fmt"
+
+func main() {
+	var n int = 30
+	//演示goto的使用
+	fmt.Println("ok1")
+	if n > 20 {
+		goto label1
+	}
+	fmt.Println("ok2")
+	fmt.Println("ok3")
+	fmt.Println("ok4")
+label1:
+	fmt.Println("ok5")
+	fmt.Println("ok6")
+	fmt.Println("ok7")
+}
+```
 
 ## 5.11 跳转控制语句-return
 
@@ -1214,7 +1800,17 @@ label: statement
 
 return 使用在方法或者函数中，表示跳出所在的方法或函数，在讲解函数的时候，会详细的介绍。
 
-![图 5-87](./images/ch5-087.jpg)
+```go
+func main() {
+	for i:=1; i<=10; i++ {
+		if i==3 {
+			return
+		}
+		fmt.Println("哇哇", i)
+	}
+	fmt.Println("Hello World!")
+}
+```
 
 说明
 

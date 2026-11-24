@@ -418,6 +418,7 @@ export default defineUserConfig({
     },
     markdown: {
       mermaid: true,
+      math: true,
       highlighter: {
         type: "shiki",
         themes: {

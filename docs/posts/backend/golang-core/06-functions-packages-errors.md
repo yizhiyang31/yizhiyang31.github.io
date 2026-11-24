@@ -19,7 +19,31 @@ tag:
 
 - 走代码
 
-![图 6-1](./images/ch6-001.jpg)
+```go
+func main() {
+	//请大家完成这样一个需求:
+	//输入两个数,再输入一个运算符(+,-,*,/),得到结果。
+
+	//分析思路....
+	var n1 float64 = 1.2
+	var n2 float64 = 2.3
+	var operator byte = '-'
+	var res float64
+	switch operator {
+	case '+':
+		res = n1 + n2
+	case '-':
+		res = n1 - n2
+	case '*':
+		res = n1 * n2
+	case '/':
+		res = n1 / n2
+	default:
+		fmt.Println("操作符号错误...")
+	}
+	fmt.Println("res=", res)
+}
+```
 
 - 分析一下上面代码问题
 
@@ -35,17 +59,54 @@ tag:
 
 ## 6.3 函数的基本语法
 
-![图 6-2](./images/ch6-002.jpg)
-
+```go
+func 函数名 (形参列表) (返回值列表) {
+    执行语句...
+    return 返回值列表
+}
+```
+1. 形参列表：表示函数的输入
+2. 函数中的语句：表示为了实现某一功能代码块
+3. 函数可以有返回值，也可以没有
 ## 6.4 快速入门案例
 
 使用函数解决前面的计算问题。
 
 走代码:
 
-![图 6-3](./images/ch6-003.jpg)
+```go
+//将计算的功能，放到一个函数中，然后在需要使用，调用即可
+func cal(n1 float64, n2 float64, operator byte) float64 {
 
-![图 6-4](./images/ch6-004.jpg)
+	var res float64
+	switch operator {
+	case '+':
+		res = n1 + n2
+	case '-':
+		res = n1 - n2
+	case '*':
+		res = n1 * n2
+	case '/':
+		res = n1 / n2
+	default:
+		fmt.Println("操作符号错误...")
+	}
+	return res
+}
+```
+
+```go
+func main() {
+	//请大家完成这样一个需求:
+	//输入两个数,再输入一个运算符(+,-,*,/),得到结果..
+	//分析思路....
+	var n1 float64 = 1.2
+	var n2 float64 = 2.3
+	var operator byte = '+'
+	result := cal(n1, n2, operator)
+	fmt.Println("result=", result)
+}
+```
 
 ## 6.5 包的引出
 
@@ -58,9 +119,9 @@ tag:
 
 画图说明一下包的原理
 
-![图 6-5](./images/ch6-005.jpg)
+![图 6-5](./images/ch6-005.png)
 
-![图 6-6](./images/ch6-006.jpg)
+![图 6-6](./images/ch6-006.png)
 
 ## 6.7 包的基本概念
 
@@ -98,11 +159,55 @@ import "包的路径"
 
 utils.go 文件
 
-![图 6-8](./images/ch6-008.jpg)
+```go
+package utils
+
+import (
+	"fmt"
+)
+
+//将计算的功能，放到一个函数中，然后在需要使用，调用即可
+//为了让其它包的文件使用Cal函数，需要将C大小类似其它语言的public
+func Cal(n1 float64, n2 float64, operator byte) float64 {
+
+	var res float64
+	switch operator {
+	case '+':
+		res = n1 + n2
+	case '-':
+		res = n1 - n2
+	case '*':
+		res = n1 * n2
+	case '/':
+		res = n1 / n2
+	default:
+		fmt.Println("操作符号错误...")
+	}
+	return res
+}
+```
 
 main.go 文件
 
-![图 6-9](./images/ch6-009.jpg)
+```go
+package main
+
+import (
+	"fmt"
+	"go_code/chapter06/fundemo01/utils"
+)
+
+func main() {
+	//请大家完成这样一个需求:
+	//输入两个数,再输入一个运算符(+,-,*,/),得到结果..
+	//分析思路....
+	var n1 float64 = 1.2
+	var n2 float64 = 2.3
+	var operator byte = '+'
+	result := utils.Cal(n1, n2 , operator)
+	fmt.Println("result=", result)
+}
+```
 
 ## 6.11 包使用的注意事项和细节讨论
 
@@ -124,19 +229,38 @@ import (
 
 3. 为了让其它包的文件，可以访问到本包的函数，则该函数名的首字母需要大写，类似其它语言的public ,这样才能跨包访问。比如utils.go 的
 
-![图 6-10](./images/ch6-010.jpg)
+```go
+func Cal(num1 int, num2 int, operator string) {
+	result := 0
+	switch operator {
+	case "+":
+		result = num1 + num2
+	case "-":
+	}
+}
+```
 
 4. 在访问其它包函数，变量时，其语法是包名.函数名，比如这里的main.go 文件中
 
-![图 6-11](./images/ch6-011.jpg)
+```go
+utils.Cal(90, 80, "+")
+utils.Cal(90, 80, "-")
+```
 
 5. 如果包名较长，Go 支持给包取别名，注意细节：取别名后，原来的包名就不能使用了
 
-![图 6-12](./images/ch6-012.jpg)
+```go
+package main
+
+import (
+	"fmt"
+	util "go_code/chapter06/fundemo01/utils"
+)
+```
 
 说明: 如果给包取了别名，则需要使用别名来访问该包的函数和变量。
 
 6. 在同一包下，不能有相同的函数名（也不能有相同的全局变量名），否则报重复定义
 7. 如果你要编译成一个可执行程序文件，就需要将这个包声明为main , 即package main .这个就是一个语法规范，如果你是写一个库，包名可以自定义
 
-![图 6-13](./images/ch6-013.jpg)
+![图 6-13](./images/ch6-013.png)
