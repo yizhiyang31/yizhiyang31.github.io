@@ -9,6 +9,7 @@ const catalogTitles: Record<string, string> = {
   "/posts/": "文章",
   "/posts/backend/": "后端",
   "/posts/backend/golang/": "Golang基础",
+  "/posts/backend/golang-core/": "Go语言核心编程",
   "/posts/backend/gin/": "Gin 框架",
   "/posts/backend/mysql/": "MySQL",
   "/posts/backend/go-zero/": "go-zero",
@@ -85,6 +86,18 @@ const golangArticles = [
   { text: "泛型", link: "/posts/backend/golang/20-generics.html" },
 ];
 
+const golangCoreArticles = [
+  { text: "第 1 章 Golang 开山篇", link: "/posts/backend/golang-core/01-golang-intro.html" },
+  { text: "第 2 章 Golang 的概述", link: "/posts/backend/golang-core/02-golang-overview.html" },
+  { text: "第 3 章 Golang 变量", link: "/posts/backend/golang-core/03-golang-variables.html" },
+  { text: "第 4 章 运算符", link: "/posts/backend/golang-core/04-operators.html" },
+  { text: "第 5 章 程序流程控制", link: "/posts/backend/golang-core/05-control-flow.html" },
+  {
+    text: "第 6 章 函数、包和错误处理",
+    link: "/posts/backend/golang-core/06-functions-packages-errors.html",
+  },
+];
+
 const ginArticles = [
   { text: "介绍与环境搭建", link: "/posts/backend/gin/01-intro-and-setup.html" },
   { text: "路由详解", link: "/posts/backend/gin/02-routing.html" },
@@ -146,6 +159,12 @@ const dbxArticles = [
 
 const backendSeriesSidebar = [
   { text: "Golang基础", prefix: "/posts/backend/golang/", collapsible: true, children: golangArticles },
+  {
+    text: "Go语言核心编程",
+    prefix: "/posts/backend/golang-core/",
+    collapsible: true,
+    children: golangCoreArticles,
+  },
   { text: "Gin 框架", prefix: "/posts/backend/gin/", collapsible: true, children: ginArticles },
   { text: "GoFrame", prefix: "/posts/backend/goframe/", collapsible: true, children: goFrameArticles },
   { text: "MySQL", prefix: "/posts/backend/mysql/", collapsible: true, children: mysqlArticles },
@@ -255,6 +274,9 @@ export default defineUserConfig({
   ],
   bundler: viteBundler({
     viteOptions: {
+      optimizeDeps: {
+        include: ["mermaid", "dayjs"],
+      },
       resolve: {
         alias: [
           {
@@ -345,7 +367,7 @@ export default defineUserConfig({
       {
         text: "后端",
         link: "/category/backend/",
-        activeMatch: "^/(category/backend/|posts/backend/(golang|gin|mysql|go-zero|goframe|dbx)/)",
+        activeMatch: "^/(category/backend/|posts/backend/(golang|golang-core|gin|mysql|go-zero|goframe|dbx)/)",
       },
       {
         text: "Python",
@@ -395,6 +417,7 @@ export default defineUserConfig({
       },
     },
     markdown: {
+      mermaid: true,
       highlighter: {
         type: "shiki",
         themes: {
