@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "node scripts/sync-books.mjs && vuepress dev docs",
-    "build": "node scripts/sync-books.mjs && vuepress build docs",
+    "build": "node scripts/sync-books.mjs && vuepress build docs && node scripts/copy-books.mjs",
     "preview": "vuepress preview docs"
   },
   "dependencies": {

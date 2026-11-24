@@ -3,7 +3,16 @@ import { computed, onBeforeUnmount, onMounted, ref, watch } from "vue";
 import { withBase } from "vuepress/client";
 import bookFiles from "../books-data.json";
 
-type TabKey = "all" | "javascript" | "css" | "backend" | "database" | "other";
+type TabKey =
+  | "all"
+  | "javascript"
+  | "css"
+  | "framework"
+  | "backend"
+  | "database"
+  | "network"
+  | "algorithm"
+  | "other";
 
 interface Book {
   id: string;
@@ -25,8 +34,11 @@ const baseTabs: { key: TabKey; label: string }[] = [
   { key: "all", label: "全部" },
   { key: "javascript", label: "JavaScript" },
   { key: "css", label: "CSS" },
+  { key: "framework", label: "框架" },
   { key: "backend", label: "后端" },
   { key: "database", label: "数据库" },
+  { key: "network", label: "网络" },
+  { key: "algorithm", label: "算法" },
 ];
 
 const catalog: Book[] = [
@@ -95,6 +107,38 @@ const catalog: Book[] = [
     tab: "javascript",
   },
   {
+    id: "javascript-the-good-parts",
+    title: "JavaScript 语言精粹（修订版）",
+    subtitle: "JavaScript: The Good Parts",
+    category: "前端 · JavaScript",
+    level: "精炼提升",
+    description:
+      "聚焦 JavaScript 中可靠、优雅的语言子集，讲清函数、对象、原型、闭包与继承，帮你避开语言糟粕，写出更干净的代码。",
+    file: "/books/javascript-the-good-parts.pdf",
+    size: "10.0 MB",
+    coverLabel: "JS",
+    coverTitle: "THE GOOD PARTS",
+    coverEdition: "修订版",
+    coverTheme: "amber",
+    tab: "javascript",
+  },
+  {
+    id: "javascript-design-patterns-practice",
+    title: "JavaScript 设计模式与开发实践",
+    subtitle: "JavaScript Design Patterns",
+    category: "前端 · JavaScript",
+    level: "模式实践",
+    description:
+      "由曾探编写，结合前端真实场景讲解单例、策略、代理、观察者等常用设计模式的实现与取舍，是写出可维护、可扩展代码的必修课。",
+    file: "/books/javascript-design-patterns-and-practice.pdf",
+    size: "8.1 MB",
+    coverLabel: "JS",
+    coverTitle: "DESIGN PATTERNS",
+    coverEdition: "曾探",
+    coverTheme: "blue",
+    tab: "javascript",
+  },
+  {
     id: "css-world",
     title: "CSS 世界",
     subtitle: "CSS World",
@@ -127,6 +171,38 @@ const catalog: Book[] = [
     tab: "css",
   },
   {
+    id: "vue-design-implementation",
+    title: "Vue.js 设计与实现",
+    subtitle: "Vue.js Design & Implementation",
+    category: "前端 · Vue",
+    level: "源码进阶",
+    description:
+      "霍春阳所著，逐层拆解 Vue 3 的响应式系统、渲染器、编译器与组件实现，把框架源码的设计思路讲成一条清晰的推导线。",
+    file: "/books/vuejs-design-and-implementation.pdf",
+    size: "20.3 MB",
+    coverLabel: "VUE",
+    coverTitle: "VUE.JS",
+    coverEdition: "设计与实现",
+    coverTheme: "teal",
+    tab: "framework",
+  },
+  {
+    id: "vue-in-depth",
+    title: "深入浅出 Vue.js",
+    subtitle: "Vue.js In Depth",
+    category: "前端 · Vue",
+    level: "原理剖析",
+    description:
+      "刘博文所著，从变化侦测、虚拟 DOM 讲到模板编译与组件机制，系统剖析 Vue 2 的内部运行原理，适合想读懂框架实现的人。",
+    file: "/books/vuejs-in-depth.pdf",
+    size: "2.4 MB",
+    coverLabel: "VUE",
+    coverTitle: "VUE.JS",
+    coverEdition: "深入浅出",
+    coverTheme: "rose",
+    tab: "framework",
+  },
+  {
     id: "gin-framework-tutorial",
     title: "Gin 框架教程（第 4 版）",
     subtitle: "Gin Framework Tutorial",
@@ -157,6 +233,70 @@ const catalog: Book[] = [
     coverEdition: "B站实战",
     coverTheme: "violet",
     tab: "backend",
+  },
+  {
+    id: "illustrated-http",
+    title: "图解 HTTP（彩色版）",
+    subtitle: "图解 HTTP",
+    category: "网络 · HTTP",
+    level: "入门首选",
+    description:
+      "用大量图解讲清 HTTP 报文结构、请求方法、状态码、连接管理，以及 HTTPS、认证与缓存机制，是网络入门最轻快的一本。",
+    file: "/books/illustrated-http.pdf",
+    size: "13.1 MB",
+    coverLabel: "HTTP",
+    coverTitle: "图解 HTTP",
+    coverEdition: "彩色版",
+    coverTheme: "amber",
+    tab: "network",
+  },
+  {
+    id: "http-definitive-guide",
+    title: "HTTP 权威指南",
+    subtitle: "HTTP: The Definitive Guide",
+    category: "网络 · HTTP",
+    level: "深度工具书",
+    description:
+      "HTTP 协议的完整参考手册，覆盖报文语法、连接与缓存、代理与网关、认证及 Web 安全，适合系统补全网络知识时查阅。",
+    file: "/books/http-the-definitive-guide.pdf",
+    size: "25.2 MB",
+    coverLabel: "HTTP",
+    coverTitle: "THE DEFINITIVE GUIDE",
+    coverEdition: "O'Reilly",
+    coverTheme: "violet",
+    tab: "network",
+  },
+  {
+    id: "node-in-action",
+    title: "深入浅出 Node.js",
+    subtitle: "Node.js In Depth",
+    category: "后端 · Node.js",
+    level: "原理进阶",
+    description:
+      "朴灵所著，从模块机制、异步 I/O、事件循环讲到内存控制与工程化实践，理解 Node 运行时与现代前端工程化的底层基础。",
+    file: "/books/nodejs-in-depth.pdf",
+    size: "5.8 MB",
+    coverLabel: "NODE",
+    coverTitle: "NODE.JS",
+    coverEdition: "深入浅出",
+    coverTheme: "teal",
+    tab: "backend",
+  },
+  {
+    id: "js-data-structures-algorithms",
+    title: "学习 JavaScript 数据结构与算法（第 3 版）",
+    subtitle: "Learning JavaScript Data Structures and Algorithms",
+    category: "算法 · 数据结构",
+    level: "面试必备",
+    description:
+      "用 JavaScript 实现数组、栈、队列、链表、树、图等数据结构，以及排序与搜索算法，配套前端面试常见的算法训练。",
+    file: "/books/learning-javascript-data-structures-and-algorithms-3rd.pdf",
+    size: "13.6 MB",
+    coverLabel: "ALGO",
+    coverTitle: "ALGORITHMS",
+    coverEdition: "3rd Edition",
+    coverTheme: "blue",
+    tab: "algorithm",
   },
 ];
 

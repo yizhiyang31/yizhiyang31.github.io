@@ -2,6 +2,7 @@ import { fileURLToPath } from "node:url";
 import { viteBundler } from "@vuepress/bundler-vite";
 import { defineUserConfig } from "vuepress";
 import { hopeTheme } from "vuepress-theme-hope";
+import { booksStaticPlugin } from "./plugins/booksStatic";
 
 const catalogTitles: Record<string, string> = {
   "/books/": "书籍",
@@ -258,6 +259,7 @@ export default defineUserConfig({
       ssr: {
         noExternal: ["@vuepress/search-helper"],
       },
+      plugins: [booksStaticPlugin()],
     },
   }),
   theme: hopeTheme({

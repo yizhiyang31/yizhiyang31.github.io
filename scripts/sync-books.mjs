@@ -5,7 +5,6 @@ import { fileURLToPath } from "node:url";
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(scriptDir, "..");
 const sourceDir = path.join(rootDir, "books");
-const publicDir = path.join(rootDir, "docs", ".vuepress", "public", "books");
 const manifestPath = path.join(rootDir, "docs", ".vuepress", "books-data.json");
 
 const collator = new Intl.Collator("zh-CN", { numeric: true, sensitivity: "base" });
@@ -30,27 +29,14 @@ async function main() {
     .map((entry) => entry.name)
     .sort((a, b) => collator.compare(a, b));
 
-  await fs.mkdir(publicDir, { recursive: true });
-
-  const allowed = new Set(pdfNames);
-  const existing = await fs.readdir(publicDir, { withFileTypes: true });
-  for (const entry of existing) {
-    if (entry.isFile() && entry.name.toLowerCase().endsWith(".pdf") && !allowed.has(entry.name)) {
-      await fs.unlink(path.join(publicDir, entry.name));
-    }
-  }
-
   const manifest = [];
   for (const name of pdfNames) {
-    const source = path.join(sourceDir, name);
-    const target = path.join(publicDir, name);
-    await fs.copyFile(source, target);
-    const { size } = await fs.stat(source);
+    const { size } = await fs.stat(path.join(sourceDir, name));
     manifest.push({ file: name, size: formatSize(size) });
   }
 
   await fs.writeFile(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`, "utf8");
-  console.log(`[sync-books] 已从 books/ 同步 ${manifest.length} 本书`);
+  console.log(`[sync-books] 已生成 ${manifest.length} 本书的清单（来源：books/）`);
 }
 
 main().catch((error) => {
