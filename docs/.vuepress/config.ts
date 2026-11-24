@@ -13,6 +13,7 @@ const catalogTitles: Record<string, string> = {
   "/posts/backend/mysql/": "MySQL",
   "/posts/backend/go-zero/": "go-zero",
   "/posts/backend/goframe/": "GoFrame",
+  "/posts/backend/dbx/": "DBX",
   "/posts/python/": "Python 基础",
   "/posts/frontend/": "前端",
   "/posts/frontend/vue3/": "Vue3 学习笔记",
@@ -136,12 +137,20 @@ const goFrameArticles = [
   { text: "实战：图书管理 API", link: "/posts/backend/goframe/08-book-api-practice.html" },
 ];
 
+const dbxArticles = [
+  {
+    text: "DBX 最佳实践：免费开源的数据库客户端",
+    link: "/posts/backend/dbx/dbx-best-practices.html",
+  },
+];
+
 const backendSeriesSidebar = [
   { text: "Golang基础", prefix: "/posts/backend/golang/", collapsible: true, children: golangArticles },
   { text: "Gin 框架", prefix: "/posts/backend/gin/", collapsible: true, children: ginArticles },
   { text: "GoFrame", prefix: "/posts/backend/goframe/", collapsible: true, children: goFrameArticles },
   { text: "MySQL", prefix: "/posts/backend/mysql/", collapsible: true, children: mysqlArticles },
   { text: "go-zero", prefix: "/posts/backend/go-zero/", collapsible: true, children: goZeroArticles },
+  { text: "DBX", prefix: "/posts/backend/dbx/", collapsible: true, children: dbxArticles },
 ];
 
 const pythonArticles = [
@@ -336,7 +345,7 @@ export default defineUserConfig({
       {
         text: "后端",
         link: "/category/backend/",
-        activeMatch: "^/(category/backend/|posts/backend/(golang|gin|mysql|go-zero|goframe)/)",
+        activeMatch: "^/(category/backend/|posts/backend/(golang|gin|mysql|go-zero|goframe|dbx)/)",
       },
       {
         text: "Python",
