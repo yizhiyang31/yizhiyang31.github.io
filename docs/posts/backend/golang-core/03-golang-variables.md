@@ -1,5 +1,6 @@
 ---
 title: 第 3 章 Golang 变量
+excerpt: 围绕变量展开，讲解变量的概念、声明初始化与赋值、基本数据类型及转换、指针与标识符规范，并配合案例说明使用细节。
 author: yizhiyang
 date: 2026-11-24
 category:

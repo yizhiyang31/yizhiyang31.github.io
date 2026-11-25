@@ -1,5 +1,6 @@
 ---
 title: 第 5 章 程序流程控制
+excerpt: 介绍顺序、分支与循环等程序流程控制方式，涵盖 if、switch、for、多重循环以及 break、continue、goto、return 等跳转语句。
 author: yizhiyang
 date: 2026-11-24
 category:

@@ -1,5 +1,6 @@
 ---
 title: 第 2 章 Golang 的概述
+excerpt: 介绍程序的概念、Go 语言诞生背景与核心团队，梳理语言特点，并覆盖开发环境搭建、基础语法、注释规范与常见问题。
 author: yizhiyang
 date: 2026-11-24
 category:

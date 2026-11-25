@@ -1,5 +1,6 @@
 ---
 title: 第 6 章 函数、包和错误处理
+excerpt: 从函数引入，讲解函数概念、语法与入门案例，再展开包的作用、使用方式和注意事项，帮助组织可复用的 Go 程序。
 author: yizhiyang
 date: 2026-11-24
 category:

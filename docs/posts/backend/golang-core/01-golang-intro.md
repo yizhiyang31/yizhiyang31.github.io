@@ -1,5 +1,6 @@
 ---
 title: 第 1 章 Golang 开山篇
+excerpt: 从学习方向、应用领域、学习方法与课程安排入手，建立 Go 语言学习的整体认知，明确后续实践路线。
 author: yizhiyang
 date: 2026-11-24
 category:

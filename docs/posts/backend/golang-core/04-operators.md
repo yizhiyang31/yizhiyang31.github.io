@@ -1,5 +1,6 @@
 ---
 title: 第 4 章 运算符
+excerpt: 系统梳理 Go 的算术、关系、逻辑、赋值与位运算符，结合键盘输入、进制与位运算案例，说明优先级和实际使用细节。
 author: yizhiyang
 date: 2026-11-24
 category:
