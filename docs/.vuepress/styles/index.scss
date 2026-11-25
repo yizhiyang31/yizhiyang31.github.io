@@ -1574,8 +1574,8 @@ html {
 }
 
 [vp-content] table th {
-  background: var(--vp-c-table-header-bg);
-  color: var(--vp-c-brand-1);
+  background: transparent;
+  color: var(--vp-c-text-1);
   font-family: var(--font-heading);
   font-weight: var(--fw-semibold);
   letter-spacing: var(--ls-wide);

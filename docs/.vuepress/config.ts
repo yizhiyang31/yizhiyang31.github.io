@@ -18,6 +18,7 @@ const catalogTitles: Record<string, string> = {
   "/posts/python/": "Python 基础",
   "/posts/frontend/": "前端",
   "/posts/frontend/vue3/": "Vue3 学习笔记",
+  "/posts/frontend/node/": "Node.js",
   "/posts/engineering/": "工程化",
   "/tools/": "工具",
 };
@@ -157,6 +158,20 @@ const dbxArticles = [
   },
 ];
 
+const nodeArticles = [
+  { text: "Buffer（缓冲器）", link: "/posts/frontend/node/01-buffer.html" },
+  { text: "fs 模块", link: "/posts/frontend/node/02-fs-module.html" },
+  { text: "path 模块", link: "/posts/frontend/node/03-path-module.html" },
+  { text: "HTTP 协议", link: "/posts/frontend/node/04-http-protocol.html" },
+  { text: "Node.js 模块化", link: "/posts/frontend/node/05-nodejs-modularization.html" },
+  { text: "包管理工具", link: "/posts/frontend/node/06-package-managers.html" },
+  { text: "nvm", link: "/posts/frontend/node/07-nvm.html" },
+  { text: "express 框架", link: "/posts/frontend/node/08-express-framework.html" },
+  { text: "MongoDB", link: "/posts/frontend/node/09-mongodb.html" },
+  { text: "接口", link: "/posts/frontend/node/10-api.html" },
+  { text: "会话控制", link: "/posts/frontend/node/11-session-control.html" },
+];
+
 const backendSeriesSidebar = [
   { text: "Golang基础", prefix: "/posts/backend/golang/", collapsible: true, children: golangArticles },
   {
@@ -204,6 +219,7 @@ const vue3Articles = [
 
 const frontendSidebar = [
   { text: "Vue3 学习笔记", prefix: "/posts/frontend/vue3/", collapsible: true, children: vue3Articles },
+  { text: "Node.js", prefix: "/posts/frontend/node/", collapsible: true, children: nodeArticles },
   { text: "一小时快速上手 Electron", link: "/posts/frontend/electron-quick-start.html" },
   { text: "TypeScript 极速梳理", link: "/posts/frontend/typescript-quick-review.html" },
 ];
