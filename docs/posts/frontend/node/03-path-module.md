@@ -1,5 +1,6 @@
 ---
 title: path 模块
+excerpt: 介绍 path 模块的路径解析、拼接、分隔符与扩展名提取等常用 API。
 author: yizhiyang
 date: 2026-11-25
 category:

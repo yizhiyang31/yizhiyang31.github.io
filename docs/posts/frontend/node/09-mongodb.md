@@ -1,5 +1,6 @@
 ---
 title: MongoDB
+excerpt: 介绍 MongoDB 的核心概念与数据库、集合、文档的增删改查操作，并整理条件查询与排序分页。
 author: yizhiyang
 date: 2026-11-25
 category:

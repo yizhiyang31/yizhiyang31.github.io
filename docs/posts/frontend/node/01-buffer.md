@@ -1,5 +1,6 @@
 ---
 title: Buffer（缓冲器）
+excerpt: 认识 Buffer 的概念与特点，掌握创建、字符串转换及字节读写等常见操作。
 author: yizhiyang
 date: 2026-11-25
 category:

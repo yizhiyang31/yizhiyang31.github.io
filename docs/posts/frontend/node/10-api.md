@@ -1,5 +1,6 @@
 ---
 title: 接口
+excerpt: 认识接口与 RESTful 风格，了解接口组成、请求方法、状态码，并使用 json-server 搭建模拟接口。
 author: yizhiyang
 date: 2026-11-25
 category:

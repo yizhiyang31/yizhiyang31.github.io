@@ -1,5 +1,6 @@
 ---
 title: 包管理工具
+excerpt: 介绍 npm 包的概念与常用命令，涵盖安装、镜像源切换、版本管理与 nrm 等工具。
 author: yizhiyang
 date: 2026-11-25
 category:

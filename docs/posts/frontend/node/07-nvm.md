@@ -1,5 +1,6 @@
 ---
 title: nvm
+excerpt: 了解 nvm 的作用与安装方式，掌握查看、安装、切换和卸载 Node.js 版本的常用命令。
 author: yizhiyang
 date: 2026-11-25
 category:

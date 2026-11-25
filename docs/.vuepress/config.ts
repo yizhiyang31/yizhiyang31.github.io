@@ -19,7 +19,9 @@ const catalogTitles: Record<string, string> = {
   "/posts/frontend/": "前端",
   "/posts/frontend/vue3/": "Vue3 学习笔记",
   "/posts/frontend/node/": "Node.js",
+  "/posts/frontend/javascript-modularization/": "JavaScript 模块化规范",
   "/posts/engineering/": "工程化",
+  "/posts/engineering/git/": "Git",
   "/tools/": "工具",
 };
 
@@ -32,6 +34,10 @@ const slugMap: Record<string, string> = {
   部署: "deploy",
   博客: "blog",
   JavaScript: "javascript",
+  模块化: "modularization",
+  CommonJS: "commonjs",
+  AMD: "amd",
+  CMD: "cmd",
   异步编程: "async",
   CSS: "css",
   响应式: "responsive",
@@ -41,6 +47,7 @@ const slugMap: Record<string, string> = {
   数据库: "database",
   性能优化: "performance",
   HTTP: "http",
+  Git: "git",
   GitHub: "github",
   "GitHub Actions": "github-actions",
   "GitHub Pages": "github-pages",
@@ -217,9 +224,32 @@ const vue3Articles = [
   { text: "8. Vue3 新组件", link: "/posts/frontend/vue3/08-new-components.html" },
 ];
 
+const jsModuleArticles = [
+  { text: "模块化概述与导入导出概念", link: "/posts/frontend/javascript-modularization/01-overview-and-concepts.html" },
+  { text: "CommonJS 规范", link: "/posts/frontend/javascript-modularization/02-commonjs.html" },
+  { text: "ES6 模块化规范", link: "/posts/frontend/javascript-modularization/03-es6-module.html" },
+  { text: "AMD 与 CMD 模块化规范", link: "/posts/frontend/javascript-modularization/04-amd-and-cmd.html" },
+  { text: "完整版（逐页）", link: "/posts/frontend/javascript-modularization/javascript-modularization-full.html" },
+];
+
+const jsModuleSidebar = [
+  {
+    text: "JavaScript 模块化规范",
+    prefix: "/posts/frontend/javascript-modularization/",
+    collapsible: true,
+    children: jsModuleArticles,
+  },
+];
+
 const frontendSidebar = [
   { text: "Vue3 学习笔记", prefix: "/posts/frontend/vue3/", collapsible: true, children: vue3Articles },
   { text: "Node.js", prefix: "/posts/frontend/node/", collapsible: true, children: nodeArticles },
+  ...jsModuleSidebar,
+  {
+    text: "Axios 从入门到源码分析",
+    link: "/posts/frontend/axios-from-intro-to-source.html",
+  },
+  { text: "ECMAScript 6-11", link: "/posts/frontend/ecmascript-6-11.html" },
   { text: "一小时快速上手 Electron", link: "/posts/frontend/electron-quick-start.html" },
   { text: "TypeScript 极速梳理", link: "/posts/frontend/typescript-quick-review.html" },
 ];
@@ -243,6 +273,17 @@ const deployArticles = [
   },
 ];
 
+const gitArticles = [
+  { text: "第 1 章 Git 操作", link: "/posts/engineering/git/01-git-operations.html" },
+  { text: "第 2 章 代码风格", link: "/posts/engineering/git/02-code-style.html" },
+  { text: "第 3 章 远程仓库", link: "/posts/engineering/git/03-remote-repository.html" },
+  { text: "完整版（逐页）", link: "/posts/engineering/git/git-github-full.html" },
+];
+
+const gitSidebar = [
+  { text: "Git", prefix: "/posts/engineering/git/", collapsible: true, children: gitArticles },
+];
+
 const engineeringSidebar = [
   {
     text: "VuePress",
@@ -254,6 +295,7 @@ const engineeringSidebar = [
     collapsible: true,
     children: deployArticles,
   },
+  ...gitSidebar,
 ];
 
 const engineeringCategorySidebar = [
@@ -265,6 +307,7 @@ const engineeringCategorySidebar = [
     text: "部署",
     children: deployArticles,
   },
+  ...gitSidebar,
 ];
 
 export default defineUserConfig({
@@ -348,6 +391,8 @@ export default defineUserConfig({
       "/posts/backend/": backendSeriesSidebar,
       "/posts/python/": pythonSidebar,
       "/posts/frontend/": frontendSidebar,
+      "/posts/frontend/javascript-modularization/": jsModuleSidebar,
+      "/posts/engineering/git/": gitSidebar,
       "/posts/engineering/github-pages-deploy.html": engineeringSidebar,
       "/posts/engineering/vuepress-theme-hope-blog.html": engineeringSidebar,
       "/posts/": [

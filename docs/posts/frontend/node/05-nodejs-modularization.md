@@ -1,5 +1,6 @@
 ---
 title: Node.js 模块化
+excerpt: 理解模块化的意义与 CommonJS 规范，掌握模块定义、导出、引入与包管理基础。
 author: yizhiyang
 date: 2026-11-25
 category:

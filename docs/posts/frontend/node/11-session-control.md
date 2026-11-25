@@ -1,5 +1,6 @@
 ---
 title: 会话控制
+excerpt: 梳理 Cookie、Session 与 JWT 的工作原理，结合 Express 示例说明登录状态维护与跨域认证。
 author: yizhiyang
 date: 2026-11-25
 category:

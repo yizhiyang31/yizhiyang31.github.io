@@ -1,5 +1,6 @@
 ---
 title: fs 模块
+excerpt: 围绕文件写入、读取、重命名、删除与目录操作，系统整理 fs 模块的常用 API 和代码示例。
 author: yizhiyang
 date: 2026-11-25
 category:

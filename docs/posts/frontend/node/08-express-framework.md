@@ -1,5 +1,6 @@
 ---
 title: express 框架
+excerpt: 从 Express 基础路由讲起，覆盖中间件、静态资源、模板引擎与 Cookie/Session 等常见用法。
 author: yizhiyang
 date: 2026-11-25
 category:

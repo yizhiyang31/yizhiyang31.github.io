@@ -1,5 +1,6 @@
 ---
 title: HTTP 协议
+excerpt: 梳理 HTTP 协议基础、请求与响应报文、状态码、静态资源服务与简单服务搭建。
 author: yizhiyang
 date: 2026-11-25
 category:
