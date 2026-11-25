@@ -1073,7 +1073,7 @@ flowchart TD
 
 - 对照代码分析for 循环的执行过程
 
-![图 5-50](./images/ch5-050.png)
+![图 5-50](./images/ch5-001.png)
 
 ### 5.5.5 for 循环的使用注意事项和细节讨论
 
@@ -1202,7 +1202,7 @@ func main() {
 
 2. 完成下面的表达式输出，6 是可变的。
 
-![图 5-58](./images/ch5-058.jpg)
+![图 5-58](./images/ch5-002.jpg)
 
 ```go
 fmt.Println("----------------------------------------")
@@ -1462,7 +1462,7 @@ for i := 1; i <= totalLevel; i++ {
 
 4. 打印出九九乘法表
 
-![图 5-71](./images/ch5-071.jpg)
+![图 5-71](./images/ch5-003.jpg)
 
 代码：
 
@@ -1672,13 +1672,13 @@ flowchart TD
 
 ### 5.9.4 案例分析continue 的使用
 
-![图 5-81](./images/ch5-081.jpg)
+![图 5-81](./images/ch5-004.jpg)
 
 ### 5.9.5 continu 的课堂练习
 
 - 练习1
 
-![图 5-82](./images/ch5-082.jpg)
+![图 5-82](./images/ch5-005.jpg)
 
 - continue 实现打印1——100 之内的奇数[要求使用for 循环+continue]
 

@@ -21,11 +21,21 @@ tag:
 
 ### 2.2.1 Go 语言的核心开发团队-三个大牛
 
-![图 2-3](./images/ch2-003.jpg)
+Ken Thompson（肯·汤普森）：1983 年图灵奖（Turing Award）和 1998 年美国国家技术奖（National Medal of Technology）得主。他与 Dennis Ritchie 是 Unix 的原创者。Thompson 也发明了后来衍生出 C 语言的 B 程序语言，同时也是 C 语言的主要发明人。2000 年……
+
+Rob Pike（罗布·派克）：曾是贝尔实验室（Bell Labs）的 Unix 团队和 Plan 9 操作系统计划的成员。他与 Thompson 共事多年，并共创出广泛使用的 UTF-8 字元编码。
+
+Robert Griesemer：曾协助制作 Java 的 HotSpot 编译器和 Chrome 浏览器的 JavaScript 引擎 V8。
+
+![Ken Thompson（肯·汤普森）](./images/ch2-003.jpg)
+
+![Rob Pike（罗布·派克）](./images/ch2-004.jpg)
 
 ### 2.2.2 Google 创造Golang 的原因
 
-![图 2-4](./images/ch2-004.jpg)
+1. 计算机硬件技术更新频繁，性能提高很快。目前主流的编程语言发展明显落后于硬件，不能合理利用**多核多CPU**的优势提升软件系统性能。
+2. 软件系统复杂度越来越高，维护成本越来越高，目前**缺乏一个足够简洁高效**的编程语言。【现有的编程语言：1. 风格不统一 2. 计算能力不够 3. 处理大并发不够好】
+3. 企业运行维护很多 c/c++ 的项目，c/c++ 程序运行速度虽然很快，但是编译速度确很慢，同时还存在**内存泄漏**的一系列的困扰需要解决。
 
 ### 2.2.3 Golang 的发展历程
 
@@ -55,7 +65,15 @@ func testPtr(num *int) {
 
 2. 引入包的概念，用于组织程序结构，Go 语言的一个文件都要归属于一个包，而不能单独存在。
 
-![图 2-5](./images/ch2-005.jpg)
+```go
+package main // 一个go文件需要在一个包
+
+import "fmt"
+func sayOk() {
+	// 输出一句话
+	fmt.Println("ok")
+}
+```
 
 3. 垃圾回收机制，内存自动回收，不需开发人员管理
 4. 天然并发(重要特点)
@@ -85,9 +103,13 @@ func getSumAndSub(n1 int, n2 int) (int, int ) {
 
 ### 2.4.1 工具介绍
 
-![图 2-6](./images/ch2-006.jpg)
-
-![图 2-7](./images/ch2-007.jpg)
+1. visual studio code Microsoft 产品（VSCode）：一个运行于 Mac OS X、Windows 和 Linux 之上的，默认提供 Go 语言的语法高亮，安装 Go 语言插件，还可以支持智能提示，编译运行等功能。
+2. Sublime Text，可以免费使用，默认也支持 Go 代码语法高亮，只是保存次数达到一定数量之后就会提示是否购买，点击取消继续用，和正式注册版本没有任何区别。
+3. Vim：Vim 是从 vi 发展出来的一个文本编辑器，代码补全、编译及错误跳转等方便编程的功能特别丰富，在程序员中被广泛使用。
+4. Emacs：Emacs 传说中的神器，她不仅仅是一个编辑器，因为功能强大，可称它为集成开发环境。
+5. Eclipse IDE 工具，开源免费，并提供 GoEclipse 插件。
+6. LiteIDE，LiteIDE 是一款专门为 Go 语言开发的跨平台轻量级集成开发环境（IDE），是国人开发的。
+7. JetBrains 公司的产品：PhpStrom、WebStrom 和 PyCharm 等 IDE 工具，都需要安装 Go 插件。
 
 ### 2.4.2 工具选择：
 
@@ -106,25 +128,34 @@ func getSumAndSub(n1 int, n2 int) (int, int ) {
 
 https://code.visualstudio.com/download
 
-![图 2-8](./images/ch2-008.jpg)
+![图 2-8](./images/ch2-005.jpg)
 
 2. 演示如何在windows 下安装vscode 并使用
 
 步骤1: 把vscode 安装文件准备好
 
-![图 2-9](./images/ch2-009.jpg)
+![图 2-9](./images/ch2-006.jpg)
 
-![图 2-10](./images/ch2-010.jpg)
+![图 2-10](./images/ch2-007.jpg)
 
 步骤2：双击安装文件，就可以一步一步安装，我个人的习惯是安装到d:/programs 目录.当看到如下界面时，就表示安装成功!
 
-![图 2-11](./images/ch2-011.jpg)
+![图 2-11](./images/ch2-008.jpg)
 
 步骤3: 简单的使用一下vscode
 
 在d 盘创建了一个文件夹gocode.
 
-![图 2-12](./images/ch2-012.jpg)
+```go
+package main // 把这个 test.go 归属到一个包
+
+import "fmt" // 引入一个包 fmt
+
+func main() {
+	// 输出hello
+	fmt.Println("hello")
+}
+```
 
 3. 演示如何在Linux(ubuntu /centos)下安装vscode 并使用
 
@@ -132,7 +163,7 @@ https://code.visualstudio.com/download
 
 步骤1: 先下载linux 版本的vscode 安装软件.
 
-![图 2-13](./images/ch2-013.jpg)
+![图 2-13](./images/ch2-009.jpg)
 
 步骤2: 因为我这里使用的是虚拟机的ubuntu, 因此我们需要先将vscode 安装软件传输到ubuntu下,使用的xftp5 软件上传。
 
@@ -144,13 +175,13 @@ https://code.visualstudio.com/download
 
 步骤6: 将安装文件解决即可
 
-![图 2-14](./images/ch2-014.jpg)
+![图 2-14](./images/ch2-010.jpg)
 
 步骤7: 现在进入解压后的目录，即可运行我们的vscode
 
-![图 2-15](./images/ch2-015.jpg)
+![图 2-15](./images/ch2-011.jpg)
 
-![图 2-16](./images/ch2-016.jpg)
+![图 2-16](./images/ch2-012.jpg)
 
 4. 演示如何在Mac 下安装vscode 并使用
 
@@ -158,7 +189,7 @@ https://code.visualstudio.com/download
 
 步骤1：下载mac 版本的vscode 安装软件
 
-![图 2-17](./images/ch2-017.jpg)
+![图 2-17](./images/ch2-013.jpg)
 
 步骤2：把vscode 安装软件，传输到mac 系统
 
@@ -192,7 +223,7 @@ sudo launchctl list | grep ssh
 
 步骤3：将安装软件解压后即可使用.
 
-![图 2-18](./images/ch2-018.jpg)
+![图 2-18](./images/ch2-014.jpg)
 
 进入到这个解压后的文件夹(图形界面)，双击即可
 
@@ -200,7 +231,7 @@ sudo launchctl list | grep ssh
 
 在用户所在的目录，创建了gocode,然后将test.go 写到这个文件夹下..
 
-![图 2-19](./images/ch2-019.jpg)
+![图 2-19](./images/ch2-015.jpg)
 
 ### 2.4.4 小结
 
@@ -223,7 +254,7 @@ sudo launchctl list | grep ssh
 2. SDK 下载地址：Golang 中国 https://www.golangtc.com/download
 3. 如何选择对应的sdk 版本
 
-![图 2-20](./images/ch2-020.jpg)
+![图 2-20](./images/ch2-016.jpg)
 
 ### 2.5.3 windows 下安装sdk
 
@@ -241,19 +272,19 @@ Windows 下：根据自己系统是32 位还是64 位进行下载：
 5. 安装看老师的演示：
 6. 解压后，我们会看到d:/go 目录，这个是sdk
 
-![图 2-21](./images/ch2-021.jpg)
+![图 2-21](./images/ch2-017.jpg)
 
-![图 2-22](./images/ch2-022.jpg)
+![图 2-22](./images/ch2-018.jpg)
 
 如何测试我们的go 的sdk 安装成功。
 
-![图 2-23](./images/ch2-023.jpg)
+![图 2-23](./images/ch2-019.jpg)
 
 ### 2.5.4 windows 下配置Golang 环境变量：
 
 - 为什么需要配置环境变量
 
-![图 2-24](./images/ch2-024.jpg)
+![图 2-24](./images/ch2-020.jpg)
 
 - 配置环境变量介绍
 
@@ -261,26 +292,30 @@ Windows 下：根据自己系统是32 位还是64 位进行下载：
 
 - 在Go 开发中，需要配置哪些环境变量
 
-![图 2-25](./images/ch2-025.jpg)
+| 环境变量 | 说明 |
+| :--- | :--- |
+| GOROOT | 指定 SDK 的安装路径 `d:/programs/go` |
+| Path | 添加 SDK 的 `/bin` 目录 |
+| GOPATH | 工作目录，将来我们的 go 项目的工作路径 |
 
 - 看老师如何配置
 
 步骤1：先打开环境变量配置的界面
 
-![图 2-26](./images/ch2-026.jpg)
+![图 2-26](./images/ch2-021.jpg)
 
 步骤2: 配置我们的环境变量
 
-![图 2-27](./images/ch2-027.jpg)
+![图 2-27](./images/ch2-022.jpg)
 
-![图 2-28](./images/ch2-028.jpg)
+![图 2-28](./images/ch2-023.jpg)
 
 对上图的一个说明：
 
 1. Path 这个环境变量不需要在创建，因为系统本身就有，你后面增加即可
 2. 增加Go 的bin : ;%GOROOT%\bin
 
-![图 2-29](./images/ch2-029.jpg)
+![图 2-29](./images/ch2-024.jpg)
 
 对上图的一个说明
 
@@ -289,7 +324,7 @@ Windows 下：根据自己系统是32 位还是64 位进行下载：
 
 - 测试一下我们的环境变量是否配置ok
 
-![图 2-30](./images/ch2-030.jpg)
+![图 2-30](./images/ch2-025.jpg)
 
 注意：配置环境变量后，需要重新打开一次dos 的终端，这样环境变量才会生效。
 
@@ -307,7 +342,7 @@ Linux 下：根据系统是32 位还是64 位进行下载：
 
 如何确认你的linux 是多少位：
 
-![图 2-31](./images/ch2-031.jpg)
+![图 2-31](./images/ch2-026.jpg)
 
 2. 请注意：安装路径不要有中文或者特殊符号如空格等
 3. SDK 安装目录建议：linux 放在/opt 目录下
@@ -318,7 +353,7 @@ Linux 下：根据系统是32 位还是64 位进行下载：
 
 步骤2: 将go1.9.2.linux-amd64.tar.gz 拷贝到/opt 下
 
-![图 2-32](./images/ch2-032.jpg)
+![图 2-32](./images/ch2-027.jpg)
 
 步骤3: cd /opt
 
@@ -328,17 +363,17 @@ Linux 下：根据系统是32 位还是64 位进行下载：
 
 步骤6：./go version
 
-![图 2-33](./images/ch2-033.jpg)
+![图 2-33](./images/ch2-028.jpg)
 
 ### 2.6.2 Linux 下配置Golang 环境变量
 
 步骤1：使用root 的权限来编辑vim /etc/profile 文件
 
-![图 2-34](./images/ch2-034.jpg)
+![图 2-34](./images/ch2-029.jpg)
 
 步骤2: 如果需要生效的话，需要注销一下(重新登录)，再使用
 
-![图 2-35](./images/ch2-035.jpg)
+![图 2-35](./images/ch2-030.jpg)
 
 ## 2.7 Mac 下搭建Go 开发环境-安装和配置SDK
 
@@ -363,7 +398,7 @@ Mac OS 系统的安装包：go1.9.2.darwin-amd64.tar.gz
 
 步骤4: 解压后，我们会得到一个目录go，进入到go/bin 就是可以使用
 
-![图 2-36](./images/ch2-036.jpg)
+![图 2-36](./images/ch2-031.jpg)
 
 这里还是有一个问题，就是如果我们不做bin 目录下，就使用不了go 程序。因此我们仍然需要配置go的环境变量。
 
@@ -371,11 +406,11 @@ Mac OS 系统的安装包：go1.9.2.darwin-amd64.tar.gz
 
 步骤1：s 使用root 用户，修改/etc/profile 增加环境变量的配置
 
-![图 2-37](./images/ch2-037.jpg)
+![图 2-37](./images/ch2-032.jpg)
 
 步骤2: 配置完后，需要重新注销用户，配置才会生效.
 
-![图 2-38](./images/ch2-038.jpg)
+![图 2-38](./images/ch2-033.jpg)
 
 ## 2.8 Go 语言快速开发入门
 
@@ -387,11 +422,11 @@ Mac OS 系统的安装包：go1.9.2.darwin-amd64.tar.gz
 
 1. 开发这个程序/项目时，go 的目录结构怎么处理.
 
-![图 2-39](./images/ch2-039.jpg)
+![图 2-39](./images/ch2-034.jpg)
 
 2. 代码如下：
 
-![图 2-40](./images/ch2-040.jpg)
+![图 2-40](./images/ch2-035.jpg)
 
 对上图的说明
 
@@ -405,10 +440,12 @@ Mac OS 系统的安装包：go1.9.2.darwin-amd64.tar.gz
 
 表示：引入一个包，包名fmt, 引入该包后，就可以使用fmt 包的函数，比如：fmt.Println
 
-(4) func main() {
+(4) 
 
 ```text
-        }
+func main() {
+    fmt.Println("hello,world")
+}
 ```
 
 func 是一个关键字，表示一个函数。
@@ -421,15 +458,15 @@ main 是函数名，是一个主函数，即我们程序的入口。
 
 3. 通过go build 命令对该go 文件进行编译，生成.exe 文件.
 
-![图 2-41](./images/ch2-041.jpg)
+![图 2-41](./images/ch2-036.jpg)
 
 4. 运行hello.exe 文件即可
 
-![图 2-42](./images/ch2-042.jpg)
+![图 2-42](./images/ch2-037.jpg)
 
 5. 注意：通过go run 命令可以直接运行hello.go 程序[类似执行一个脚本文件的形式]
 
-![图 2-43](./images/ch2-043.jpg)
+![图 2-43](./images/ch2-038.jpg)
 
 ### 2.8.3 linux 下如何开发Go 程序
 
@@ -437,17 +474,17 @@ main 是函数名，是一个主函数，即我们程序的入口。
 
 演示: 在linux 下开发Go 程序。
 
-![图 2-44](./images/ch2-044.jpg)
+![图 2-44](./images/ch2-039.jpg)
 
 编译和运行hello.go
 
-![图 2-45](./images/ch2-045.jpg)
+![图 2-45](./images/ch2-040.jpg)
 
-![图 2-46](./images/ch2-046.jpg)
+![图 2-46](./images/ch2-041.jpg)
 
 也可以直接使用go run hello.go 方式运行
 
-![图 2-47](./images/ch2-047.jpg)
+![图 2-47](./images/ch2-042.jpg)
 
 ### 2.8.4 Mac 下如何开发Go 程序
 
@@ -455,29 +492,36 @@ main 是函数名，是一个主函数，即我们程序的入口。
 - 演示一下：如何在mac 下开发一个hello.go 程序
 - 源代码的编写：hello.go
 
-![图 2-48](./images/ch2-048.jpg)
+![图 2-48](./images/ch2-043.jpg)
 
 - 编译再运行，直接go run 来运行
 
-![图 2-49](./images/ch2-049.jpg)
+![图 2-49](./images/ch2-044.jpg)
 
 - 直接go run 来运行
 
-![图 2-50](./images/ch2-050.jpg)
+![图 2-50](./images/ch2-045.jpg)
 
 ### 2.8.5 go 语言的快速入门的课堂练习
 
-![图 2-51](./images/ch2-051.jpg)
+![图 2-51](./images/ch2-046.jpg)
 
 ### 2.8.6 Golang 执行流程分析
 
 - 如果是对源码编译后，再执行，Go 的执行流程如下图
 
-![图 2-52](./images/ch2-052.jpg)
+```mermaid
+flowchart LR
+    A[".go 文件（源文件）"] -->|"go build 编译"| B["可执行文件（.exe 或可执行文件）"]
+    B -->|"运行"| C["结果"]
+```
 
 - 如果我们是对源码直接执行go run 源码，Go 的执行流程如下图
 
-![图 2-53](./images/ch2-053.jpg)
+```mermaid
+flowchart LR
+    A[".go 文件（源文件）"] -->|"go run 编译运行一步"| B["结果"]
+```
 
 - 两种执行流程的方式区别
 
@@ -490,7 +534,7 @@ main 是函数名，是一个主函数，即我们程序的入口。
 1. 有了go 源文件，通过编译器将其编译成机器可以识别的二进制码文件。
 2. 在该源文件目录下，通过go build 对hello.go 文件进行编译。可以指定生成的可执行文件名，在windows 下必须是.exe 后缀。
 
-![图 2-54](./images/ch2-054.jpg)
+![图 2-54](./images/ch2-047.jpg)
 
 3. 如果程序没有错误，没有任何提示，会在当前目录下会出现一个可执行文件(windows 下是.exe
 
@@ -498,11 +542,11 @@ Linux 下是一个可执行文件)，该文件是二进制码文件，也是可�
 
 4. 如果程序有错误，编译时，会在错误的那行报错。有助于程序员调试错误.
 
-![图 2-55](./images/ch2-055.jpg)
+![图 2-55](./images/ch2-048.jpg)
 
 5. 运行有两种形式
 
-![图 2-56](./images/ch2-056.jpg)
+![图 2-56](./images/ch2-049.jpg)
 
 ### 2.8.8 Go 程序开发的注意事项
 
@@ -515,11 +559,35 @@ Linux 下是一个可执行文件)，该文件是二进制码文件，也是可�
 
 5. Go 编译器是一行行进行编译的，因此我们一行就写一条语句，不能把多条语句写在同一个，否则报错
 
-![图 2-57](./images/ch2-057.jpg)
+```go
+package main
+import "fmt"
+func main() {
+
+	fmt.Println("hello")
+	fmt.Println("hello")
+	fmt.Println("hello")
+	fmt.Println("hello")
+	fmt.Println("hello")
+	fmt.Println("hello")
+	fmt.Println("hello")
+	fmt.Println("hello")
+	fmt.Println("hello") fmt.Println("hello") // 错误：一行写了多条语句
+}
+```
 
 6. go 语言定义的变量或者import 的包如果没有使用到，代码不能编译通过。
 
-![图 2-58](./images/ch2-058.jpg)
+```go
+package main
+import "fmt"
+func main() {
+
+	fmt.Println("hello")
+	// 定义一个变量,如果你没有使用这个变量，就会编译通不过
+	var num = 10 // 错误：变量 num 未被使用
+}
+```
 
 7. 大括号都是成对出现的，缺一不可。
 
@@ -529,7 +597,13 @@ Linux 下是一个可执行文件)，该文件是二进制码文件，也是可�
 
 1. \t : 表示一个制表符，通常使用它可以排版。
 
-![图 2-59](./images/ch2-059.jpg)
+```go
+import "fmt" // fmt包中提供格式化，输出，输入的函数
+func main() {
+	// 演示转义字符的使用 \t
+	fmt.Println("tom\tjack")
+}
+```
 
 2. \n ：换行符
 3. \\ ：一个\
@@ -537,11 +611,25 @@ Linux 下是一个可执行文件)，该文件是二进制码文件，也是可�
 5. \r ：一个回车 fmt.Println("天龙八部雪山飞狐\r 张飞");
 6. 案例截图
 
-![图 2-60](./images/ch2-060.jpg)
+```go
+package main
+
+import "fmt" // fmt包中提供格式化，输出，输入的函数.
+func main() {
+	// 演示转义字符的使用 \t
+	fmt.Println("tom\tjack")
+
+	fmt.Println("hello\nworld")
+	fmt.Println("C:\\Users\\Administrator\\Desktop\\go语言核心编程课程\\资料")
+	fmt.Println("tom说\"i love you\"")
+	// \r 回车,从当前行的最前面开始输出，覆盖掉以前内容
+	fmt.Println("天龙八部雪山飞狐\r张飞厉害")
+}
+```
 
 - 课堂练习
 
-![图 2-61](./images/ch2-061.jpg)
+![图 2-61](./images/ch2-050.jpg)
 
 ```text
 5min
@@ -562,7 +650,7 @@ func main() {
 
 ### 2.10.1 文件名或者路径错误
 
-![图 2-62](./images/ch2-062.jpg)
+![图 2-62](./images/ch2-051.jpg)
 
 ### 2.10.2 小结和提示
 
@@ -570,7 +658,7 @@ func main() {
 
 着去看懂编译器会报告的错误信息。
 
-![图 2-63](./images/ch2-063.jpg)
+![图 2-63](./images/ch2-052.jpg)
 
 ## 2.11 注释(comment)
 
@@ -592,7 +680,22 @@ func main() {
 
 - 举例
 
-![图 2-64](./images/ch2-064.jpg)
+```go
+// 这是一个main函数，是程序入口
+func main() {
+	// 演示转义字符的使用 \t
+	fmt.Println("tom\tjack")
+
+	// 如果希望一次性注释 ctrl + / 第一次表示注释，第二次表示取消注释
+
+	// fmt.Println("hello\nworld")
+	// fmt.Println("C:\\Users\\Administrator\\Desktop\\Go语言核心编程课程\\资料")
+	// fmt.Println("tom说\"i love you\"")
+
+	// \r 回车,从当前行的最前面开始输出，覆盖掉以前内容
+	fmt.Println("天龙八部雪山飞狐\r张飞厉害")
+}
+```
 
 2. 块注释(多行注释)
 
@@ -606,7 +709,13 @@ func main() {
 
 - 举例说明
 
-![图 2-65](./images/ch2-065.jpg)
+```go
+/*
+fmt.Println("hello\nworld")
+fmt.Println("C:\\Users\\Administrator\\Desktop\\Go语言核心编程课程\\资料")
+fmt.Println("tom说\"i love you\"")
+*/
+```
 
 - 使用细节
 
@@ -625,11 +734,13 @@ func main() {
 1. 使用一次tab 操作，实现缩进,默认整体向右边移动，时候用shift+tab 整体向左移看老师的演示：
 2. 或者使用gofmt 来进行格式化[演示]
 
-![图 2-66](./images/ch2-066.jpg)
+![图 2-66](./images/ch2-053.jpg)
 
 3. 运算符两边习惯性各加一个空格。比如：2 + 4 * 5。
 
-![图 2-67](./images/ch2-067.jpg)
+```go
+var num = 2 + 4 * 5
+```
 
 4. Go 语言的代码风格.
 
@@ -658,21 +769,31 @@ func main()
 
 - 举例说明
 
-![图 2-68](./images/ch2-068.jpg)
+```go
+// \r 回车,从当前行的最前面开始输出，覆盖掉以前内容
+fmt.Println("天龙八部雪山飞狐\r张飞厉害")
+
+fmt.Println("helloworldhelloworldhelloworldhelloworld\n",
+	"dhelloworlddhelloworlddhelloworlddhelloworlddhellowor\n",
+	"Idhelloworlddhelloworlddhelloworlddhelloworlddhellowor\n",
+	"dhelloworlddhelloworlddhelloworlddhelloworlddhelloworlddhel\n",
+	"loworlddhelloworlddhelloworlddhelloworlddhelloworlddhellowor\n",
+	"ldhelloworIdhelloworlddhelloworlddhelloworlddhelloworlddhelloworld")
+```
 
 ## 2.13 Golang 官方编程指南
 
 - 说明：Golang 官方网站https://golang.org
 
-![图 2-69](./images/ch2-069.jpg)
+![图 2-69](./images/ch2-054.jpg)
 
 - 点击上图的tour -> 选择简体中文就可以进入中文版的Go 编程指南。
 
-![图 2-70](./images/ch2-070.jpg)
+![图 2-70](./images/ch2-055.jpg)
 
 - Golang 官方标准库API 文档，https://golang.org/pkg可以查看Golang 所有包下的函数和使用
 
-![图 2-71](./images/ch2-071.jpg)
+![图 2-71](./images/ch2-056.jpg)
 
 - 解释术语：API
 
@@ -687,7 +808,7 @@ api ：application program interface :应用程序编程接口。
 3. Golang 中文网在线标准库文档：https://studygolang.com/pkgdoc
 4. Golang 的包和源文件和函数的关系简图
 
-![图 2-72](./images/ch2-072.jpg)
+![图 2-72](./images/ch2-057.jpg)
 
 5. 有一个离线版的Golang_Manual_By_AstaXie_20120522.chm
 
@@ -699,61 +820,99 @@ Dos：Disk Operating System 磁盘操作系统, 简单说一下windows 的目录
 
 ### 2.15.2 dos 的基本操作原理
 
-![图 2-73](./images/ch2-073.jpg)
+![图 2-73](./images/ch2-058.jpg)
 
 ### 2.15.3 目录操作指令
 
 - 查看当前目录是什么
 
-![图 2-74](./images/ch2-074.jpg)
+```text
+D:\>dir
+
+驱动器 D 中的卷是 新加卷
+卷的序列号是 D2ND-BC9F
+
+D:\ 的目录
+
+11  10:51    <DIR>    10201_client_win32
+05  10:46    <DIR>    360Downloads
+```
 
 - 切换到其他盘下：盘符号F 盘
 
 案例演示：
 
-![图 2-75](./images/ch2-075.jpg)
+```text
+D:\>cd /d f:
+```
 
 - 切换到当前盘的其他目录下(使用相对路径和绝对路径演示)
 
 案例演示：
 
-![图 2-76](./images/ch2-076.jpg)
+```text
+D:\>cd d:\test100
+
+d:\test100>cd abc100                 # 相对路径
+d:\test100\abc100>cd d:\test100
+
+d:\test100>cd d:\test100\abc100      # 绝对路径
+d:\test100\abc100>
+```
 
 - 切换到上一级：
 
 案例演示：
 
-![图 2-77](./images/ch2-077.jpg)
+```text
+d:\test100\abc100>cd ..
+d:\test100>
+```
 
 - 切换到根目录：
 
 案例演示：
 
-![图 2-78](./images/ch2-078.jpg)
+```text
+d:\test100>cd \
+d:\>
+```
 
 - 新建目录md （make directory）
 
 新建一个目录：
 
-![图 2-79](./images/ch2-079.jpg)
+```text
+d:\test200>md ok200
+```
 
 新建多个目录：
 
-![图 2-80](./images/ch2-080.jpg)
+```text
+d:\test200>md ok300 ok400
+d:\test200>
+```
 
 - 删除目录
 
 删除空目录
 
-![图 2-81](./images/ch2-081.jpg)
+```text
+d:\test200>rd ok100
+```
 
 删除目录以及下面的子目录和文件，不带询问
 
-![图 2-82](./images/ch2-082.jpg)
+```text
+d:\test200>rd /q/s ok200
+```
 
 删除目录以及下面的子目录和文件，带询问
 
-![图 2-83](./images/ch2-083.jpg)
+```text
+d:\test200>rd /s ok300
+ok300，是否确认(Y/N)? y
+```
 
 ### 2.15.4 文件的操作
 
@@ -761,29 +920,48 @@ Dos：Disk Operating System 磁盘操作系统, 简单说一下windows 的目录
 
 案例演示：
 
-![图 2-84](./images/ch2-084.jpg)
+```text
+d:\test200>echo hello > d:\test100\abc100\abc.txt
+```
 
-![图 2-85](./images/ch2-085.jpg)
+```text
+d:\test100\abc100>echo atguigu > abc2.txt
+```
 
 - 复制或移动文件
 
 复制
 
-![图 2-86](./images/ch2-086.jpg)
+```text
+d:\test100\abc100>copy abc.txt d:\test200      # 拷贝时，使用原来文件名
+已复制         1 个文件。
+
+d:\test100\abc100>copy abc.txt d:\test200\ok.txt  # 拷贝重写指定名
+已复制         1 个文件。
+```
 
 移动
 
-![图 2-87](./images/ch2-087.jpg)
+```text
+d:\test100\abc100>move abc.txt f:\
+移动了         1 个文件。
+```
 
 - 删除文件
 
 删除指定文件
 
-![图 2-88](./images/ch2-088.jpg)
+```text
+d:\test100\abc100>del abc2.txt
+
+d:\test100\abc100>dir
+```
 
 删除所有文件
 
-![图 2-89](./images/ch2-089.jpg)
+```text
+d:\test100\abc100>del *.txt
+```
 
 ### 2.15.5 其它指令
 
@@ -799,21 +977,37 @@ exit
 
 ### 2.15.6 综合案例
 
-![图 2-90](./images/ch2-090.jpg)
+切换到 E 盘下，新建一个目录 `atguigu100`（文件夹），切换到该目录，新建 `a`、`b`、`c` 三个目录，然后切换到 `a`，新建文件 `news.txt`，然后复制文件到 `b` 下，最后都删除。
+
+完成该案例：**10min**
 
 ## 2.16 课后练习题的评讲
 
 1. 独立编写Hello,Golang!程序[评讲]
 
-![图 2-91](./images/ch2-091.jpg)
+```go
+package main
+import "fmt"
+
+func main() {
+	fmt.Println("hello,Golang")
+}
+```
 
 2. 将个人的基本信息（姓名、性别、籍贯、住址）打印到终端上输出。各条信息分别占一行
 
-![图 2-92](./images/ch2-092.jpg)
+```go
+package main
+import "fmt"
+
+func main() {
+	fmt.Println("姓名\t性别\t籍贯\t住址\ntom\t男\t天津\t北京")
+}
+```
 
 3. 在终端打印出如下图所示的效果
 
-![图 2-93](./images/ch2-093.jpg)
+![图 2-93](./images/ch2-059.jpg)
 
 ## 2.17 本章的知识回顾
 

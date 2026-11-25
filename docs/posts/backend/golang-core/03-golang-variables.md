@@ -69,7 +69,7 @@ func main() {
 
 输出：
 
-![图 3-4](./images/ch3-004.jpg)
+![图 3-4](./images/ch3-002.jpg)
 
 ## 3.4 变量使用注意事项
 
@@ -78,7 +78,7 @@ func main() {
 
 示意图：
 
-![图 3-5](./images/ch3-005.jpg)
+![图 3-5](./images/ch3-003.jpg)
 
 3. Golang 变量使用的三种方式
 
@@ -237,7 +237,7 @@ func main() {
 
 ## 3.7 数据类型的基本介绍
 
-![图 3-15](./images/ch3-015.jpg)
+![图 3-15](./images/ch3-004.jpg)
 
 ## 3.8 整数类型
 
@@ -391,7 +391,7 @@ var num4 float64 = -123.0000901
 fmt.Println("num3=", num3, "num4=", num4)
 ```
 
-![图 3-29](./images/ch3-029.jpg)
+![图 3-29](./images/ch3-005.jpg)
 
 说明：float64 的精度比float32 的要准确.
 
@@ -670,32 +670,84 @@ v: 就是需要转换的变量
 
 ### 3.14.3 案例演示
 
-![图 3-43](./images/ch3-043.jpg)
+```go
+package main
+
+import (
+	"fmt"
+)
+
+// 演示golang中基本数据类型的转换
+func main() {
+
+	var i int32 = 100
+	// 希望将 i => float
+	var n1 float32 = float32(i)
+	var n2 int8 = int8(i)
+	var n3 int64 = int64(i) // 低精度->高精度
+
+	fmt.Printf("i=%v n1=%v n2=%v n3=%v", i, n1, n2, n3)
+}
+```
 
 ### 3.14.4 基本数据类型相互转换的注意事项
 
 1. Go 中，数据类型的转换可以是从表示范围小-->表示范围大，也可以范围大--->范围小
 2. 被转换的是变量存储的数据(即值)，变量本身的数据类型并没有变化！
 
-![图 3-44](./images/ch3-044.jpg)
+![图 3-44](./images/ch3-006.jpg)
 
 3. 在转换中，比如将int64 转成int8 【-128---127】，编译时不会报错，只是转换的结果是按溢出处理，和我们希望的结果不一样。因此在转换时，需要考虑范围.
 
-![图 3-45](./images/ch3-045.jpg)
+```go
+// 在转换中，比如将 int64 转成 int8 【-128---127】，编译时不会报错，
+// 只是转换的结果是按溢出处理，和我们希望的结果不一样
+var num1 int64 = 999999
+var num2 int8 = int8(num1)
+fmt.Println("num2=", num2) // 输出 num2=63
+```
 
 ### 3.14.5 课堂练习
 
 - 练习1
 
-![图 3-46](./images/ch3-046.jpg)
+```go
+func main() {
+	// 课堂练习，tab键
+	var n1 int32 = 12
+	var n2 int64
+	var n3 int8
+
+	n2 = n1 + 20 // int32 ----> int64 错误
+	n3 = n1 + 20 // int32 ----> int8 错误
+}
+```
 
 如何修改上面的代码，就可以正确.
 
-![图 3-47](./images/ch3-047.jpg)
+```go
+func main() {
+	// 课堂练习，tab键
+	var n1 int32 = 12
+	var n2 int64
+	var n3 int8
+
+	n2 = int64(n1) + 20 // int32 ----> int64
+	n3 = int8(n1) + 20  // int32 ----> int8
+	fmt.Println("n2=", n2, "n3=", n3)
+}
+```
 
 - 练习2
 
-![图 3-48](./images/ch3-048.jpg)
+```go
+var n1 int32 = 12
+var n3 int8
+var n4 int8
+n4 = int8(n1) + 127  // 【编译通过，但是结果不是 127+12，按溢出处理】
+n3 = int8(n1) + 128  // 【编译不过】
+fmt.Println(n4)
+```
 
 ## 3.15 基本数据类型和string 的转换
 
@@ -709,7 +761,13 @@ v: 就是需要转换的变量
 
 函数的介绍：
 
-![图 3-49](./images/ch3-049.jpg)
+func Sprintf
+
+```go
+func Sprintf(format string, a ...interface{}) string
+```
+
+Sprintf 根据 format 参数生成格式化的字符串并返回该字符串。
 
 参数需要和表达式的数据类型相匹配
 
@@ -719,31 +777,120 @@ fmt.Sprintf().. 会返回转换后的字符串
 
 - 案例演示
 
-![图 3-50](./images/ch3-050.jpg)
+```go
+// 演示golang中基本数据类型练习转成string使用
+func main() {
+
+	var num1 int = 99
+	var num2 float64 = 23.456
+	var b bool = true
+	var myChar byte = 'h'
+	var str string // 空的str
+
+	// 使用第一种方式来转换 fmt.Sprintf方法
+
+	str = fmt.Sprintf("%d", num1)
+	fmt.Printf("str type %T str=%q\n", str, str)
+
+	str = fmt.Sprintf("%f", num2)
+	fmt.Printf("str type %T str=%q\n", str, str)
+
+	str = fmt.Sprintf("%t", b)
+	fmt.Printf("str type %T str=%q\n", str, str)
+
+	str = fmt.Sprintf("%c", myChar)
+	fmt.Printf("str type %T str=%q\n", str, str)
+
+}
+```
 
 - 方式2：使用strconv 包的函数
 
-![图 3-51](./images/ch3-051.jpg)
+```go
+func FormatBool(b bool) string
+func FormatFloat(f float64, fmt byte, prec, bitSize int) string
+func FormatInt(i int64, base int) string
+func FormatUint(i uint64, base int) string
+func Itoa(i int) string
+```
 
 - 案例说明
 
-![图 3-52](./images/ch3-052.jpg)
+```go
+// 第二种方式 strconv 函数
+var num3 int = 99
+var num4 float64 = 23.456
+var b2 bool = true
 
-![图 3-53](./images/ch3-053.jpg)
+str = strconv.FormatInt(int64(num3), 10)
+fmt.Printf("str type %T str=%q\n", str, str)
+
+// strconv.FormatFloat(num4, 'f', 10, 64)
+// 说明: 'f' 格式 10: 表示小数位保留10位 64: 表示这个小数是float64
+str = strconv.FormatFloat(num4, 'f', 10, 64)
+fmt.Printf("str type %T str=%q\n", str, str)
+
+str = strconv.FormatBool(b2)
+fmt.Printf("str type %T str=%q\n", str, str)
+```
+
+```go
+// strconv 包中有一个函数 Itoa
+var num5 int64 = 4567
+str = strconv.Itoa(int(num5))
+fmt.Printf("str type %T str=%q\n", str, str)
+```
 
 ### 3.15.3 string 类型转基本数据类型
 
 - 使用时strconv 包的函数
 
-![图 3-54](./images/ch3-054.jpg)
+```go
+func ParseBool(str string) (value bool, err error)
+func ParseFloat(s string, bitSize int) (f float64, err error)
+func ParseInt(s string, base int, bitSize int) (i int64, err error)
+func ParseUint(s string, base int, bitSize int) (n uint64, err error)
+```
 
 - 案例演示
 
-![图 3-55](./images/ch3-055.jpg)
+```go
+func main() {
+
+	var str string = "true"
+	var b bool
+	// b, _ = strconv.ParseBool(str)
+	// 说明
+	// 1. strconv.ParseBool(str) 函数会返回两个值 (value bool, err error)
+	// 2. 因为我只想获取到 value bool，不想获取 err 所以我使用 _忽略
+	b, _ = strconv.ParseBool(str)
+	fmt.Printf("b type %T b=%v\n", b, b)
+
+	var str2 string = "1234590"
+	var n1 int64
+	var n2 int
+	n1, _ = strconv.ParseInt(str2, 10, 64)
+	n2 = int(n1)
+	fmt.Printf("n1 type %T n1=%v\n", n1, n1)
+	fmt.Printf("n2 type %T n2=%v\n", n2, n2)
+
+	var str3 string = "123.456"
+	var f1 float64
+	f1, _ = strconv.ParseFloat(str3, 64)
+	fmt.Printf("f1 type %T f1=%v\n", f1, f1)
+
+}
+```
 
 - 说明一下
 
-![图 3-56](./images/ch3-056.jpg)
+note: 因为返回的是 int64 或者 float64，如希望要得到 int32、float32 等如下处理：
+
+```go
+// 如果希望将 str --> int32 的可以这样处理
+var num5 int32
+num5 = int32(num)
+```
 
 ### 3.15.4 string 转基本数据类型的注意事项
 
@@ -751,7 +898,15 @@ fmt.Sprintf().. 会返回转换后的字符串
 
 案例说明：
 
-![图 3-57](./images/ch3-057.jpg)
+```go
+// 注意:
+var str4 string = "hello"
+var n3 int64 = 11
+n3, _ = strconv.ParseInt(str4, 10, 64)
+fmt.Printf("n3 type %T n3=%v\n", n3, n3)
+```
+
+如果没有转成功，`n3 = 0`（默认值）。
 
 ## 3.16 指针
 
@@ -762,7 +917,7 @@ fmt.Sprintf().. 会返回转换后的字符串
 
 分析一下基本数据类型在内存的布局.
 
-![图 3-58](./images/ch3-058.jpg)
+![图 3-58](./images/ch3-007.jpg)
 
 3. 指针类型，指针变量存的是一个地址，这个地址指向的空间存的才是值
 
@@ -770,26 +925,44 @@ fmt.Sprintf().. 会返回转换后的字符串
 
 举例说明：指针在内存的布局.
 
-![图 3-59](./images/ch3-059.jpg)
+![图 3-59](./images/ch3-008.jpg)
 
 4. 获取指针类型所指向的值，使用：*，比如：var ptr *int, 使用*ptr 获取ptr 指向的值
 
-![图 3-60](./images/ch3-060.jpg)
+```go
+// 演示golang中指针类型
+func main() {
+
+	// 基本数据类型在内存布局
+	var i int = 10
+	// i 的地址是什么，&i
+	fmt.Println("i的地址=", &i)
+
+	// 下面的 var ptr *int = &i
+	// 1. ptr 是一个指针变量
+	// 2. ptr 的类型 *int
+	// 3. ptr 本身的值&i
+	var ptr *int = &i
+	fmt.Printf("ptr=%v\n", ptr)
+	fmt.Printf("ptr 的地址=%v", &ptr)
+	fmt.Printf("ptr 指向的值=%v", *ptr)
+}
+```
 
 5. 一个案例再说明
 
-![图 3-61](./images/ch3-061.jpg)
+![图 3-61](./images/ch3-009.jpg)
 
 ### 3.16.2 案例演示
 
 1. 写一个程序，获取一个int 变量num 的地址，并显示到终端
 2. 将num 的地址赋给指针ptr , 并通过ptr 去修改num 的值.
 
-![图 3-62](./images/ch3-062.jpg)
+![图 3-62](./images/ch3-010.jpg)
 
 ### 3.16.3 指针的课堂练习
 
-![图 3-63](./images/ch3-063.jpg)
+![图 3-63](./images/ch3-011.jpg)
 
 ### 3.16.4 指针的使用细节
 
@@ -809,17 +982,17 @@ fmt.Sprintf().. 会返回转换后的字符串
 
 示意图：
 
-![图 3-64](./images/ch3-064.jpg)
+![图 3-64](./images/ch3-012.jpg)
 
 2. 引用类型：变量存储的是一个地址，这个地址对应的空间才真正存储数据(值)，内存通常在堆上分配，当没有任何变量引用这个地址时，该地址对应的数据空间就成为一个垃圾，由GC 来回收
 
 示意图：
 
-![图 3-65](./images/ch3-065.jpg)
+![图 3-65](./images/ch3-013.jpg)
 
 3. 内存的栈区和堆区示意图
 
-![图 3-66](./images/ch3-066.jpg)
+![图 3-66](./images/ch3-014.jpg)
 
 ## 3.18 标识符的命名规范
 
@@ -843,11 +1016,18 @@ fmt.Sprintf().. 会返回转换后的字符串
 
 4. 标识符不能包含空格。
 
-![图 3-67](./images/ch3-067.jpg)
+```go
+// 标识符不能包含空格
+var a b c int = 30 // 错误写法
+```
 
 5. 下划线"_"本身在Go 中是一个特殊的标识符，称为空标识符。可以代表任何其它的标识符，但是它对应的值会被忽略(比如：忽略某个返回值)。所以仅能被作为占位符使用，不能作为标识符使用
 
-![图 3-68](./images/ch3-068.jpg)
+```go
+// _ 是空标识符，用于占用
+var _ int = 40 // error
+fmt.Println(_) // 错误写法
+```
 
 6. 不能以系统保留关键字作为标识符（一共有25 个），比如break，if 等等...
 
@@ -876,7 +1056,7 @@ float32 // ok , 我们要求大家不要这样使用
 
 1. 包名：保持package 的名字和目录保持一致，尽量采取有意义的包名，简短，有意义，不要和标准库不要冲突fmt
 
-![图 3-69](./images/ch3-069.jpg)
+![图 3-69](./images/ch3-015.jpg)
 
 2. 变量名、函数名、常量名：采用驼峰法
 
@@ -891,14 +1071,35 @@ float32 // ok , 我们要求大家不要这样使用
 
 案例演示：
 
-![图 3-70](./images/ch3-070.jpg)
+![图 3-70](./images/ch3-016.jpg)
 
-![图 3-71](./images/ch3-071.jpg)
+![图 3-71](./images/ch3-017.jpg)
 
 ## 3.19 系统保留关键字
 
-![图 3-72](./images/ch3-072.jpg)
+保留关键字介绍
+
+在 Go 中，为了简化代码编译过程中对代码的解析，其定义的保留关键字只有 25 个。详见如下：
+
+| | | | | |
+| :--- | :--- | :--- | :--- | :--- |
+| break | default | func | interface | select |
+| case | defer | go | map | struct |
+| chan | else | goto | package | switch |
+| const | fallthrough | if | range | type |
+| continue | for | import | return | var |
 
 ## 3.20 系统的预定义标识符
 
-![图 3-73](./images/ch3-073.jpg)
+预定义标识符介绍
+
+除了保留关键字外，Go 还提供了 36 个预定义的标识符，其包括基础数据类型和系统内嵌函数：
+
+| | | | | | |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| append | bool | byte | cap | close | complex |
+| complex64 | complex128 | uint16 | copy | false | float32 |
+| float64 | imag | int | int8 | int16 | uint32 |
+| int32 | int64 | iota | len | make | new |
+| nil | panic | uint64 | print | println | real |
+| recover | string | true | uint | uint8 | uintptr |
