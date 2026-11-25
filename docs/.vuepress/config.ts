@@ -20,6 +20,7 @@ const catalogTitles: Record<string, string> = {
   "/posts/frontend/vue3/": "Vue3 学习笔记",
   "/posts/frontend/node/": "Node.js",
   "/posts/frontend/javascript-modularization/": "JavaScript 模块化规范",
+  "/posts/frontend/promise/": "Promise 从入门到自定义",
   "/posts/engineering/": "工程化",
   "/posts/engineering/git/": "Git",
   "/tools/": "工具",
@@ -34,6 +35,7 @@ const slugMap: Record<string, string> = {
   部署: "deploy",
   博客: "blog",
   JavaScript: "javascript",
+  Promise: "promise",
   模块化: "modularization",
   CommonJS: "commonjs",
   AMD: "amd",
@@ -241,10 +243,30 @@ const jsModuleSidebar = [
   },
 ];
 
+const promiseArticles = [
+  { text: "第 1 章 准备", link: "/posts/frontend/promise/01-preparation.html" },
+  { text: "第 2 章 Promise 的理解和使用", link: "/posts/frontend/promise/02-promise-understanding.html" },
+  { text: "第 3 章 自定义 Promise", link: "/posts/frontend/promise/03-custom-promise.html" },
+  { text: "第 4 章 async 与 await", link: "/posts/frontend/promise/04-async-await.html" },
+  { text: "第 5 章 JS 异步之宏队列与微队列", link: "/posts/frontend/promise/05-event-loop.html" },
+  { text: "第 6 章 Promise 相关面试题", link: "/posts/frontend/promise/06-interview-questions.html" },
+  { text: "完整版（逐页）", link: "/posts/frontend/promise/promise-full.html" },
+];
+
+const promiseSidebar = [
+  {
+    text: "Promise 从入门到自定义",
+    prefix: "/posts/frontend/promise/",
+    collapsible: true,
+    children: promiseArticles,
+  },
+];
+
 const frontendSidebar = [
   { text: "Vue3 学习笔记", prefix: "/posts/frontend/vue3/", collapsible: true, children: vue3Articles },
   { text: "Node.js", prefix: "/posts/frontend/node/", collapsible: true, children: nodeArticles },
   ...jsModuleSidebar,
+  ...promiseSidebar,
   {
     text: "Axios 从入门到源码分析",
     link: "/posts/frontend/axios-from-intro-to-source.html",
@@ -392,6 +414,7 @@ export default defineUserConfig({
       "/posts/python/": pythonSidebar,
       "/posts/frontend/": frontendSidebar,
       "/posts/frontend/javascript-modularization/": jsModuleSidebar,
+      "/posts/frontend/promise/": promiseSidebar,
       "/posts/engineering/git/": gitSidebar,
       "/posts/engineering/github-pages-deploy.html": engineeringSidebar,
       "/posts/engineering/vuepress-theme-hope-blog.html": engineeringSidebar,
