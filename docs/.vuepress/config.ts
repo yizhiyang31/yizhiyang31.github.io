@@ -62,6 +62,8 @@ const slugMap: Record<string, string> = {
   "数据类型": "datatype",
   "并发": "concurrency",
   "泛型": "generics",
+  webpack: "webpack",
+  "前端工程化": "frontend-engineering",
 };
 
 const slugify = (name: string): string =>
@@ -274,6 +276,7 @@ const frontendSidebar = [
   { text: "ECMAScript 6-11", link: "/posts/frontend/ecmascript-6-11.html" },
   { text: "一小时快速上手 Electron", link: "/posts/frontend/electron-quick-start.html" },
   { text: "TypeScript 极速梳理", link: "/posts/frontend/typescript-quick-review.html" },
+  { text: "webpack从入门到精通", link: "/posts/frontend/webpack从入门到精通.html" },
 ];
 
 const backendCategorySidebar = [
