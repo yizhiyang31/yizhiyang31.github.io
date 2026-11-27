@@ -302,6 +302,31 @@ const reactRouter6Sidebar = [
   },
 ];
 
+const miniprogramArticles = [
+  { text: "第 1 章 小程序基础知识", link: "/posts/frontend/miniprogram/01-basics.html" },
+  { text: "第 2 章 小程序配置文件", link: "/posts/frontend/miniprogram/02-config-files.html" },
+  { text: "第 3 章 常用样式和组件", link: "/posts/frontend/miniprogram/03-styles-and-components.html" },
+  { text: "第 4 章 事件处理", link: "/posts/frontend/miniprogram/04-events.html" },
+  { text: "第 5 章 模板语法", link: "/posts/frontend/miniprogram/05-template-syntax.html" },
+  { text: "第 6 章 生命周期", link: "/posts/frontend/miniprogram/06-lifecycle.html" },
+  { text: "第 7 章 微信原生 API", link: "/posts/frontend/miniprogram/07-native-api.html" },
+  { text: "第 8 章 自定义组件", link: "/posts/frontend/miniprogram/08-custom-components.html" },
+  { text: "第 9 章 npm 支持", link: "/posts/frontend/miniprogram/09-npm-support.html" },
+  { text: "第 10 章 分包加载", link: "/posts/frontend/miniprogram/10-subpackages.html" },
+  { text: "第 11 章 小程序开发能力", link: "/posts/frontend/miniprogram/11-capabilities.html" },
+  { text: "第 12 章 框架接口 getApp", link: "/posts/frontend/miniprogram/12-getapp.html" },
+  { text: "第 13 章 上线发布", link: "/posts/frontend/miniprogram/13-release.html" },
+];
+
+const miniprogramSidebar = [
+  {
+    text: "微信小程序",
+    prefix: "/posts/frontend/miniprogram/",
+    collapsible: true,
+    children: miniprogramArticles,
+  },
+];
+
 const frontendSidebar = [
   { text: "Vue3 学习笔记", prefix: "/posts/frontend/vue3/", collapsible: true, children: vue3Articles },
   { text: "Node.js", prefix: "/posts/frontend/node/", collapsible: true, children: nodeArticles },
@@ -309,6 +334,7 @@ const frontendSidebar = [
   ...promiseSidebar,
   ...reactSidebar,
   ...reactRouter6Sidebar,
+  ...miniprogramSidebar,
   {
     text: "Axios 从入门到源码分析",
     link: "/posts/frontend/axios-from-intro-to-source.html",
