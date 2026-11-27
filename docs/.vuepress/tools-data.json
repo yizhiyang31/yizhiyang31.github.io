@@ -391,18 +391,104 @@
     {
       "key": "ai-tools",
       "label": "AI 工具",
-      "hint": "收录 AI 助手、智能体搭建与 AI 办公等平台入口，便于快速查找与访问。",
+      "hint": "收录 AI 对话助手、写作办公、PPT 演示与设计视频创作等平台入口，便于快速查找与访问。",
       "categories": [
         {
           "key": "ai-assistants",
           "label": "AI 助手与智能体",
-          "summary": "AI 内容生成、智能体搭建与办公助手平台。",
+          "summary": "通用 AI 对话助手、智能体搭建与办公助手平台。",
           "tools": [
             {
               "name": "扣子 Coze",
               "badge": "CZ",
               "description": "AI 办公助手一站式平台，提供 AI 写作、PPT、表格、设计、播客、生图等能力，并支持搭建智能体与工作流。",
               "url": "https://www.coze.cn/?cate_type=recommend"
+            },
+            {
+              "name": "Kimi",
+              "badge": "KM",
+              "description": "月之暗面旗下 AI 助手，支持长文本阅读、联网搜索与文件解析，适合资料整理、写作与代码辅助。",
+              "url": "https://www.kimi.com/"
+            },
+            {
+              "name": "OpenAI ChatGPT",
+              "badge": "GP",
+              "description": "OpenAI 官方对话助手，涵盖问答、写作、代码、图像生成与数据分析等通用能力。",
+              "url": "https://chat.openai.com/"
+            },
+            {
+              "name": "豆包",
+              "badge": "DB",
+              "description": "字节跳动 AI 助手，支持多轮对话、文件与图片理解、语音交互及智能体创建。",
+              "url": "https://www.doubao.com/"
+            },
+            {
+              "name": "文心一言",
+              "badge": "WY",
+              "description": "百度 AI 对话助手，提供创作、问答、代码与图片生成能力，并支持企业级应用开发。",
+              "url": "https://yiyan.baidu.com/"
+            },
+            {
+              "name": "DeepSeek",
+              "badge": "DS",
+              "description": "深度求索推出的开源大模型助手，支持深度思考、联网搜索与代码调试，可本地部署。",
+              "url": "https://chat.deepseek.com/"
+            },
+            {
+              "name": "开放猫",
+              "badge": "OM",
+              "description": "多模型聚合的 AI 对话平台，可在智能编程、文案助手与高效办公等场景自由切换模型。",
+              "url": "https://openmao.panchuang.net/"
+            }
+          ]
+        },
+        {
+          "key": "ai-writing",
+          "label": "AI 写作与文档",
+          "summary": "文案生成、论文润色与长文创作工具。",
+          "tools": [
+            {
+              "name": "笔灵 AI",
+              "badge": "BL",
+              "description": "全能型 AI 写作工具，内置 200+ 写作场景模板，涵盖工作报告、演讲稿、论文大纲、小红书文案与 AI PPT。",
+              "url": "https://ibiling.cn/"
+            }
+          ]
+        },
+        {
+          "key": "ai-creation",
+          "label": "AI 演示与创作",
+          "summary": "AI 生成 PPT、数字人视频与界面设计工具。",
+          "tools": [
+            {
+              "name": "AiPPT",
+              "badge": "AP",
+              "description": "输入一句话自动生成完整 PPT，自动配大纲、排版与配图，模板丰富，生成后可继续在线编辑。",
+              "url": "https://www.aippt.cn/"
+            },
+            {
+              "name": "博思 AiPPT",
+              "badge": "BS",
+              "description": "博思 AIPPT 提供 520+ 主题模板与 3500+ 布局，支持文件转 PPT、企业自定义模板与 PPTX、PDF 等多格式导出。",
+              "url": "https://pptgo.cn/"
+            },
+            {
+              "name": "腾讯智影",
+              "badge": "TY",
+              "description": "腾讯 AI 智能创作平台，融合 AI 数字人、文字配音、文章转视频等能力，支持在线一键成片。",
+              "url": "https://zenvideo.qq.com/"
+            },
+            {
+              "name": "即梦 AI",
+              "badge": "JM",
+              "description": "字节跳动一站式 AI 创作平台，支持图片与视频生成、画布创作、智能编辑与 3D 导演台等能力。",
+              "url": "https://jimeng.jianying.com/"
+            },
+            {
+              "name": "即时 AI",
+              "badge": "JS",
+              "description": "即时设计推出的 AI 设计工具，用自然语言生成可二次编辑的 UI 设计稿，支持整套界面与多风格产出。",
+              "url": "https://js.design/ai/create"
             }
           ]
         }

@@ -36,8 +36,35 @@ const currentTab = computed(
 );
 const currentCategories = computed(() => currentTab.value?.categories ?? []);
 
+const keyword = ref("");
+const normalizedKeyword = computed(() => keyword.value.trim().toLowerCase());
+const isSearching = computed(() => normalizedKeyword.value.length > 0);
+
+const matchesKeyword = (tool: ToolItem): boolean =>
+  !normalizedKeyword.value || tool.name.toLowerCase().includes(normalizedKeyword.value);
+
 const countTools = (tab: ToolTab): number =>
-  tab.categories.reduce((sum, category) => sum + category.tools.length, 0);
+  tab.categories.reduce((sum, category) => sum + category.tools.filter(matchesKeyword).length, 0);
+
+const visibleCategories = computed(() =>
+  currentCategories.value
+    .map((category) => ({ ...category, tools: category.tools.filter(matchesKeyword) }))
+    .filter((category) => category.tools.length > 0),
+);
+
+const tabsWithMatches = computed(() =>
+  tabs.filter((tab) => countTools(tab) > 0).map((tab) => tab.label),
+);
+
+const clearSearch = (): void => {
+  keyword.value = "";
+};
+
+const onSearchKeydown = (event: KeyboardEvent): void => {
+  if (event.key !== "Escape") return;
+  clearSearch();
+  (event.target as HTMLInputElement).blur();
+};
 
 const failedIcons = reactive(new Set<string>());
 
@@ -94,6 +121,45 @@ const onTabKeydown = (event: KeyboardEvent, index: number): void => {
       <h1 class="tool-shelf__title">常用工具</h1>
     </header>
 
+    <div class="tool-search">
+      <label class="tool-search__field">
+        <svg class="tool-search__icon" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="1.8" />
+          <path
+            d="M16.5 16.5L21 21"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+          />
+        </svg>
+        <input
+          v-model="keyword"
+          class="tool-search__input"
+          type="search"
+          placeholder="搜索工具名称，如 Element、ECharts、Kimi"
+          aria-label="按名称搜索工具"
+          @keydown="onSearchKeydown"
+        />
+      </label>
+      <button
+        v-if="isSearching"
+        class="tool-search__clear"
+        type="button"
+        aria-label="清除搜索关键词"
+        @click="clearSearch"
+      >
+        清除
+      </button>
+    </div>
+
+    <p v-if="isSearching" class="tool-search__summary" role="status" aria-live="polite">
+      在「{{ currentTab?.label }}」中找到 {{ visibleCategories.reduce((sum, category) => sum + category.tools.length, 0) }} 个匹配工具
+      <template v-if="tabsWithMatches.length > 1">
+        ，其他分类也有匹配：{{ tabsWithMatches.filter((label) => label !== currentTab?.label).join("、") }}
+      </template>
+    </p>
+
     <div class="tool-tabs" role="tablist" aria-label="工具分类">
       <button
         v-for="(tab, index) in tabs"
@@ -118,8 +184,8 @@ const onTabKeydown = (event: KeyboardEvent, index: number): void => {
         role="tabpanel"
         :aria-label="currentTab?.label"
       >
-        <div v-if="currentCategories.length" class="tool-categories">
-          <section v-for="category in currentCategories" :key="category.key" class="tool-category">
+        <div v-if="visibleCategories.length" class="tool-categories">
+          <section v-for="category in visibleCategories" :key="category.key" class="tool-category">
             <header class="tool-category__header">
               <div>
                 <h2 class="tool-category__title">{{ category.label }}</h2>
@@ -169,8 +235,16 @@ const onTabKeydown = (event: KeyboardEvent, index: number): void => {
         </div>
 
         <div v-else class="tool-empty">
-          <h2>暂无工具数据</h2>
-          <p>请在 tools-data.json 中添加工具分类与工具信息。</p>
+          <template v-if="isSearching">
+            <h2>没有找到匹配的工具</h2>
+            <p>
+              「{{ currentTab?.label }}」中没有名称包含「{{ keyword.trim() }}」的工具，可换个关键词或切换到其他分类。
+            </p>
+          </template>
+          <template v-else>
+            <h2>暂无工具数据</h2>
+            <p>请在 tools-data.json 中添加工具分类与工具信息。</p>
+          </template>
         </div>
       </section>
     </Transition>
@@ -213,6 +287,87 @@ const onTabKeydown = (event: KeyboardEvent, index: number): void => {
   color: var(--vp-c-text-2, var(--vp-c-text));
   font-size: 0.95rem;
   line-height: 1.75;
+}
+
+.tool-search {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1.75rem 0 0;
+}
+
+.tool-search__field {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  width: min(26rem, 100%);
+  padding: 0 0.85rem;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 999px;
+  background: var(--vp-c-bg-soft);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.tool-search__field:focus-within {
+  border-color: var(--vp-c-brand-1);
+  box-shadow: 0 0 0 3px var(--vp-c-brand-soft);
+}
+
+.tool-search__icon {
+  flex: none;
+  width: 1rem;
+  height: 1rem;
+  color: var(--vp-c-text-3, var(--vp-c-text-2));
+}
+
+.tool-search__input {
+  width: 100%;
+  min-width: 0;
+  padding: 0.6rem 0;
+  border: 0;
+  background: transparent;
+  color: var(--vp-c-text-1, var(--vp-c-text));
+  font-family: inherit;
+  font-size: 0.9rem;
+  outline: none;
+}
+
+.tool-search__input::placeholder {
+  color: var(--vp-c-text-3, var(--vp-c-text-2));
+}
+
+.tool-search__input::-webkit-search-cancel-button {
+  display: none;
+}
+
+.tool-search__clear {
+  flex: none;
+  padding: 0.35rem 0.75rem;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 999px;
+  background: var(--vp-c-bg-elv);
+  color: var(--vp-c-text-2, var(--vp-c-text));
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.tool-search__clear:hover {
+  border-color: var(--vp-c-brand-1);
+  color: var(--vp-c-brand-1);
+}
+
+.tool-search__summary {
+  margin: 0.7rem 0 0;
+  color: var(--vp-c-text-2, var(--vp-c-text));
+  font-size: 0.85rem;
+  line-height: 1.7;
 }
 
 .tool-tabs {
@@ -471,6 +626,14 @@ const onTabKeydown = (event: KeyboardEvent, index: number): void => {
 @media (max-width: 720px) {
   .tool-shelf {
     padding: 1.75rem 0 3rem;
+  }
+
+  .tool-search {
+    flex-wrap: wrap;
+  }
+
+  .tool-search__field {
+    width: 100%;
   }
 
   .tool-tabs {
