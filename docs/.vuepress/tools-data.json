@@ -1,9 +1,9 @@
 {
   "tabs": [
     {
-      "key": "frontend",
-      "label": "前端工具",
-      "hint": "收录 Vue、uni-app 与跨端场景的 UI 组件库和图表工具，便于快速查找与访问。",
+      "key": "dev-tools",
+      "label": "开发工具",
+      "hint": "收录 UI 组件库、图形引擎、视觉特效示例、前端工具库、图标素材、CDN 服务、接口 Mock 服务、Go 框架、项目模板文档、插件市场、VS Code 扩展、Chrome 插件、在线编译调试、在线工具箱与运行时下载等开发工具，便于快速查找与访问。",
       "categories": [
         {
           "key": "ui-libraries",
@@ -51,16 +51,177 @@
               "badge": "VA",
               "description": "轻量、可靠的移动端 Vue 组件库，适合电商与移动 H5 页面。",
               "url": "https://vant-ui.github.io/vant/"
+            },
+            {
+              "name": "Swiper 中文网",
+              "badge": "SW",
+              "description": "开源触摸滑动插件中文站，提供轮播图、焦点图、Tab 切换与 3D 过渡等效果的 API 文档、示例与下载，支持 React、Vue、Angular 等框架。",
+              "url": "https://www.swiper.com.cn/"
+            },
+            {
+              "name": "ECharts 图表库",
+              "badge": "EC",
+              "description": "ECharts 图表配置与示例收集站，收录折线图、饼图、柱状图、仪表盘、地图、关系图等各类可视化模板。",
+              "url": "https://echarts.zhangmuchen.top/#/index"
+            },
+            {
+              "name": "Apache ECharts",
+              "badge": "EZ",
+              "description": "Apache ECharts 官网，基于 JavaScript 的开源可视化图表库，提供 20 多种图表、Canvas/SVG 双渲染引擎、数据分析能力与丰富配置项。",
+              "url": "https://echarts.apache.org/zh/index.html"
+            },
+            {
+              "name": "ECharts 图表集 isqqw",
+              "badge": "IS",
+              "description": "ECharts 图表集与 demo 社区，收录折线图、饼图、柱状图、仪表盘、漏斗图等大量可视化作品与配置示例，可按版本浏览。",
+              "url": "https://www.isqqw.com/"
+            },
+            {
+              "name": "DataV",
+              "badge": "DV",
+              "description": "基于 Vue 的大屏数据可视化组件库，提供 SVG 边框、装饰、图表、飞线图、水位图与轮播表等组件，支持全局引入与按需引入。",
+              "url": "http://datav.jiaminghi.com/"
+            },
+            {
+              "name": "vue-amap",
+              "badge": "AM",
+              "description": "基于 Vue 3 的高德地图 2.0 组件封装，提供 AMap、LOCA 与 Three.js 扩展组件，支持 TypeScript 与自定义原生对象。",
+              "url": "https://vue-amap.guyixi.cn/"
+            },
+            {
+              "name": "Vxe Gantt v4",
+              "badge": "VG",
+              "description": "基于 Vxe UI 的企业级甘特图组件示例与文档，支持多维度任务视图、日期轴、里程碑、依赖线、虚拟滚动与任务拖拽等能力。",
+              "url": "https://gantt.vxeui.com/v4/#/demo/productList"
+            },
+            {
+              "name": "XGantt",
+              "badge": "XG",
+              "description": "高性能甘特图组件，基于 Canvas 与 Konva.js，支持任务依赖、拖拽缩放、多时间单位、虚拟滚动以及 Vue、React 等框架。",
+              "url": "https://xpyjs.github.io/gantt/"
+            },
+            {
+              "name": "vue3-tree-org",
+              "badge": "TO",
+              "description": "基于 Vue 3 + TypeScript 的组织架构图组件，支持拖拽缩放、节点增删改、树结构拖拽调整、自定义右键菜单与插槽渲染。",
+              "url": "https://sangtian152.github.io/vue3-tree-org/"
+            },
+            {
+              "name": "lime-signature 手写签名",
+              "badge": "SG",
+              "description": "uni-app / uni-app x 手写签名插件，支持横屏、压感模拟、撤销重做与生成签名图片，兼容 H5、App 与多种小程序平台。",
+              "url": "https://ext.dcloud.net.cn/plugin?id=4354"
+            },
+            {
+              "name": "Grid Layout Plus",
+              "badge": "GL",
+              "description": "Vue 3 网格布局组件，支持部件拖拽与缩放、边界检查、响应式布局、RTL 适配以及布局的序列化与还原。",
+              "url": "https://grid-layout-plus.netlify.app/zh/"
+            },
+            {
+              "name": "Avue",
+              "badge": "AV",
+              "description": "企业级数据驱动组件库，提供表单、CRUD 数据管理、基础组件、数据展示与业务组件，支持 Vue 3 项目快速接入。",
+              "url": "https://avuejs.com/"
+            },
+            {
+              "name": "vueDataV",
+              "badge": "VD",
+              "description": "基于 Vue + ECharts 的数据可视化大屏展示模板与组件库，提供多行业大屏示例和可自由替换组合的图表组件。",
+              "url": "https://jackchen0120.github.io/vueDataV/#/"
+            },
+            {
+              "name": "Uiverse",
+              "badge": "UI",
+              "description": "开源 UI 元素库，收录按钮、加载动画、卡片、表单等组件，可复制为 HTML/CSS、Tailwind、React 与 Figma 格式。",
+              "url": "https://uiverse.io/"
             }
           ]
-        }
-      ]
-    },
-    {
-      "key": "go",
-      "label": "Go 工具",
-      "hint": "收录 GoFrame 框架，便于快速查找与访问。",
-      "categories": [
+        },
+        {
+          "key": "vscode-extensions",
+          "label": "VS Code 扩展",
+          "summary": "扩展插件搜索、离线下载与安装辅助工具。",
+          "tools": [
+            {
+              "name": "VS Code 扩展中心",
+              "badge": "VS",
+              "description": "在线搜索并下载 VS Code 扩展的 .vsix 离线安装包，支持按版本与平台选择，适用于内网与离线环境。",
+              "url": "https://devworld.top/zh/"
+            }
+          ]
+        },
+        {
+          "key": "browser-extensions",
+          "label": "浏览器扩展",
+          "summary": "Chrome 插件与主题下载、浏览器功能增强工具。",
+          "tools": [
+            {
+              "name": "极简插件",
+              "badge": "JP",
+              "description": "Chrome 插件与主题下载站，覆盖广告拦截、网页翻译、程序开发、界面美化等扩展分类。",
+              "url": "https://chrome.zzzmh.cn/#/theme"
+            }
+          ]
+        },
+        {
+          "key": "plugin-marketplaces",
+          "label": "插件市场",
+          "summary": "面向特定开发框架的插件、组件与项目模板分发市场。",
+          "tools": [
+            {
+              "name": "DCloud 插件市场",
+              "badge": "DC",
+              "description": "DCloud / uni-app 官方插件市场，提供前端组件、Vue 组件、UTS/API 插件、uniCloud 项目模板等资源，可按分类搜索、下载与购买。",
+              "url": "https://ext.dcloud.net.cn/"
+            }
+          ]
+        },
+        {
+          "key": "online-compilers",
+          "label": "在线编译与调试",
+          "summary": "浏览器内编写、运行、调试代码的在线 IDE 与编译器。",
+          "tools": [
+            {
+              "name": "OnlineGDB",
+              "badge": "OG",
+              "description": "在线编译器与调试器，支持 C/C++、Java、Python、Go、Rust 等数十种语言，可编写、运行、断点调试并分享代码。",
+              "url": "https://www.onlinegdb.com/online_c_compiler"
+            }
+          ]
+        },
+        {
+          "key": "utility-boxes",
+          "label": "在线工具箱",
+          "summary": "浏览器本地运行的文本、编码、图片、音视频与 PDF 小工具集合。",
+          "tools": [
+            {
+              "name": "EPlus 工具箱",
+              "badge": "EP",
+              "description": "无需登录的在线开发者工具箱，提供密码生成、2FA、变量命名、Base64/MD5/JSON、文本 Diff、图片与音视频处理、PDF 处理等小工具，数据在浏览器本地处理。",
+              "url": "https://eee.plus/"
+            }
+          ]
+        },
+        {
+          "key": "runtime-downloads",
+          "label": "运行时与版本下载",
+          "summary": "编程语言运行时、发行版与历史版本归档下载入口。",
+          "tools": [
+            {
+              "name": "Node.js 发行版下载",
+              "badge": "ND",
+              "description": "Node.js 官方发行版下载索引，提供各版本二进制包、源码压缩包、npm 相关资源与从早期版本到最新预发布版本的历史归档。",
+              "url": "https://nodejs.org/dist/"
+            },
+            {
+              "name": "Python 官网",
+              "badge": "PY",
+              "description": "Python 编程语言官方网站，提供各平台安装包下载、版本归档、官方文档、入门教程与社区资源。",
+              "url": "https://www.python.org/"
+            }
+          ]
+        },
         {
           "key": "goframe",
           "label": "GoFrame",
@@ -71,6 +232,473 @@
               "badge": "GF",
               "description": "模块化、高性能的 Go 应用开发框架，提供 Web 服务、ORM、中间件等能力。",
               "url": "https://goframe.org/"
+            }
+          ]
+        },
+        {
+          "key": "project-templates",
+          "label": "项目模板与文档",
+          "summary": "桌面端、前端项目模板及其配套使用文档。",
+          "tools": [
+            {
+              "name": "Electron Vue 模板文档",
+              "badge": "EV",
+              "description": "Electron + Vue 项目模板的使用文档，涵盖安装启动、目录结构、自动更新、内置 Express 服务、IPC 通信与打包配置等。",
+              "url": "https://umbrella22.github.io/electron-vue-template-doc/"
+            },
+            {
+              "name": "unibest 文档",
+              "badge": "UB",
+              "description": "unibest 跨端开发模板文档，基于 uni-app + Vue3 + TypeScript + Vite + UnoCSS，提供快速开始、基础功能、多平台配置与常见问题。",
+              "url": "https://codercup.github.io/unibest-docs/"
+            },
+            {
+              "name": "VuePress Theme Hope 文档",
+              "badge": "VH",
+              "description": "VuePress Theme Hope 中文文档，介绍功能强大的 VuePress 主题，涵盖 Markdown 扩展、布局、博客、搜索、评论与 PWA 等配置。",
+              "url": "https://theme-hope.vuejs.press/zh/"
+            },
+            {
+              "name": "RuoYi 若依文档",
+              "badge": "RY",
+              "description": "RuoYi 若依快速开发框架文档，提供前后端分离、微服务与移动端版本，内置权限管理、代码生成器与响应式布局。",
+              "url": "https://doc.ruoyi.vip/"
+            },
+            {
+              "name": "Vue Vben Admin 演示",
+              "badge": "VB",
+              "description": "Vue Vben Admin 在线演示站，展示基于 Vue 3、Vite、TypeScript 的企业级中后台模板，包含主题定制、权限管理与国际化等能力。",
+              "url": "https://www.vben.pro/"
+            },
+            {
+              "name": "Geeker-Admin 演示",
+              "badge": "GA",
+              "description": "Geeker-Admin 在线演示站，展示基于 Vue 3、TypeScript、Vite、Pinia 与 Element Plus 的开源后台管理框架。",
+              "url": "https://admin.spicyboy.cn/"
+            },
+            {
+              "name": "vue-element-admin 演示",
+              "badge": "VE",
+              "description": "vue-element-admin 在线演示，基于 Vue 2 与 Element UI 的经典后台管理模板，内置权限验证、动态路由、国际化与丰富业务组件。",
+              "url": "https://panjiachen.github.io/vue-element-admin/"
+            },
+            {
+              "name": "Soybean Admin 演示",
+              "badge": "SA",
+              "description": "Soybean Admin 在线演示，基于 Vue 3、Vite、TypeScript、Pinia、NaiveUI 与 UnoCSS 的清新优雅后台管理模板。",
+              "url": "https://soybeanjs.cn/"
+            }
+          ]
+        },
+        {
+          "key": "icon-resources",
+          "label": "图标与素材",
+          "summary": "开源图标、字体等设计素材的浏览、搜索与资源检索平台。",
+          "tools": [
+            {
+              "name": "Iconify 图标集",
+              "badge": "IC",
+              "description": "Iconify 开源图标集浏览器，收录 Material、Tabler、Lucide、Simple Icons 等数百套图标，可按分类浏览、搜索并查看图标名称与授权信息。",
+              "url": "https://icon-sets.iconify.design/"
+            },
+            {
+              "name": "ZeoSeven Fonts",
+              "badge": "ZS",
+              "description": "免费商用字体下载、预览与 API 服务，收录思源黑体、霞鹜文楷、Geist 等中英文字体，可按字重、风格与授权信息筛选。",
+              "url": "https://fonts.zeoseven.com/"
+            }
+          ]
+        },
+        {
+          "key": "frontend-utilities",
+          "label": "前端工具库",
+          "summary": "面向前端框架的通用工具函数与 Hooks 集合。",
+          "tools": [
+            {
+              "name": "VueUse",
+              "badge": "VU",
+              "description": "Vue 3 组合式工具函数集合，提供 200 多个函数，覆盖状态、浏览器、传感器、网络等场景，支持 Tree-shaking、TypeScript 与 SSR。",
+              "url": "https://vueuse.org/"
+            }
+          ]
+        },
+        {
+          "key": "graphics-engines",
+          "label": "图形与可视化引擎",
+          "summary": "3D 图形、WebGL 与可视化渲染引擎。",
+          "tools": [
+            {
+              "name": "Three.js",
+              "badge": "3D",
+              "description": "Three.js 官网，JavaScript 3D 图形库，提供 WebGL 渲染、场景与相机、材质光照、模型加载能力以及丰富的示例与文档。",
+              "url": "https://threejs.org/"
+            }
+          ]
+        },
+        {
+          "key": "cdn-services",
+          "label": "CDN 与资源托管",
+          "summary": "开源库静态资源 CDN 加速与引用服务。",
+          "tools": [
+            {
+              "name": "BootCDN",
+              "badge": "BC",
+              "description": "国内开源项目免费 CDN 加速服务，收录 React、Vue、Bootstrap、jQuery、ECharts 等大量前端库的静态资源，可按需获取版本链接。",
+              "url": "https://www.bootcdn.cn/"
+            }
+          ]
+        },
+        {
+          "key": "mock-services",
+          "label": "接口与 Mock 服务",
+          "summary": "模拟接口数据、接口代理与联调辅助服务。",
+          "tools": [
+            {
+              "name": "Easy Mock 文档",
+              "badge": "EM",
+              "description": "Easy Mock 中文文档，介绍可视化模拟数据持久化服务，支持 Mock.js 语法、接口代理、Swagger 导入、响应式数据与团队协作。",
+              "url": "https://mock.mengxuegu.com/docs"
+            }
+          ]
+        },
+        {
+          "key": "visual-effects",
+          "label": "视觉特效示例",
+          "summary": "前端视觉动效、交互效果与创意实现的案例集合。",
+          "tools": [
+            {
+              "name": "Visualization Collection",
+              "badge": "VIS",
+              "description": "前端视觉效果案例集合，涵盖 CSS 动效、Canvas 动画、Three.js 3D 与 AI 应用等上百个可在线体验的示例。",
+              "url": "https://hepengwei.cn/#/html/visualDesign"
+            },
+            {
+              "name": "SpinKit",
+              "badge": "SK",
+              "description": "CSS 加载动画集合，提供多种纯 CSS spinner 效果，可在线预览并直接获取源码。",
+              "url": "https://tobiasahlin.com/spinkit/"
+            },
+            {
+              "name": "Animate.css",
+              "badge": "AC",
+              "description": "跨浏览器 CSS 动画库，提供进入、退出、强调与背景等分类的即用型动画，支持用 CSS 变量自定义时长、延迟与循环次数。",
+              "url": "https://animate.style/"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "ai-tools",
+      "label": "AI 工具",
+      "hint": "收录 AI 助手、智能体搭建与 AI 办公等平台入口，便于快速查找与访问。",
+      "categories": [
+        {
+          "key": "ai-assistants",
+          "label": "AI 助手与智能体",
+          "summary": "AI 内容生成、智能体搭建与办公助手平台。",
+          "tools": [
+            {
+              "name": "扣子 Coze",
+              "badge": "CZ",
+              "description": "AI 办公助手一站式平台，提供 AI 写作、PPT、表格、设计、播客、生图等能力，并支持搭建智能体与工作流。",
+              "url": "https://www.coze.cn/?cate_type=recommend"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "office-tools",
+      "label": "办公工具",
+      "hint": "收录 PDF 处理、文件转换、图片处理、在线协作、内容运营、支付与商业服务、二维码与表单等办公效率工具，便于快速查找与访问。",
+      "categories": [
+        {
+          "key": "pdf-tools",
+          "label": "PDF 处理",
+          "summary": "PDF 合并、转换、编辑、签名与 OCR 等在线文档处理工具。",
+          "tools": [
+            {
+              "name": "iLovePDF",
+              "badge": "IL",
+              "description": "在线 PDF 处理工具，支持合并、拆分、压缩、格式转换、编辑、签名、水印、OCR 与加密等，提供网页、桌面与移动端使用方式。",
+              "url": "https://www.ilovepdf.com/zh-cn"
+            }
+          ]
+        },
+        {
+          "key": "file-conversion",
+          "label": "文件转换",
+          "summary": "视频、图片、音频、文档与电子书等格式的在线互转工具。",
+          "tools": [
+            {
+              "name": "FreeConvert",
+              "badge": "FC",
+              "description": "在线文件转换工具，支持视频、图片、音频、文档、电子书等 1500 多种格式互转，可从本地或云盘导入文件，免费额度最大支持 1GB。",
+              "url": "https://www.freeconvert.com/"
+            },
+            {
+              "name": "VideoCompress.ai 视频转 MP3",
+              "badge": "VC",
+              "description": "在线视频转 MP3 工具，可从视频中提取音频并保存为 MP3 文件，站点同时提供视频压缩等处理功能。",
+              "url": "https://videocompress.ai/zh-CN/video-to-mp3"
+            }
+          ]
+        },
+        {
+          "key": "image-processing",
+          "label": "图片处理",
+          "summary": "图片压缩、格式转换与画质优化工具。",
+          "tools": [
+            {
+              "name": "Squoosh",
+              "badge": "SQ",
+              "description": "在线图片压缩工具，可在浏览器中对比压缩前后效果，并调节编码参数以减小文件体积、保持画质。",
+              "url": "https://squoosh.app/"
+            }
+          ]
+        },
+        {
+          "key": "online-collaboration",
+          "label": "在线协作",
+          "summary": "多人实时协作白板、思维导图与可视化讨论工具。",
+          "tools": [
+            {
+              "name": "Boardmix 博思白板",
+              "badge": "BM",
+              "description": "AI 驱动的在线白板与团队协作平台，支持多人实时编辑、便签、思维导图、流程图、PPT 初稿与模板社区。",
+              "url": "https://boardmix.cn/"
+            }
+          ]
+        },
+        {
+          "key": "content-platforms",
+          "label": "内容运营",
+          "summary": "公众号、小程序等内容平台的后台管理入口。",
+          "tools": [
+            {
+              "name": "微信公众平台",
+              "badge": "WX",
+              "description": "微信公众号与小程序的后台管理入口，支持账号管理、内容发布、数据统计与开发配置。",
+              "url": "https://mp.weixin.qq.com/"
+            }
+          ]
+        },
+        {
+          "key": "payment-services",
+          "label": "支付与商业服务",
+          "summary": "支付平台、商户收款与经营工具入口。",
+          "tools": [
+            {
+              "name": "微信支付",
+              "badge": "WP",
+              "description": "微信支付官方平台，提供商户收款产品、红包与优惠券等营销工具、资金管理方案、行业解决方案与接入指南。",
+              "url": "https://pay.weixin.qq.com/"
+            }
+          ]
+        },
+        {
+          "key": "qrcode-forms",
+          "label": "二维码与表单",
+          "summary": "二维码生成、活码管理与扫码业务应用平台。",
+          "tools": [
+            {
+              "name": "草料二维码",
+              "badge": "CL",
+              "description": "草料二维码生成器，支持二维码与活码生成、批量生码、表单收集、签到报名、设备巡检与资产标签等业务场景，并提供大量模板。",
+              "url": "https://cli.im/"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "learning",
+      "label": "学习平台",
+      "hint": "收录算法刷题、在线课程、开发文档、编程社区、产品运营与技术学习等平台入口，便于快速查找与访问。",
+      "categories": [
+        {
+          "key": "algorithm-practice",
+          "label": "算法刷题",
+          "summary": "算法练习、面试题训练与技术成长平台。",
+          "tools": [
+            {
+              "name": "力扣 LeetCode",
+              "badge": "LC",
+              "description": "算法刷题与技术成长平台，提供在线判题、学习计划、名企面试题、LeetBook 与竞赛社区，适合面试准备和算法练习。",
+              "url": "https://leetcode.cn/"
+            }
+          ]
+        },
+        {
+          "key": "online-courses",
+          "label": "在线课程",
+          "summary": "高校慕课与课程资源发现平台。",
+          "tools": [
+            {
+              "name": "中国大学MOOC",
+              "badge": "MO",
+              "description": "中国大学MOOC（慕课）的「一流课程」频道，集中展示高校一流课程，可按学科浏览课程名称、开课学校、授课教师与参与情况。",
+              "url": "https://www.icourse163.org/channel/2001.htm"
+            }
+          ]
+        },
+        {
+          "key": "dev-docs",
+          "label": "开发文档与教程",
+          "summary": "权威开发文档、结构化教程与交互式练习平台。",
+          "tools": [
+            {
+              "name": "MDN 学习 Web 开发",
+              "badge": "MD",
+              "description": "MDN 学习 Web 开发区，提供结构化的前端入门、核心与扩展模块、技能测试和 Playground 练习，适合系统学习 Web 开发。",
+              "url": "https://developer.mozilla.org/zh-CN/docs/Learn_web_development"
+            },
+            {
+              "name": "Electron 官方文档",
+              "badge": "EL",
+              "description": "Electron 官方中文文档，涵盖入门教程、进程模型、API 参考、最佳实践、调试测试、分发与示例，适合跨平台桌面应用开发。",
+              "url": "https://www.electronjs.org/zh/docs/latest/"
+            },
+            {
+              "name": "electron-vite 中文文档",
+              "badge": "EV",
+              "description": "electron-vite 中文文档，介绍面向 Electron 的新型构建工具，涵盖快速开始、配置、开发调试、构建与分发等内容。",
+              "url": "https://cn-evite.netlify.app/"
+            },
+            {
+              "name": "UnoCSS 交互式文档",
+              "badge": "UN",
+              "description": "UnoCSS 交互式文档，可搜索原子化工具类、CSS 属性与指南，并在线执行表达式查看生成的样式结果。",
+              "url": "https://unocss.dev/interactive/"
+            },
+            {
+              "name": "华为开发者联盟 · 探索",
+              "badge": "HW",
+              "description": "华为开发者联盟探索频道，聚焦 HarmonyOS NEXT 与鸿蒙应用开发，提供行业实践、常见问题、开放能力与开发资源。",
+              "url": "https://developer.huawei.com/consumer/cn/discover/"
+            },
+            {
+              "name": "uni-app 官网",
+              "badge": "UNI",
+              "description": "uni-app 官方文档站，介绍使用 Vue.js 开发跨端应用的框架，提供快速上手、开发指南、API 参考与多平台发布说明。",
+              "url": "https://uniapp.dcloud.net.cn/"
+            },
+            {
+              "name": "Windi CSS 中文文档",
+              "badge": "WI",
+              "description": "Windi CSS 中文文档，介绍这款工具类 CSS 框架，提供安装配置、实用类与插件等使用说明。",
+              "url": "https://cn.windicss.org/"
+            },
+            {
+              "name": "Less.js 中文网",
+              "badge": "LS",
+              "description": "Less.js 中文网，提供 Less 语言与 Less.js 官方文档，涵盖变量、混入、嵌套、函数、导入等特性及使用说明。",
+              "url": "https://lesscss.cn/"
+            },
+            {
+              "name": "Vue.js 中文官网",
+              "badge": "VU",
+              "description": "Vue.js 中文官网，渐进式 JavaScript 框架，提供易上手 API、响应式渲染与丰富生态，包含完整中文文档与示例。",
+              "url": "https://cn.vuejs.org/"
+            },
+            {
+              "name": "Vite 3 中文文档",
+              "badge": "V3",
+              "description": "Vite 3 官方中文指南，介绍新型前端构建工具的开发服务器、构建指令、插件 API、脚手架与配置说明。",
+              "url": "https://vitejs.cn/vite3-cn/guide/"
+            },
+            {
+              "name": "TypeScript 入门教程",
+              "badge": "TS",
+              "description": "TypeScript 入门教程，从 JavaScript 程序员视角循序渐进讲解类型系统、ES6 支持与工程实践，适合初学者系统学习。",
+              "url": "https://ts.xcatliu.com/"
+            },
+            {
+              "name": "Node.js 中文网",
+              "badge": "NJ",
+              "description": "Node.js 中文网，提供各版本 API 文档、学习教程、下载安装入口以及众多前后端技术的中文文档导航。",
+              "url": "https://dev.nodejs.cn/"
+            },
+            {
+              "name": "Vue Router 中文文档",
+              "badge": "VR",
+              "description": "Vue.js 官方路由中文文档，涵盖静态与动态路由、导航守卫、基于组件的配置、历史模式与滚动控制等。",
+              "url": "https://router.vuejs.org/zh/"
+            },
+            {
+              "name": "Tauri 2.0 中文文档",
+              "badge": "TA",
+              "description": "Tauri 2.0 中文文档，介绍使用任意前端框架与 Rust 构建跨平台桌面与移动应用的方案，涵盖进程通信、安全机制与打包发布。",
+              "url": "https://v2.tauri.app/zh-cn/"
+            },
+            {
+              "name": "Electron 中文官网",
+              "badge": "ELE",
+              "description": "Electron 中文官网首页，介绍跨平台桌面应用开发方案，提供安装命令、Electron Forge 工具链、Fiddle 实验工具与应用案例。",
+              "url": "https://www.electronjs.org/zh/"
+            },
+            {
+              "name": "Nuxt 4 中文文档",
+              "badge": "NX",
+              "description": "Nuxt 4 中文文档，介绍基于 Vue.js 的全栈 Web 框架，涵盖文件路由、自动导入、SSR、Nitro 服务端引擎、模块化与部署等内容。",
+              "url": "https://nuxt.zhcndoc.com/docs/4.x/getting-started/introduction"
+            },
+            {
+              "name": "You-need-to-know-css",
+              "badge": "CSS",
+              "description": "CSS 实用技巧中文文档，收录 43 个常见 CSS 小样式与设计难题解决方案，涵盖色彩、简写、过渡等实践。",
+              "url": "https://lhammer.cn/You-need-to-know-css/#/zh-cn/introduce?v=1"
+            },
+            {
+              "name": "CSS Grid Garden",
+              "badge": "GG",
+              "description": "通过种植胡萝卜的游戏学习 CSS Grid，用 grid-column-start 与 grid-area 逐关练习网格布局，适合 CSS 布局入门。",
+              "url": "https://cssgridgarden.com/"
+            },
+            {
+              "name": "Flexbox Froggy",
+              "badge": "FF",
+              "description": "通过写 CSS 帮助青蛙跳荷叶的游戏学习 Flexbox，用 justify-content、align-items 等属性完成 24 关练习，支持多语言与难度设置。",
+              "url": "https://flexboxfroggy.com/"
+            }
+          ]
+        },
+        {
+          "key": "programming-learning",
+          "label": "编程学习",
+          "summary": "编程教程、学习路线、项目实战与技术交流社区。",
+          "tools": [
+            {
+              "name": "编程导航 CodeFather",
+              "badge": "CF",
+              "description": "程序员一站式编程学习交流社区，提供零基础学习路线、编程语言与框架教程、企业级项目实战和学习交流。",
+              "url": "https://www.codefather.cn/"
+            },
+            {
+              "name": "cesium中文网",
+              "badge": "CS",
+              "description": "CesiumJS 中文学习站，提供入门与实战系列教程、官方教程翻译、3DTiles 数据资源与三维可视化开发案例。",
+              "url": "https://cesium.xin/"
+            },
+            {
+              "name": "阿里前端代码规范",
+              "badge": "AL",
+              "description": "阿里云开发者社区文章，整理阿里巴巴前端与 Vue 项目工程代码规范，涵盖 JavaScript 编程规约、代码格式与对象声明等实践。",
+              "url": "https://developer.aliyun.com/article/850913"
+            }
+          ]
+        },
+        {
+          "key": "product-operations",
+          "label": "产品与运营",
+          "summary": "产品经理、运营与职业发展学习交流社区。",
+          "tools": [
+            {
+              "name": "人人都是产品经理",
+              "badge": "PM",
+              "description": "产品经理与产品爱好者学习交流平台，提供产品、运营、AI 等主题文章、专题、公开课、面试题与社区问答。",
+              "url": "https://www.woshipm.com/"
             }
           ]
         }
