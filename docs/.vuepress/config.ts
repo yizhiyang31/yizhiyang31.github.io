@@ -342,7 +342,6 @@ const gitArticles = [
   { text: "第 1 章 Git 操作", link: "/posts/engineering/git/01-git-operations.html" },
   { text: "第 2 章 代码风格", link: "/posts/engineering/git/02-code-style.html" },
   { text: "第 3 章 远程仓库", link: "/posts/engineering/git/03-remote-repository.html" },
-  { text: "完整版（逐页）", link: "/posts/engineering/git/git-github-full.html" },
 ];
 
 const gitSidebar = [
@@ -350,6 +349,7 @@ const gitSidebar = [
 ];
 
 const engineeringSidebar = [
+  ...gitSidebar,
   {
     text: "VuePress",
     collapsible: true,
@@ -360,10 +360,10 @@ const engineeringSidebar = [
     collapsible: true,
     children: deployArticles,
   },
-  ...gitSidebar,
 ];
 
 const engineeringCategorySidebar = [
+  ...gitSidebar,
   {
     text: "VuePress",
     children: vuepressArticles,
@@ -372,7 +372,6 @@ const engineeringCategorySidebar = [
     text: "部署",
     children: deployArticles,
   },
-  ...gitSidebar,
 ];
 
 export default defineUserConfig({

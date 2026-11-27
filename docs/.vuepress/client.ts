@@ -18,7 +18,7 @@ import ToolShelf from "./components/ToolShelf.vue";
 
 const sidebarDefaultArticles: Record<string, string> = {
   "/category/backend/": "/posts/backend/golang/01-go-intro-and-setup.html",
-  "/category/engineering/": "/posts/engineering/vuepress-theme-hope-blog.html",
+  "/category/engineering/": "/posts/engineering/git/01-git-operations.html",
 };
 
 const TagRootPage = defineComponent({
