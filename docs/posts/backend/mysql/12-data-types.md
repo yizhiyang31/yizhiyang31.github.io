@@ -772,11 +772,11 @@ NAME VARCHAR(5)
 );
 
 INSERT INTO test_varchar3
-VALUES('尚硅谷'),('尚硅谷教育');
+VALUES(''),('教育');
 
 #Data too long for column 'NAME' at row 1
 INSERT INTO test_varchar3
-VALUES('尚硅谷IT教育');
+VALUES('IT教育');
 ```
 
 **哪些情况使用 CHAR 或 VARCHAR 更好**

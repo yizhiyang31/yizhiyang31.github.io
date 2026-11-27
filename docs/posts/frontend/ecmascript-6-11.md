@@ -157,7 +157,7 @@ let result = `${star}在前几年离开了开心麻花`;
 样的书写更加简洁。  
 
 ```javascript
-let name = '尚硅谷';
+let name = '';
 let slogon = '永远追求行业更高标准';
 let improve = function () {
     console.log('可以提高你的技能');
@@ -217,7 +217,7 @@ let fn4 = () => {
 }
 
 let school = {
-    name: '尚硅谷',
+    name: '',
     getName(){
         let fn5 = () => {
             console.log(this);
@@ -306,13 +306,13 @@ let s1 = Symbol();
 console.log(s1, typeof s1);
 
 //添加标识的 Symbol
-let s2 = Symbol('尚硅谷');
-let s2_2 = Symbol('尚硅谷');
+let s2 = Symbol('');
+let s2_2 = Symbol('');
 console.log(s2 === s2_2);
 
 //使用 Symbol for 定义
-let s3 = Symbol.for('尚硅谷');
-let s3_2 = Symbol.for('尚硅谷');
+let s3 = Symbol.for('');
+let s3_2 = Symbol.for('');
 console.log(s3 === s3_2);
 ```
 
@@ -446,7 +446,7 @@ iterator 接口，所以可以使用『扩展运算符』和『for…of…』进
 let m = new Map();
 //创建一个非空 map
 let m2 = new Map([
-    ['name','尚硅谷'],
+    ['name',''],
     ['slogon','不断提高行业标准']
 ]);
 
@@ -678,7 +678,7 @@ ES9 允许命名捕获组使用符号『`?<name>`』,这样获取捕获结果可
 
 ```javascript
 
-let str = '<a href="http://www.atguigu.com">尚硅谷</a>';
+let str = '<a href="http://www.atguigu.com"></a>';
 
 const reg = /<a href="(?<url>.*)">(?<text>.*)<\/a>/;
 

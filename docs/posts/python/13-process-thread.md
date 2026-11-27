@@ -278,7 +278,7 @@ if __name__ == '__main__':
 
 ```python
   for index in range(10):
-   file.write(f'尚硅谷{index}\n')
+   file.write(f'{index}\n')
    file.flush()
    time.sleep(1)
  print(f'我是主进程({os.getpid()})中的【最后一行】代码')
@@ -345,7 +345,7 @@ if __name__ == '__main__':
  # 创建一个队列，让其最多能保存2个元素
  q = Queue(2)
  # put两次，把队列填满
- q.put('尚硅谷')
+ q.put('')
  q.put('atguigu')
  print(f'队列是否已满：{q.full()}')
  # 创建子进程p1

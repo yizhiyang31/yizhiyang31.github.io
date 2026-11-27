@@ -36,7 +36,7 @@ CommonJS 的初步体验、导出数据、导入数据、扩展理解与浏览�
 
 1.「创建 school.js」  
 ```javascript
-const name = '尚硅谷'
+const name = ''
 const slogan = '让天下没有难学的技术！'
 function getTel (){
   return '010-56253825'

@@ -1,6 +1,6 @@
 ---
 title: webpack从入门到精通
-excerpt: 尚硅谷《webpack 从入门到精通》完整转换版，覆盖 webpack 核心概念、开发/生产环境配置、优化配置、配置详情与 webpack5 使用。
+excerpt: 《webpack 从入门到精通》完整转换版，覆盖 webpack 核心概念、开发/生产环境配置、优化配置、配置详情与 webpack5 使用。
 author: yizhiyang
 date: 2026-11-26
 category:
@@ -16,7 +16,7 @@ tag:
 
 # webpack 从入门到精通
 
-尚硅谷前端研究院  
+前端研究院  
 版本：V 2.1  
 <a id="chapter-1"></a>
 

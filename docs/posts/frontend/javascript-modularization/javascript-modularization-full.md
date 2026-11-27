@@ -107,7 +107,7 @@ ServerJS），随后 Node.js 社区采纳了这一规范。
 
 1.「创建 school.js」  
 ```javascript
-const name = '尚硅谷'
+const name = ''
 const slogan = '让天下没有难学的技术！'
 function getTel (){
   return '010-56253825'
@@ -227,7 +227,7 @@ ES6 模块化规范是一个官方标准的规范，它是在语言标准的层�
 1.「创建 school.js」  
 ```javascript
 // 导出name
-export let name = {str:'尚硅谷'}
+export let name = {str:''}
 // 导出slogan
 export const slogan = '让天下没有难学的技术！'
 // 导出name
@@ -284,7 +284,7 @@ ES6 模块化提供 3 种导出方式：①分别导出、②统一导出、③�
 备注：在上方【初步体验中】环节，我们使用的导出方式就是【分别导出】  
 ```javascript
 // 导出name
-export let name = {str:'尚硅谷'}
+export let name = {str:''}
 // 导出slogan
 export const slogan = '让天下没有难学的技术！'
 // 导出getTel
@@ -295,7 +295,7 @@ export function getTel (){
 
 2.「统一导出」  
 ```javascript
-const name = {str:'尚硅谷'}
+const name = {str:''}
 const slogan = '让天下没有难学的技术！'
 function getTel (){
   return '010-56253825'
@@ -329,7 +329,7 @@ export default {name,motto,getTel}
 备注 :「上述多种导出方式，可以同时使用」  
 ```javascript
 // 导出name ———— 分别导出
-export const name = {str:'尚硅谷'}
+export const name = {str:''}
 const slogan = '让天下没有难学的技术！'
 function getTel (){
   return '010-56253825'
@@ -361,7 +361,7 @@ import * as school from './school.js'
 导出数据的模块  
 ```javascript
 //分别导出
-export const name = {str:'尚硅谷'}
+export const name = {str:''}
 //分别导出
 export const slogan = '让天下没有难学的技术！'
 function getTel (){
@@ -413,7 +413,7 @@ import student from './student.js' //默认导出的名字可以修改，不是�
 导出数据的模块  
 ```javascript
 //分别导出
-export const name = {str:'尚硅谷'}
+export const name = {str:''}
 //分别导出
 export const slogan = '让天下没有难学的技术！'
 function getTel (){
@@ -595,7 +595,7 @@ JavaScript
 // ['welcome']表示当前模块要依赖的模块名字
 // 回调接收到的welcome是模块导出的数据
 define(['welcome'],function(welcome){
-  let name = {str:'尚硅谷'}
+  let name = {str:''}
   const slogan = '让天下没有难学的技术！'+ welcome
   function getTel (){
     return '010-56253825'
@@ -662,7 +662,7 @@ JavaScript
     2. exports、module用于导出数据
 */
 define(function(require,exports,module){
-  const name = '尚硅谷'
+  const name = ''
   const slogan = '让天下没有难学的技术！'
   function getTel (){
     return '010-56253825'

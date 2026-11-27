@@ -311,10 +311,10 @@ SELECT 查询还可以对常数进行查询。对的，就是在 SELECT 查询�
 
 SQL 中的 SELECT 语法的确提供了这个功能，一般来说我们只从一个表中查询数据，通常不需要增加一个固定的常数列，但如果我们想整合不同的数据源，用常数列作为这个表的标记，就需要查询常数。
 
-比如说，我们想对 employees 数据表中的员工姓名进行查询，同时增加一列字段corporation ，这个字段固定值为“尚硅谷”，可以这样写：
+比如说，我们想对 employees 数据表中的员工姓名进行查询，同时增加一列字段corporation ，这个字段固定值为“”，可以这样写：
 
 ```sql
-SELECT '尚硅谷' as corporation, last_name FROM employees;
+SELECT '' as corporation, last_name FROM employees;
 ```
 
 ## 4. 显示表结构

@@ -1031,7 +1031,7 @@ ELSEIF num > 15
 THEN LEAVE my_loop;
 END IF;
 
-SELECT '尚硅谷：让天下没有难学的技术';
+SELECT '：让天下没有难学的技术';
 
 END LOOP my_loop;
 

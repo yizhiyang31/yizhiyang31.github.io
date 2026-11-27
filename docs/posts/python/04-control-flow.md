@@ -306,7 +306,7 @@ print('你好', end='') 中的 end 用来控制打印后结尾输出的内容。
 ```python
 # 前序知识
 print('你好', end='')
-print('尚硅谷', end='')
+print('', end='')
 # for循环实现九九乘法表
 for row in range(1, 10):
  for item in range(1, row + 1):

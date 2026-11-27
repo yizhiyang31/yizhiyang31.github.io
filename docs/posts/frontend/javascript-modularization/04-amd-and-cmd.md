@@ -93,7 +93,7 @@ JavaScript
 // ['welcome']表示当前模块要依赖的模块名字
 // 回调接收到的welcome是模块导出的数据
 define(['welcome'],function(welcome){
-  let name = {str:'尚硅谷'}
+  let name = {str:''}
   const slogan = '让天下没有难学的技术！'+ welcome
   function getTel (){
     return '010-56253825'
@@ -160,7 +160,7 @@ JavaScript
     2. exports、module用于导出数据
 */
 define(function(require,exports,module){
-  const name = '尚硅谷'
+  const name = ''
   const slogan = '让天下没有难学的技术！'
   function getTel (){
     return '010-56253825'

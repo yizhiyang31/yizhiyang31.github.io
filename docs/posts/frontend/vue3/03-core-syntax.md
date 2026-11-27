@@ -842,7 +842,7 @@ let sum = ref(0);
 ```vue
 <template>
   <div class="person">
-    <h1 ref="title1">尚硅谷</h1>
+    <h1 ref="title1"></h1>
     <h2 ref="title2">前端</h2>
     <h3 ref="title3">Vue</h3>
     <input type="text" ref="inpt"> <br><br>

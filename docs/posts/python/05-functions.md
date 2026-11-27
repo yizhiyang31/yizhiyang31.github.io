@@ -85,8 +85,8 @@ def 函数名():
 ```python
 # 定义函数
 def welcome():
- print('欢迎来到尚硅谷课堂！')
- print('尚硅谷，让天下没有难学的技术！')
+ print('欢迎来到课堂！')
+ print('，让天下没有难学的技术！')
 ```
 
 
@@ -108,8 +108,8 @@ def welcome():
 ```python
 # 定义函数
 def welcome():
- print('欢迎来到尚硅谷课堂！')
- print('尚硅谷，让天下没有难学的技术！')
+ print('欢迎来到课堂！')
+ print('，让天下没有难学的技术！')
 # 调用函数（让函数中的代码运行起来）
 welcome()
 welcome()
@@ -205,7 +205,7 @@ greet(height=172, age=18, '张三', '男')
 greet(name='张三', '男', 18, 172)
 greet(name='张三', '男', age=18, 172)
 greet(height=172, age=18, gender='男', name='张三', age=19)
-greet(height=172, age=18, gender='男', name='张三', school='尚硅谷')
+greet(height=172, age=18, gender='男', name='张三', school='')
 ```
 
 

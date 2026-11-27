@@ -89,8 +89,8 @@ caller(welcome)
 
 ```text
 # result = welcome()
-# result('尚硅谷')
-welcome()('尚硅谷')
+# result('')
+welcome()('')
 ```
 
 
@@ -778,10 +778,10 @@ def beauty(char, n):
  return show_msg
 show1 = beauty('*', 3)
 show1('你好啊')
-show1('尚硅谷')
+show1('')
 show2 = beauty('@', 5)
 show2('你好啊')
-show2('尚硅谷')
+show2('')
 ```
 
 
@@ -796,7 +796,7 @@ show2('尚硅谷')
 
 ```text
 b2.show_msg('你好啊')
-b2.show_msg('尚硅谷')
+b2.show_msg('')
 ```
 
 
@@ -993,11 +993,11 @@ result: None = None # 语法上没有问题，但这么写没有意义
 ```python
 school: str
 print('*******', school)
-school = '尚硅谷'
+school = ''
 ```
 
 备注：上述代码中，school: str 并不是在定义变量，只是说明：如果未来有 school 变量，
-那应该是 str 类型。Python 执行到 school = '尚硅谷'这句代码时，才会真正的定义 school
+那应该是 str 类型。Python 执行到 school = ''这句代码时，才会真正的定义 school
 变量。
 容器类型的注解：
 
@@ -1028,7 +1028,7 @@ Python 中存在类型推导：根据变量初始赋值的实际数据，自动�
 
 ```text
 x = 100
-x = '尚硅谷'
+x = ''
 y = [10, 20, 30]
 y.append('40') # 此行会有警告
 ```

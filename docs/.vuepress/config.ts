@@ -21,6 +21,8 @@ const catalogTitles: Record<string, string> = {
   "/posts/frontend/node/": "Node.js",
   "/posts/frontend/javascript-modularization/": "JavaScript 模块化规范",
   "/posts/frontend/promise/": "Promise 从入门到自定义",
+  "/posts/frontend/react/": "React 全家桶",
+  "/posts/frontend/react-router6/": "React Router 6 快速上手",
   "/posts/engineering/": "工程化",
   "/posts/engineering/git/": "Git",
   "/tools/": "工具",
@@ -264,11 +266,49 @@ const promiseSidebar = [
   },
 ];
 
+const reactArticles = [
+  { text: "第 1 章 React 入门", link: "/posts/frontend/react/01-react-introduction.html" },
+  { text: "第 2 章 React 面向组件编程", link: "/posts/frontend/react/02-component-programming.html" },
+  { text: "第 3 章 React 应用（基于 React 脚手架）", link: "/posts/frontend/react/03-react-scaffold.html" },
+  { text: "第 4 章 React ajax", link: "/posts/frontend/react/04-react-ajax.html" },
+  { text: "第 5 章 React 路由", link: "/posts/frontend/react/05-react-router.html" },
+  { text: "第 6 章 React UI 组件库", link: "/posts/frontend/react/06-react-ui-libraries.html" },
+  { text: "第 7 章 redux", link: "/posts/frontend/react/07-redux.html" },
+  { text: "完整版（逐页）", link: "/posts/frontend/react/react-full.html" },
+];
+
+const reactSidebar = [
+  {
+    text: "React 全家桶",
+    prefix: "/posts/frontend/react/",
+    collapsible: true,
+    children: reactArticles,
+  },
+];
+
+const reactRouter6Articles = [
+  { text: "1.概述", link: "/posts/frontend/react-router6/01-overview.html" },
+  { text: "2.Component", link: "/posts/frontend/react-router6/02-components.html" },
+  { text: "3.Hooks", link: "/posts/frontend/react-router6/03-hooks.html" },
+  { text: "完整版（逐页）", link: "/posts/frontend/react-router6/react-router6-full.html" },
+];
+
+const reactRouter6Sidebar = [
+  {
+    text: "React Router 6 快速上手",
+    prefix: "/posts/frontend/react-router6/",
+    collapsible: true,
+    children: reactRouter6Articles,
+  },
+];
+
 const frontendSidebar = [
   { text: "Vue3 学习笔记", prefix: "/posts/frontend/vue3/", collapsible: true, children: vue3Articles },
   { text: "Node.js", prefix: "/posts/frontend/node/", collapsible: true, children: nodeArticles },
   ...jsModuleSidebar,
   ...promiseSidebar,
+  ...reactSidebar,
+  ...reactRouter6Sidebar,
   {
     text: "Axios 从入门到源码分析",
     link: "/posts/frontend/axios-from-intro-to-source.html",
@@ -418,6 +458,8 @@ export default defineUserConfig({
       "/posts/frontend/": frontendSidebar,
       "/posts/frontend/javascript-modularization/": jsModuleSidebar,
       "/posts/frontend/promise/": promiseSidebar,
+      "/posts/frontend/react/": reactSidebar,
+      "/posts/frontend/react-router6/": reactRouter6Sidebar,
       "/posts/engineering/git/": gitSidebar,
       "/posts/engineering/github-pages-deploy.html": engineeringSidebar,
       "/posts/engineering/vuepress-theme-hope-blog.html": engineeringSidebar,

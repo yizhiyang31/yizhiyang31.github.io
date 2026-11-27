@@ -992,24 +992,24 @@ default:
 
 编写一个程序, 可以打印10 句
 
-"你好，尚硅谷!"。请大家想想怎么做?
+"你好，!"。请大家想想怎么做?
 
 - 使用传统的方式实现
 
 ```go
 func main() {
-	//输出10句 "你好，尚硅谷"
+	//输出10句 "你好，"
 
-	// fmt.Println("你好，尚硅谷")
-	// fmt.Println("你好，尚硅谷")
-	// fmt.Println("你好，尚硅谷")
-	// fmt.Println("你好，尚硅谷")
-	// fmt.Println("你好，尚硅谷")
-	// fmt.Println("你好，尚硅谷")
-	// fmt.Println("你好，尚硅谷")
-	// fmt.Println("你好，尚硅谷")
-	// fmt.Println("你好，尚硅谷")
-	// fmt.Println("你好，尚硅谷")
+	// fmt.Println("你好，")
+	// fmt.Println("你好，")
+	// fmt.Println("你好，")
+	// fmt.Println("你好，")
+	// fmt.Println("你好，")
+	// fmt.Println("你好，")
+	// fmt.Println("你好，")
+	// fmt.Println("你好，")
+	// fmt.Println("你好，")
+	// fmt.Println("你好，")
 }
 ```
 
@@ -1019,7 +1019,7 @@ func main() {
 //golang中，有循环控制语句来处理循环的执行某段代码的方法->for循环
 //for循环快速入门
 for i := 1; i <= 10; i++ {
-	fmt.Println("你好，尚硅谷", i)
+	fmt.Println("你好，", i)
 }
 ```
 
@@ -1095,7 +1095,7 @@ flowchart TD
 //for循环的第二种写法
 j := 1 //循环变量初始化
 for j <= 10 { //循环条件
-	fmt.Println("你好，尚硅谷~", j)
+	fmt.Println("你好，~", j)
 	j++ //循环变量迭代
 }
 ```

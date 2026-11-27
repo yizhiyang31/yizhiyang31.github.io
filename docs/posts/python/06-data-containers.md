@@ -86,16 +86,16 @@ main('俯卧撑', 3, 40)
 ```python
 # 定义有内容的列表
 list1 = [34, 56, 21, 56, 11]
-list2 = ['北京', '尚硅谷', '你好啊']
-list3 = [23, '尚硅谷', True, None]
-list4 = [23, '尚硅谷', True, None, [100, 200, 300]] # list4 是一个嵌套列表
+list2 = ['北京', '', '你好啊']
+list3 = [23, '', True, None]
+list4 = [23, '', True, None, [100, 200, 300]] # list4 是一个嵌套列表
 # 定义空列表（列表中的数据，后期会通过特定写法填充）
 list5 = []
 list6 = list()
 print(list1, type(list1)) # [34, 56, 21, 56, 11] <class 'list'>
-print(list2, type(list2)) # ['北京', '尚硅谷', '你好啊'] <class 'list'>
-print(list3, type(list3)) # [23, '尚硅谷', True, None] <class 'list'>
-print(list4, type(list4)) # [23, '尚硅谷', True, None, [100, 200, 300]] <class 'list'>
+print(list2, type(list2)) # ['北京', '', '你好啊'] <class 'list'>
+print(list3, type(list3)) # [23, '', True, None] <class 'list'>
+print(list4, type(list4)) # [23, '', True, None, [100, 200, 300]] <class 'list'>
 print(list5, type(list5)) # [] <class 'list'>
 print(list6, type(list6)) # [] <class 'list'>
 ```
@@ -133,10 +133,10 @@ print(nums[-5]) # 10
 # 测试错误索引
 print(nums[5])
 # 定义一个嵌套列表
-nums2 = [10, 20, ['你好啊','尚硅谷'], 40, 50]
-# 取出尚硅谷
+nums2 = [10, 20, ['你好啊',''], 40, 50]
+# 取出
   “”
-print(nums2[2][1]) # 尚硅谷
+print(nums2[2][1]) # 
 ```
 
 注意：通过下标取值时，下标不要超出范围，否则会报错。
@@ -195,7 +195,7 @@ print(nums) # [10, 20, 666, 30, 40]
 ```python
 # 方式三：通过列表的extend方法，将可迭代对象中的内容依次取出，追加到列表尾部
 nums = [10, 20, 30, 40]
-nums.extend('尚硅谷')
+nums.extend('')
 nums.extend(range(1, 4))
 nums.extend([70, 80, 90])
 print(nums) # [10, 20, 30, 40, '尚', '硅', '谷', 1, 2, 3, 70, 80, 90]
@@ -297,9 +297,9 @@ nums = [23, 11, 32, 30, 17]
 nums.sort(reverse=True)
 print(nums) # [32, 30, 23, 17, 11]
 # 4.2 若列表中的元素：既有数字，又有字符串，那就会报错。
-nums = [23, 11, 32, 30, 17, '尚硅谷']
+nums = [23, 11, 32, 30, 17, '']
 nums.sort()
-print(nums) # [23, 11, 32, 30, 17, '尚硅谷']
+print(nums) # [23, 11, 32, 30, 17, '']
 # 4.3 若列表中的元素：都是字符串，则按照字符串的 Unicode 编码大小进行排序
 msg_list = ['北京', '北硅谷', '北好']
 msg_list.sort()
@@ -330,13 +330,13 @@ result = sorted(nums, reverse=True)
 print(nums) # [23, 11, 32, 30, 17]
 print(result) # [32, 30, 23, 17, 11]
 # 1.2 若列容器中的元素：既有数字，又有字符串，那就会报错。
-nums = [23, 11, 32, 30, 17, '尚硅谷']
+nums = [23, 11, 32, 30, 17, '']
 sorted(nums)
 # 1.3 若列容器中的元素：都是字符串，则按照字符串的 Unicode 编码大小进行排序。
-msg_list = ['北京', '尚硅谷', '你好']
+msg_list = ['北京', '', '你好']
 result = sorted(msg_list)
-print(msg_list) # ['北京', '尚硅谷', '你好']
-print(result) # ['你好', '北京', '尚硅谷']
+print(msg_list) # ['北京', '', '你好']
+print(result) # ['你好', '北京', '']
 ```
 
 2 len(数据容器)，获取容器中元素的个数，返回值：元素个数。
@@ -355,13 +355,13 @@ result = max(nums)
 print(nums) # [23, 11, 32, 30, 17]
 print(result) # 32
 # 3.2 如果容器中的元素：既有数字又有字符串，那 max 会报错。
-nums = [23, 11, 32, 30, 17, '尚硅谷']
+nums = [23, 11, 32, 30, 17, '']
 max(nums)
 # 3.3 如果容器中的元素：都是字符串，那 max 会返回：Unicode 编码最大的字符。
-msg_list = ['北京', '尚硅谷', '你好']
+msg_list = ['北京', '', '你好']
 result = max(msg_list)
-print(msg_list) # ['北京', '尚硅谷', '你好']
-print(result) # 尚硅谷
+print(msg_list) # ['北京', '', '你好']
+print(result) # 
 # 3.4 max 函数也可以接收多个值，并筛选出最大值
 result = max(33, 45, 12, 78, 99)
 print(result) # 99
@@ -516,7 +516,7 @@ print(result) # 600
 t1 = (28, 67, 21, 67, 11)
 t1[0] = 100
 # 元组中的元素，不可修改，但元组中如果存放了可变类型（列表），那可变类型中的内容仍可修改
-t2 = (28, 67, 21, 67, 11, [100, 200, 300, ('你好', '尚硅谷')])
+t2 = (28, 67, 21, 67, 11, [100, 200, 300, ('你好', '')])
 t2[5] = 400
 t2[5][2] = 400
 t2[5][3][0] = 'hello'
@@ -592,7 +592,7 @@ for item in t1:
 解包列表、解包元组传参，就是把其中的元素依次取出，作为多个独立的参数传入函数。
 
 ```text
-test(*tuple1) # 此种写法相当于：test('你好', '北京', '尚硅谷')
+test(*tuple1) # 此种写法相当于：test('你好', '北京', '')
 ```
 
 
@@ -668,10 +668,10 @@ print(result) # 8
 
 ```python
 # split 方法：将字符串按照指定字符进行分隔，并将分隔后的内容存入一个列表
-msg = '尚硅谷@atguigu@你好'
+msg = '@atguigu@你好'
 result = msg.split('@')
-print(msg) # 尚硅谷@atguigu@你好
-print(result) # ['尚硅谷', 'atguigu', '你好']
+print(msg) # @atguigu@你好
+print(result) # ['', 'atguigu', '你好']
 ```
 
 3 使用字符串.replace(字符串片段)，将字符串中的某个字符串片段，替换成目标字符串，
@@ -680,9 +680,9 @@ print(result) # ['尚硅谷', 'atguigu', '你好']
 ```python
 # replace 方法：将字符串中的某个字符片段，替换成目标字符串（不修改原字符串，返回新字符串）
 msg = 'welcome to atguigu'
-result = msg.replace('atguigu', '尚硅谷')
+result = msg.replace('atguigu', '')
 print(msg) # welcome to atguigu
-print(result) # welcome to 尚硅谷
+print(result) # welcome to 
 ```
 
 4 使用字符串.count(字符)，统计『指定字符』在字符串中出现的次数，返回值：下标。
@@ -712,10 +712,10 @@ msg = '34215尚12硅34谷 4132'
 result = msg.strip('5432')
 print(msg) # 34215尚12硅 34谷4132
 print(result)# 15尚12硅 34谷41
-msg = ' 尚硅谷 '
+msg = '  '
 result = msg.strip()
-print(msg) # 尚硅谷
-print(result)# 尚硅谷
+print(msg) # 
+print(result)# 
 ```
 
 
@@ -949,7 +949,7 @@ print(s1)
 ```python
 # pop方法：从集合中移除一个任意元素，返回值是移除的那个元素
 s1 = {10, 20, 30, 40, 50}
-s2 = {'你好', '北京', '尚硅谷', 'hello'}
+s2 = {'你好', '北京', '', 'hello'}
 result = s1.pop()
 print(s1)
 print(result)

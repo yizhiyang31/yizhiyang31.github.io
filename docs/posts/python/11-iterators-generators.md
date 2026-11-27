@@ -291,7 +291,7 @@ def demo():
  yield '我是第2个yield所返回的数据'
  b = 300
  print(b)
- return '尚硅谷'
+ return ''
 d = demo()
 r1 = next(d)
 print(r1)
@@ -313,7 +313,7 @@ except StopIteration as e:
  yield '我是第2个yield所返回的数据'
  b = 300
  print(b)
- return '尚硅谷'
+ return ''
 d = demo()
 # 验证：生成器对象 d，和迭代器一样，也拥有：__iter__ 和 __next__ 方法
 print(hasattr(d, '__iter__'))
@@ -378,7 +378,7 @@ def demo():
  print(a)
  b = yield '我是第2个yield所返回的数据'
  print(b)
- return '尚硅谷'
+ return ''
 d = demo()
 r1 = next(d) # 此处等价于 d.send(None)
 print(r1)
