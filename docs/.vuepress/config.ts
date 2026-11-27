@@ -460,7 +460,7 @@ export default defineUserConfig({
       "/posts/frontend/promise/": promiseSidebar,
       "/posts/frontend/react/": reactSidebar,
       "/posts/frontend/react-router6/": reactRouter6Sidebar,
-      "/posts/engineering/git/": gitSidebar,
+      "/posts/engineering/git/": engineeringSidebar,
       "/posts/engineering/github-pages-deploy.html": engineeringSidebar,
       "/posts/engineering/vuepress-theme-hope-blog.html": engineeringSidebar,
       "/posts/": [
