@@ -74,7 +74,13 @@ export const booksStaticPlugin = (): Plugin => ({
         return;
       }
 
-      const relative = decodeURIComponent(rawUrl.slice("/books/".length).split(/[?#]/)[0]);
+      const requestPath = rawUrl.split(/[?#]/)[0];
+      if (path.extname(requestPath).toLowerCase() !== ".pdf") {
+        next();
+        return;
+      }
+
+      const relative = decodeURIComponent(requestPath.slice("/books/".length));
       const filePath = path.resolve(booksDir, relative);
       const outside = path.relative(booksDir, filePath);
 

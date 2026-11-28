@@ -341,11 +341,42 @@ const previewVisible = computed({
   },
 });
 
+const keyword = ref("");
+const normalizedKeyword = computed(() => keyword.value.trim().toLowerCase());
+const isSearching = computed(() => normalizedKeyword.value.length > 0);
+
+const matchesKeyword = (book: Book): boolean =>
+  !normalizedKeyword.value ||
+  [book.title, book.subtitle, book.description, book.category, book.level, book.file].some((field) =>
+    field.toLowerCase().includes(normalizedKeyword.value),
+  );
+
+const matchingBooks = computed(() => books.value.filter(matchesKeyword));
+
+const countBooks = (tabKey: TabKey): number =>
+  tabKey === "all"
+    ? matchingBooks.value.length
+    : matchingBooks.value.filter((book) => book.tab === tabKey).length;
+
+const tabsWithMatches = computed(() =>
+  tabs.value.filter((tab) => countBooks(tab.key) > 0).map((tab) => tab.label),
+);
+
 const visibleBooks = computed(() =>
   activeTab.value === "all"
-    ? books.value
-    : books.value.filter((book) => book.tab === activeTab.value),
+    ? matchingBooks.value
+    : matchingBooks.value.filter((book) => book.tab === activeTab.value),
 );
+
+const clearSearch = (): void => {
+  keyword.value = "";
+};
+
+const onSearchKeydown = (event: KeyboardEvent): void => {
+  if (event.key !== "Escape") return;
+  clearSearch();
+  (event.target as HTMLInputElement).blur();
+};
 
 const currentTabLabel = computed(
   () => tabs.value.find((tab) => tab.key === activeTab.value)?.label ?? "",
@@ -404,17 +435,40 @@ onBeforeUnmount(() => {
       </p>
     </header>
 
+    <div class="book-shelf__search">
+      <label class="book-shelf__search-field">
+        <svg class="book-shelf__search-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="1.8" />
+          <path d="m16.5 16.5 4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+        </svg>
+        <input v-model="keyword" class="book-shelf__search-input" type="search"
+          placeholder="搜索书名、简介或分类，如 CSS、HTTP、算法" aria-label="按关键词搜索书籍"
+          @keydown="onSearchKeydown" />
+      </label>
+      <button v-if="isSearching" class="book-shelf__search-clear" type="button" aria-label="清除搜索关键词"
+        @click="clearSearch">
+        清除
+      </button>
+    </div>
+
+    <p v-if="isSearching" class="book-shelf__search-summary" role="status" aria-live="polite">
+      在「{{ currentTabLabel }}」中找到 {{ visibleBooks.length }} 本匹配书籍
+      <template v-if="tabsWithMatches.length > 1">
+        ，其他分类也有匹配：{{ tabsWithMatches.filter((label) => label !== currentTabLabel).join("、") }}
+      </template>
+    </p>
+
     <div class="book-shelf__tabs" role="tablist" aria-label="书籍分类">
       <button v-for="tab in tabs" :key="tab.key" class="book-shelf__tab" :class="{ 'is-active': activeTab === tab.key }"
         type="button" role="tab" :aria-selected="activeTab === tab.key" @click="activeTab = tab.key">
         {{ tab.label }}
         <span class="book-shelf__tab-count">
-          {{tab.key === "all" ? books.length : books.filter((book) => book.tab === tab.key).length}}
+          {{ countBooks(tab.key) }}
         </span>
       </button>
     </div>
 
-    <div class="book-shelf__grid" role="tabpanel" :aria-label="currentTabLabel">
+    <div v-if="visibleBooks.length" class="book-shelf__grid" role="tabpanel" :aria-label="currentTabLabel">
       <article v-for="book in visibleBooks" :key="book.id" class="book-card">
         <button class="book-card__cover" :class="`book-card__cover--${book.coverTheme}`" type="button"
           :aria-label="`预览 ${book.title}`" @click="openPreview(book)">
@@ -447,6 +501,17 @@ onBeforeUnmount(() => {
           </div>
         </div>
       </article>
+    </div>
+
+    <div v-else class="book-shelf__empty" role="status">
+      <template v-if="isSearching">
+        <h2>没有找到匹配的书籍</h2>
+        <p>没有书名、简介或分类包含「{{ keyword.trim() }}」的书籍，换个关键词或切换分类试试。</p>
+      </template>
+      <template v-else>
+        <h2>暂无书籍</h2>
+        <p>当前分类下还没有可预览的书籍。</p>
+      </template>
     </div>
 
     <Teleport to="body">
@@ -585,6 +650,106 @@ onBeforeUnmount(() => {
 
 .book-shelf__tab.is-active .book-shelf__tab-count {
   background: rgba(255, 255, 255, 0.25);
+}
+
+.book-shelf__search {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1.75rem 0 0;
+}
+
+.book-shelf__search-field {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  width: min(26rem, 100%);
+  padding: 0 0.85rem;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 999px;
+  background: var(--vp-c-bg-soft);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.book-shelf__search-field:focus-within {
+  border-color: var(--vp-c-brand-1);
+  box-shadow: 0 0 0 3px var(--vp-c-brand-soft);
+}
+
+.book-shelf__search-icon {
+  flex: none;
+  width: 1rem;
+  height: 1rem;
+  color: var(--vp-c-text-3, var(--vp-c-text-2));
+}
+
+.book-shelf__search-input {
+  width: 100%;
+  min-width: 0;
+  padding: 0.6rem 0;
+  border: 0;
+  background: transparent;
+  color: var(--vp-c-text-1, var(--vp-c-text));
+  font-family: inherit;
+  font-size: 0.9rem;
+  outline: none;
+}
+
+.book-shelf__search-input::placeholder {
+  color: var(--vp-c-text-3, var(--vp-c-text-2));
+}
+
+.book-shelf__search-input::-webkit-search-cancel-button {
+  display: none;
+}
+
+.book-shelf__search-clear {
+  flex: none;
+  padding: 0.35rem 0.75rem;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 999px;
+  background: var(--vp-c-bg-elv);
+  color: var(--vp-c-text-2, var(--vp-c-text));
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.book-shelf__search-clear:hover {
+  border-color: var(--vp-c-brand-1);
+  color: var(--vp-c-brand-1);
+}
+
+.book-shelf__search-summary {
+  margin: 0.7rem 0 0;
+  color: var(--vp-c-text-2, var(--vp-c-text));
+  font-size: 0.85rem;
+  line-height: 1.7;
+}
+
+.book-shelf__empty {
+  padding: 3rem 1.5rem;
+  border: 1px dashed var(--vp-c-divider);
+  border-radius: var(--book-radius);
+  background: var(--vp-c-bg-soft);
+  text-align: center;
+}
+
+.book-shelf__empty h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+}
+
+.book-shelf__empty p {
+  margin: 0;
+  color: var(--vp-c-text-2, var(--vp-c-text));
+  font-size: 0.9rem;
 }
 
 .book-shelf__grid {
@@ -962,6 +1127,14 @@ onBeforeUnmount(() => {
 @media (max-width: 719px) {
   .book-shelf {
     padding: 1.5rem 0 3rem;
+  }
+
+  .book-shelf__search {
+    flex-wrap: wrap;
+  }
+
+  .book-shelf__search-field {
+    width: 100%;
   }
 
   .book-card {
